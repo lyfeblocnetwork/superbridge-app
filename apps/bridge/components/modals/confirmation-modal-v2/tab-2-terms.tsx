@@ -57,10 +57,11 @@ export const ConfirmationModalTermsTab = ({
         : DeploymentFamily.arbitrum,
   })
     .with({ isAcross: true }, { isHyperlane: true }, () =>
-      t("confirmationModal.checkbox1Bridge", {
-        mins: totalBridgeTime.data?.value,
-        to: to?.name,
-      })
+      transformPeriodText(
+        "confirmationModal.checkbox1Bridge",
+        commonTranslationProps,
+        totalBridgeTime.data
+      )
     )
     .with({ isCctp: true }, () =>
       t("confirmationModal.checkbox1Cctp", {
