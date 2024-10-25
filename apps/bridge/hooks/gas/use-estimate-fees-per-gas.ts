@@ -28,6 +28,7 @@ export const useEstimateFeesPerGas = (
     if (!fees.data) return fees;
 
     const copy = { ...fees.data };
+
     if (copy.maxFeePerGas) {
       if (chainId === scroll.id) {
         copy.maxFeePerGas *= BigInt(10);
