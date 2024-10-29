@@ -41,7 +41,6 @@ export const useTransactions = () => {
       cctpDomains.map((x) => x.id),
       hyperlane.mailboxIds,
       hyperlane.routers,
-      superbridgeTestnetsEnabled,
       lz.domainIds,
       lz.adapters,
     ],

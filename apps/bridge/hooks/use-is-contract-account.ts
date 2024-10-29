@@ -10,7 +10,10 @@ export const useIsContractAccount = () => {
 
   return useQuery({
     queryKey: [
-      `is-contract-${account.address}-${client?.chain.id}-${from?.id}`,
+      "useIsContractAccount",
+      account.address,
+      client?.chain.id,
+      from?.id,
     ],
     queryFn: () => {
       if (!from?.id) {

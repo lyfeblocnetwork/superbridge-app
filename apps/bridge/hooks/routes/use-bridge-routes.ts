@@ -34,6 +34,7 @@ export const useBridgeRoutes = () => {
 
   const routes = useQuery({
     queryKey: [
+      "useBridgeRoutes",
       weiAmount.toString(),
       from?.id.toString() ?? "",
       to?.id.toString() ?? "",

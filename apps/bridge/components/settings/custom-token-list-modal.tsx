@@ -34,7 +34,7 @@ export const CustomTokenListModal = () => {
   const [disclaimerChecked, setDisclaimerChecked] = useState(false);
 
   const tokensImported = useQuery({
-    queryKey: ["custom tokens", debouncedUrl],
+    queryKey: ["useTokensImported", debouncedUrl],
     queryFn: async () => {
       const response = await fetch(debouncedUrl);
       if (response.status !== 200) {

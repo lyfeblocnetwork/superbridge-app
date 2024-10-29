@@ -25,7 +25,7 @@ export const useCustomTokenLists = () => {
 
   const lists = customTokenLists.filter((x) => x.enabled).map((x) => x.url);
   return useQuery({
-    queryKey: lists,
+    queryKey: ["useCustomTokenLists", ...lists],
     enabled: isSuperbridge && lists.length > 0,
     queryFn: async () => {
       const responses = await Promise.all(
