@@ -649,6 +649,17 @@ const swanTheme = {
   },
 };
 
+const arenaZTheme = {
+  icon: "/img/arena-z/icon.svg",
+  card: {
+    className: "bg-[#0D054A]",
+    title: "text-white",
+    overlay: {
+      className: "bg-[url('/img/arena-z/bg-card.svg')] bg-bottom bg-cover",
+    },
+  },
+};
+
 export const cardThemes: {
   [chainId: string]: { card: CardTheme; icon: string } | undefined;
 } = {
@@ -764,4 +775,5 @@ export const cardThemes: {
   [80084]: beraTheme,
   [984122]: formaTheme,
   [1301]: unichainTheme,
+  [9897]: arenaZTheme,
 };
