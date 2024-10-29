@@ -72,7 +72,10 @@ export const BridgeInfo = ({
             </div>
             <div className="flex gap-1.5 items-center justify-between ">
               {sentAmount} {token?.[from?.id ?? 0]?.symbol}
-              <TokenIcon token={token?.[from?.id ?? 0]} className="h-4 w-4" />
+              <TokenIcon
+                token={token?.[from?.id ?? 0]}
+                className="h-4 w-4 !text-[8px]"
+              />
             </div>
           </div>
 
@@ -86,7 +89,10 @@ export const BridgeInfo = ({
             </div>
             <div className="flex gap-1.5 items-center justify-between ">
               {receivedAmount} {token?.[to?.id ?? 0]?.symbol}
-              <TokenIcon token={token?.[to?.id ?? 0]} className="h-4 w-4" />
+              <TokenIcon
+                token={token?.[to?.id ?? 0]}
+                className="h-4 w-4 !text-[8px]"
+              />
             </div>
           </div>
 
