@@ -126,7 +126,10 @@
     "usedBeforeMultiple": "Akun digunakan {{count}} kali sebelumnya",
     "newAddress": "Alamat baru - harap hati-hati!",
     "checkingAddress": "Memeriksa alamat...",
-    "addRecipientAddress": "Tambahkan alamat penerima"
+    "addRecipientAddress": "Tambahkan alamat penerima",
+    "pleaseNote": "Harap diperhatikan",
+    "sameAddressRequirement": "Jembatan ke atau dari {{chain}} harus memiliki alamat penerima yang sama.",
+    "checkRecipientAddress": "Periksa alamat penerima"
   },
 
   "buttons": {

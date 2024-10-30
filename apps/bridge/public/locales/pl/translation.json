@@ -126,7 +126,10 @@
     "usedBeforeMultiple": "Konto używane {{count}} razy wcześniej",
     "newAddress": "Nowy adres - bądź ostrożny!",
     "checkingAddress": "Sprawdzanie adresu...",
-    "addRecipientAddress": "Dodaj adres odbiorcy"
+    "addRecipientAddress": "Dodaj adres odbiorcy",
+    "pleaseNote": "Proszę zauważyć",
+    "sameAddressRequirement": "Mosty do lub z {{chain}} muszą mieć ten sam adres odbiorcy.",
+    "checkRecipientAddress": "Sprawdź adres odbiorcy"
   },
 
   "buttons": {

@@ -3,7 +3,6 @@ import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useIsSuperbridge } from "@/hooks/apps/use-is-superbridge";
 import { useDeployments } from "@/hooks/deployments/use-deployments";
 import { useIsWidget } from "@/hooks/use-is-widget";
-import { useNavigate } from "@/hooks/use-navigate";
 import { useNavIcon } from "@/hooks/use-theme";
 
 import { TokenBanner } from "./banners/token-banner";
@@ -13,7 +12,6 @@ import { SBLockup, SBLockupSmall } from "./icons";
 
 export function Header() {
   const deployments = useDeployments();
-  const navigate = useNavigate();
   const isSuperbridge = useIsSuperbridge();
   const navIcon = useNavIcon();
 
@@ -25,7 +23,7 @@ export function Header() {
 
   return (
     <nav className="flex justify-between items-center p-3 md:p-6 fixed top-0 left-0 w-screen z-10">
-      <div onClick={() => navigate("/")} className="cursor-pointer">
+      <div>
         {isSuperbridge ? (
           <div className="flex gap-2 items-center">
             <SBLockup className="hidden md:inline-flex h-8 w-auto" />

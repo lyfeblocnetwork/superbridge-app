@@ -126,7 +126,10 @@
     "usedBeforeMultiple": "บัญชีนี้เคยใช้ก่อนหน้านี้ {{count}} ครั้ง",
     "newAddress": "ที่อยู่ใหม่ - โปรดระมัดระวัง!",
     "checkingAddress": "กำลังตรวจสอบที่อยู่...",
-    "addRecipientAddress": "เพิ่มที่อยู่ผู้รับ"
+    "addRecipientAddress": "เพิ่มที่อยู่ผู้รับ",
+    "pleaseNote": "โปรดทราบ",
+    "sameAddressRequirement": "สะพานไปหรือมาจาก {{chain}} ต้องมีที่อยู่ผู้รับเดียวกัน",
+    "checkRecipientAddress": "ตรวจสอบที่อยู่ผู้รับ"
   },
 
   "buttons": {

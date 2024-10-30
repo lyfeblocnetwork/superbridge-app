@@ -126,7 +126,10 @@
     "usedBeforeMultiple": "{{count}} बार पहले इस्तेमाल किया गया",
     "newAddress": "नया पता - कृपया सावधानी बरतें!",
     "checkingAddress": "पता की जांच हो रही है...",
-    "addRecipientAddress": "प्राप्तकर्ता का पता जोड़ें"
+    "addRecipientAddress": "प्राप्तकर्ता का पता जोड़ें",
+    "pleaseNote": "कृपया ध्यान दें",
+    "sameAddressRequirement": "{{chain}} से या {{chain}} पर जाने के लिए एक ही प्राप्तकर्ता पता होना चाहिए।",
+    "checkRecipientAddress": "प्राप्तकर्ता का पता जांचें"
   },
 
   "buttons": {

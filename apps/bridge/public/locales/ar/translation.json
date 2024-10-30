@@ -126,7 +126,10 @@
     "usedBeforeMultiple": "الحساب مستخدم {{count}} مرات من قبل",
     "newAddress": "عنوان جديد - يرجى الحذر!",
     "checkingAddress": "جارٍ التحقق من العنوان...",
-    "addRecipientAddress": "إضافة عنوان المستلم"
+    "addRecipientAddress": "إضافة عنوان المستلم",
+    "pleaseNote": "يرجى الملاحظة",
+    "sameAddressRequirement": "الجسور إلى أو من {{chain}} يجب أن تكون بنفس عنوان المستلم.",
+    "checkRecipientAddress": "تحقق من عنوان المستلم"
   },
 
   "buttons": {

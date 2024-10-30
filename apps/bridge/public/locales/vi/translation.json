@@ -126,7 +126,10 @@
     "usedBeforeMultiple": "Tài khoản đã được sử dụng {{count}} lần trước đây",
     "newAddress": "Địa chỉ mới - hãy cẩn thận!",
     "checkingAddress": "Đang kiểm tra địa chỉ...",
-    "addRecipientAddress": "Thêm địa chỉ người nhận"
+    "addRecipientAddress": "Thêm địa chỉ người nhận",
+    "pleaseNote": "Xin lưu ý",
+    "sameAddressRequirement": "Cầu nối đến hoặc từ {{chain}} phải có cùng địa chỉ người nhận.",
+    "checkRecipientAddress": "Kiểm tra địa chỉ người nhận"
   },
 
   "buttons": {

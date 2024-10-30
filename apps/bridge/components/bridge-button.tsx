@@ -12,6 +12,7 @@ import { useBridgeMax } from "@/hooks/bridge/use-bridge-max";
 import { useBridgeMin } from "@/hooks/bridge/use-bridge-min";
 import { useBridgePaused } from "@/hooks/bridge/use-bridge-paused";
 import { useNetworkFee } from "@/hooks/gas/use-network-fee";
+import { useRouteHasRecipientAddressRestriction } from "@/hooks/recipient/use-has-recipient-address-restriction";
 import { useRouteRequest } from "@/hooks/routes/use-route-request";
 import { useSelectedBridgeRoute } from "@/hooks/routes/use-selected-bridge-route";
 import { useNativeToken } from "@/hooks/tokens/use-native-token";
@@ -39,6 +40,8 @@ export const BridgeButton = () => {
   const weiAmount = useWeiAmount();
   const token = useSelectedToken();
   const { t } = useTranslation();
+  const hasRecipientAddressRestriction =
+    useRouteHasRecipientAddressRestriction();
 
   const setConfirmationModal = useConfigState.useSetDisplayConfirmationModal();
   const withdrawing = useIsWithdrawal();
@@ -119,7 +122,17 @@ export const BridgeButton = () => {
         isAddressEqual(routeRequest.sender as Address, deadAddress)) ||
       (!!routeRequest?.sender &&
         isAddressEqual(routeRequest.recipient as Address, deadAddress)),
+    bridgingIsRestrictedToSameAddress:
+      !!account.address &&
+      !!recipient &&
+      hasRecipientAddressRestriction &&
+      !isAddressEqual(account.address, recipient),
   })
+    .with({ bridgingIsRestrictedToSameAddress: true }, () => ({
+      onSubmit: () => {},
+      buttonText: t("recipient.checkRecipientAddress"),
+      disabled: true,
+    }))
     .with({ disabled: true }, () => ({
       onSubmit: () => {},
       buttonText: t("buttons.bridgingDisabled"),

@@ -126,7 +126,10 @@
     "usedBeforeMultiple": "账户之前已使用 {{count}} 次",
     "newAddress": "新地址 - 请小心！",
     "checkingAddress": "正在检查地址...",
-    "addRecipientAddress": "添加接收地址"
+    "addRecipientAddress": "添加接收地址",
+    "pleaseNote": "请注意",
+    "sameAddressRequirement": "桥接到或来自 {{chain}} 必须具有相同的接收地址。",
+    "checkRecipientAddress": "检查接收地址"
   },
 
   "buttons": {

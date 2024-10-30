@@ -126,7 +126,10 @@
     "usedBeforeMultiple": "Konto bereits {{count}} Mal verwendet",
     "newAddress": "Neue Adresse - bitte seien Sie vorsichtig!",
     "checkingAddress": "Adresse wird überprüft...",
-    "addRecipientAddress": "Empfängeradresse hinzufügen"
+    "addRecipientAddress": "Empfängeradresse hinzufügen",
+    "pleaseNote": "Bitte beachten",
+    "sameAddressRequirement": "Brücken zu oder von {{chain}} müssen dieselbe Empfängeradresse haben.",
+    "checkRecipientAddress": "Empfängeradresse prüfen"
   },
 
   "buttons": {

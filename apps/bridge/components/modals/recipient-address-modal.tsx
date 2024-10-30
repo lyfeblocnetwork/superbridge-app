@@ -9,6 +9,11 @@ import { useAccount } from "wagmi";
 
 import { Input } from "@/components/ui/input";
 import { getTxRecipient } from "@/hooks/activity/use-tx-recipient";
+import {
+  useChainWithRecipientAddressRestriction,
+  useRouteHasRecipientAddressRestriction,
+} from "@/hooks/recipient/use-has-recipient-address-restriction";
+import { useAddressIsERC20 } from "@/hooks/recipient/use-recipient-is-erc20";
 import { useToChain } from "@/hooks/use-chain";
 import { useIsContractAccount } from "@/hooks/use-is-contract-account";
 import { useModal } from "@/hooks/use-modal";
@@ -23,7 +28,13 @@ import {
   IconSpinner,
 } from "../icons";
 import { Button } from "../ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "../ui/dialog";
 
 interface ProfileProps {
   name: string | null;
@@ -77,6 +88,13 @@ export const RecipientAddressModal = () => {
 
   const [input, setInput] = useState("");
 
+  const hasRecipientAddressRestriction =
+    useRouteHasRecipientAddressRestriction();
+  const chainWithRecipientAddressRestriction =
+    useChainWithRecipientAddressRestriction();
+
+  const recipientIsERC20 = useAddressIsERC20(input);
+
   useEffect(() => {
     setInput(recipientName || recipientAddress || "");
   }, [recipientName, recipientAddress, modal.isOpen]);
@@ -123,7 +141,7 @@ export const RecipientAddressModal = () => {
   });
 
   const onSave = async () => {
-    if (profile.isLoading || !profile.data) {
+    if (profile.isLoading || !profile.data || recipientIsERC20) {
       return;
     }
 
@@ -143,7 +161,7 @@ export const RecipientAddressModal = () => {
             <DialogTitle>{t("recipient.bridgeDestination")}</DialogTitle>
           </DialogHeader>
 
-          <div className="space-y-4 p-6">
+          <div className="p-6">
             <div className="flex flex-col gap-6">
               <div className="flex flex-col gap-2">
                 <div className="flex items-center justify-between">
@@ -171,12 +189,21 @@ export const RecipientAddressModal = () => {
                       isAddress(profile.data.address),
                     isContractAccount: isContractAccount.data,
                     account: account.address,
+                    recipientIsERC20,
                   })
                     .with({ isLoading: true }, () => (
                       <div className="inline-flex items-center gap-1 pl-2 pr-3 py-2 rounded-full border">
                         <IconSpinner className="w-3.5 h-3.5 text-foreground" />
                         <span className="text-xs leading-none text-muted-foreground">
                           {t("recipient.checkingAddress")}
+                        </span>
+                      </div>
+                    ))
+                    .with({ recipientIsERC20: true }, () => (
+                      <div className="inline-flex items-center gap-1 pl-2 pr-3 py-2 rounded-full border border-red-500">
+                        <IconCloseCircle className="w-3.5 h-3.5 fill-red-500" />
+                        <span className="text-xs leading-none text-red-500">
+                          {t("recipient.invalidAddress")} (token contract)
                         </span>
                       </div>
                     ))
@@ -280,12 +307,25 @@ export const RecipientAddressModal = () => {
                   )}
                 </div>
               </div>
-
-              <Button disabled={profile.isLoading} onClick={onSave}>
-                {t("save")}
-              </Button>
             </div>
           </div>
+          <DialogFooter className="pt-0">
+            {hasRecipientAddressRestriction && (
+              <div className="items-center gap-1 py-3 px-4 rounded-xl bg-orange-500/5 border border-orange-500/10">
+                <h3 className="text-foreground font-heading text-xs">
+                  {t("recipient.pleaseNote")}
+                </h3>
+                <p className="text-xs text-muted-foreground">
+                  {t("recipient.sameAddressRequirement", {
+                    chain: chainWithRecipientAddressRestriction?.name,
+                  })}
+                </p>
+              </div>
+            )}
+            <Button disabled={profile.isLoading} onClick={onSave}>
+              {t("save")}
+            </Button>
+          </DialogFooter>
         </DialogContent>
       </Dialog>
     </>

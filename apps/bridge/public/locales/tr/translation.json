@@ -126,7 +126,10 @@
     "usedBeforeMultiple": "Hesap daha önce {{count}} kez kullanıldı",
     "newAddress": "Yeni adres - dikkatli olun!",
     "checkingAddress": "Adres kontrol ediliyor...",
-    "addRecipientAddress": "Alıcı adresi ekle"
+    "addRecipientAddress": "Alıcı adresi ekle",
+    "pleaseNote": "Lütfen dikkat edin",
+    "sameAddressRequirement": "{{chain}} üzerinden giden veya gelen köprülerde aynı alıcı adresi olmalıdır.",
+    "checkRecipientAddress": "Alıcı adresini kontrol edin"
   },
 
   "buttons": {

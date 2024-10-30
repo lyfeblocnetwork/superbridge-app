@@ -126,7 +126,10 @@
     "usedBeforeMultiple": "Account used {{count}} times before",
     "newAddress": "New address - please be careful!",
     "checkingAddress": "Checking address…",
-    "addRecipientAddress": "Add recipient address"
+    "addRecipientAddress": "Add recipient address",
+    "pleaseNote": "Please note",
+    "sameAddressRequirement": "Bridges to or from {{chain}} must have the same recipient address.",
+    "checkRecipientAddress": "Check recipient address"
   },
 
   "buttons": {

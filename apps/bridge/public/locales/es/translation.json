@@ -126,7 +126,10 @@
     "usedBeforeMultiple": "Cuenta utilizada {{count}} veces antes",
     "newAddress": "Nueva dirección - ¡ten cuidado!",
     "checkingAddress": "Verificando dirección...",
-    "addRecipientAddress": "Agregar dirección del destinatario"
+    "addRecipientAddress": "Agregar dirección del destinatario",
+    "pleaseNote": "Por favor, tenga en cuenta",
+    "sameAddressRequirement": "Los puentes hacia o desde {{chain}} deben tener la misma dirección de destinatario.",
+    "checkRecipientAddress": "Verificar dirección del destinatario"
   },
 
   "buttons": {

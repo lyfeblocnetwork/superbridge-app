@@ -126,7 +126,10 @@
     "usedBeforeMultiple": "アカウントは以前に{{count}}回使用されました",
     "newAddress": "新しいアドレスです - 注意してください！",
     "checkingAddress": "アドレスを確認中...",
-    "addRecipientAddress": "受信者アドレスを追加"
+    "addRecipientAddress": "受信者アドレスを追加",
+    "pleaseNote": "ご注意ください",
+    "sameAddressRequirement": "{{chain}} へのブリッジは同じ受取人アドレスである必要があります。",
+    "checkRecipientAddress": "受取人のアドレスを確認"
   },
 
   "buttons": {
