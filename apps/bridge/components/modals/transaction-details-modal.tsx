@@ -39,7 +39,7 @@ import {
 } from "../ui/dialog";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
 
-const useTransactionByInitiatingHash = (hash: string | null) => {
+const useTransactionByInitiatingHash = (hash: string | undefined) => {
   const { transactions } = useTransactions();
   const pendingTransactions = usePendingTransactions.useTransactions();
   return (

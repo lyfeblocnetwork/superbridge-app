@@ -11,8 +11,8 @@ interface ModalsState {
   addModal: (x: ModalName) => void;
   removeModal: (x: ModalName) => void;
 
-  activeId: string | null;
-  setActiveId: (x: string | null) => void;
+  activeIds: { [x: string]: string | undefined };
+  setActiveId: (name: string, x: string) => void;
 }
 
 const modalNames = [
@@ -52,16 +52,28 @@ const ModalsState = create<ModalsState>()((set, get) => ({
         [name]: true,
       },
     }),
-  removeModal: (name) =>
+  removeModal: (name) => {
     set({
       modals: {
         ...get().modals,
         [name]: false,
       },
+    });
+    set({
+      activeIds: {
+        ...get().activeIds,
+        [name]: undefined,
+      },
+    });
+  },
+  activeIds: {},
+  setActiveId: (name, activeId) =>
+    set({
+      activeIds: {
+        ...get().activeIds,
+        [name]: activeId,
+      },
     }),
-
-  activeId: null,
-  setActiveId: (activeId) => set({ activeId }),
 }));
 
 export const useModalsState = createSelectorHooks(ModalsState);

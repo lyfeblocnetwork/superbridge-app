@@ -7,7 +7,7 @@ import { L2ERC20GatewayAbi } from "@/abis/arbitrum/L2ERC20Gateway";
 import { StandardArbERC20Abi } from "@/abis/arbitrum/StandardArbERC20";
 import { useDeployment } from "@/hooks/deployments/use-deployment";
 
-export const useCustomToken = (address: string | null) => {
+export const useCustomToken = (address: string | undefined) => {
   const deployment = useDeployment();
   const account = useAccount();
 
