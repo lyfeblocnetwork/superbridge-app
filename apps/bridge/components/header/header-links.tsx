@@ -53,14 +53,14 @@ export function HeaderLinks() {
                     <Link
                       href={(link as any).url}
                       target="_blank"
-                      className=" text-sm w-full"
+                      className="text-sm w-full"
                     >
                       {link.label}
                     </Link>
                   ) : (
                     <button
                       onClick={(link as any).onClick}
-                      className=" text-sm w-full text-left"
+                      className="text-sm w-full text-left"
                     >
                       {link.label}
                     </button>
@@ -76,20 +76,22 @@ export function HeaderLinks() {
                 <div className="bg-muted p-3 rounded-lg flex flex-col gap-3 mt-3">
                   <a
                     href="https://superbridge.app"
+                    target="_blank"
                     className=" text-xs  leading-none w-full flex gap-2 items-center"
                   >
                     <IconSB className="h-6 w-auto fill-foreground" />
                     <span>{t("tos.poweredBy")}</span>
                   </a>
-                  <Link
+                  <a
                     href="https://help.superbridge.app"
-                    className=" text-xs  leading-none w-full flex gap-2 items-center"
+                    target="_blank"
+                    className="text-xs leading-none w-full flex gap-2 items-center"
                   >
                     <IconArrowUpRight className="h-4 mx-1 w-auto fill-muted-foreground" />
                     <span>{t("header.supportAndFaqs")}</span>
-                  </Link>
+                  </a>
                   <button
-                    className=" text-xs  leading-none w-full flex gap-2 items-center"
+                    className="text-xs leading-none w-full flex gap-2 items-center"
                     onClick={() => legalModal.open()}
                   >
                     <IconArrowUpRight className="h-4 mx-1 w-auto fill-muted-foreground" />
@@ -103,7 +105,8 @@ export function HeaderLinks() {
               <div className="bg-muted p-3 rounded-lg flex flex-col gap-3 mt-3">
                 <a
                   href="https://superbridge.app"
-                  className=" text-xs  leading-none w-full flex gap-2 items-center"
+                  target="_blank"
+                  className="text-xs leading-none w-full flex gap-2 items-center"
                 >
                   <IconSB className="h-6 w-auto fill-foreground" />
                   <span>{t("tos.poweredBy")}</span>
