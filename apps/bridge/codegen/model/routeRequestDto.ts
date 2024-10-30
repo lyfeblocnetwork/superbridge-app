@@ -22,6 +22,7 @@ export interface RouteRequestDto {
   opBridgedUsdcAdapter?: string;
   recipient: string;
   sender: string;
+  skyBridge?: string;
   toChainId: string;
   toTokenAddress: string;
 }

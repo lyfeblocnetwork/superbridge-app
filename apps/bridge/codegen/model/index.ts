@@ -134,6 +134,7 @@ export * from './routeStepTransactionDto';
 export * from './routeStepType';
 export * from './routeStepWaitDto';
 export * from './rpcUrlsDto';
+export * from './skyBridgeDto';
 export * from './superbridgeConfigDto';
 export * from './superbridgeConfigDtoBanner';
 export * from './syncStatusDto';

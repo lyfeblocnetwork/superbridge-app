@@ -51,6 +51,7 @@ export const useBridgeRoutes = () => {
 
       fromToken?.opBridgedUsdc?.adapter,
       fromToken?.lz?.adapter,
+      fromToken?.sky?.bridge,
     ],
     queryFn: () => {
       return bridgeControllerGetBridgeRoutes({
@@ -80,6 +81,7 @@ export const useBridgeRoutes = () => {
 
         opBridgedUsdcAdapter: fromToken?.opBridgedUsdcV2?.[to?.id ?? 0],
         lzAdapter: fromToken?.lz?.adapter,
+        skyBridge: fromToken?.sky?.bridge,
       });
     },
     enabled:

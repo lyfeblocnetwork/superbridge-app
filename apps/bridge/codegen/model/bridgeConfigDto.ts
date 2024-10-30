@@ -29,6 +29,7 @@ export interface BridgeConfigDto {
   deployments: DeploymentDto[];
   highlightedTokens: HighlightedTokens[];
   hyperlaneMailboxes: HyperlaneMailboxDto[];
+  id: string;
   initialFromChainId: number;
   initialToChainId: number;
   isPaid: boolean;
