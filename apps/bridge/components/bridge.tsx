@@ -22,7 +22,7 @@ export const Bridge = () => {
         className={clsx(
           "w-full",
           isWidget
-            ? "absolute inset-0"
+            ? "absolute inset-0 h-full"
             : "relative px-2 md:px-0  md:w-[468px] mb-24 mt-24 2xl:mt-32"
         )}
       >
@@ -37,21 +37,31 @@ export const Bridge = () => {
                 {!isWidget && <BridgeHeader />}
                 <div
                   className={clsx(
-                    "bg-card mx-auto w-full h-full shrink-0 backdrop-blur-sm",
-                    !isWidget && "rounded-t-[24px] rounded-b-[32px] shadow-sm"
+                    "bg-card backdrop-blur-sm",
+                    !isWidget &&
+                      "rounded-t-[24px] rounded-b-[32px] shadow-sm w-full",
+                    isWidget && "h-screen w-screen"
                   )}
                 >
                   {/* TODO: maybe make this separate component called WidgetHeader */}
                   {isWidget && <BridgeHeader />}
                   <BridgeBody />
+                  {isWidget && (
+                    <div className="flex flex-col gap-2 px-4">
+                      <Banners />
+                      <UpgradePromo />
+                    </div>
+                  )}
                 </div>
               </>
             )}
           </div>
-          <div className="flex flex-col gap-2">
-            <Banners />
-            <UpgradePromo />
-          </div>
+          {!isWidget && (
+            <div className="flex flex-col gap-2 w-full">
+              <Banners />
+              <UpgradePromo />
+            </div>
+          )}
         </div>
       </div>
     </main>
