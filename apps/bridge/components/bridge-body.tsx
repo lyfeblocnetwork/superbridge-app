@@ -1,4 +1,3 @@
-import { AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
 
 import { useIsWidget } from "@/hooks/use-is-widget";
@@ -30,6 +29,7 @@ export const BridgeBody = () => {
         <div className="flex items-center justify-center p-3 h-auto w-full absolute bottom-0 left-0">
           <a
             href="https://superbridge.app/rollies"
+            target="_blank"
             className="flex items-center justify-center gap-1 rounded-full bg-muted pl-1.5 pr-2.5 py-0.5 hover:scale-105 transition-all"
           >
             <IconSB className="w-5 h-auto" />
