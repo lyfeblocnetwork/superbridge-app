@@ -50,6 +50,7 @@ import {
   sepolia,
   snax,
   snaxTestnet,
+  superlumio,
   syscoin,
   taiko,
   xLayer,
@@ -137,4 +138,5 @@ export const chainIcons: { [chainId: number]: string | undefined } = {
   [1301]: "/img/networks/unichain.svg",
   [snax.id]: "/img/networks/snaxchain.svg",
   [snaxTestnet.id]: "/img/networks/snaxchain.svg",
+  [superlumio.id]: "/img/networks/lumio.svg",
 };

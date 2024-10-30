@@ -20,7 +20,11 @@ export const NetworkIcon = ({
   chain,
   ...props
 }: {
-  chain: Chain | ChainDto | undefined | null;
+  chain:
+    | Pick<Chain, "id" | "name">
+    | Pick<ChainDto, "id" | "name">
+    | undefined
+    | null;
 } & Omit<ImageProps, "src" | "alt">) => {
   const deployment = useDeployments().find((x) => x.l2.id === chain?.id);
   const hyperlaneMailboxes = useHyperlaneMailboxes();

@@ -2,6 +2,10 @@ import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 
 import { ChainDto } from "@/codegen/model";
+import {
+  useIsSuperbridgeMainnet,
+  useIsSuperbridgeTestnet,
+} from "@/hooks/apps/use-is-superbridge";
 import { useSortedChains } from "@/hooks/network-selector/sort";
 import { usePossibleFromChains } from "@/hooks/network-selector/use-possible-from-chains";
 import { useGetPossibleToChains } from "@/hooks/network-selector/use-possible-to-chains";
@@ -63,6 +67,32 @@ const PlacehoderItem = {
   },
 };
 
+const useComingSoonChains = () => {
+  const isSuperbridgeMainnet = useIsSuperbridgeMainnet();
+  const isSuperbridgeTestnet = useIsSuperbridgeTestnet();
+
+  const testnets = useInjectedStore((s) => s.superbridgeTestnets);
+
+  const testnetInk = {
+    id: 123456789876543211,
+    name: "Ink",
+  };
+  const mainnetInk = {
+    id: 12345678987654321,
+    name: "Ink",
+  };
+
+  if (isSuperbridgeMainnet) {
+    return testnets ? [testnetInk] : [mainnetInk];
+  }
+
+  if (isSuperbridgeTestnet) {
+    return [testnetInk];
+  }
+
+  return [];
+};
+
 export const NetworkSelector = () => {
   const { t } = useTranslation();
   const to = useToChain();
@@ -82,6 +112,8 @@ export const NetworkSelector = () => {
   const availableChains = useSortedChains(
     networkSelectorDirection === "from" ? possibleFrom : getPossibleTo(from)
   );
+
+  const comingSoon = useComingSoonChains();
 
   const onSelect = (chain: ChainDto) => {
     if (networkSelectorDirection === "from") {
@@ -156,19 +188,32 @@ export const NetworkSelector = () => {
             <ChainCard
               key={chain.id}
               chain={chain}
-              onSelect={() => onSelect(chain)}
+              onSelect={(e) => {
+                e.stopPropagation();
+                onSelect(chain);
+              }}
             />
           ))}
-          {availableChains.length < 4 &&
-            [...Array(4 - availableChains.length)].map((_, i) => {
-              return (
-                <motion.div
-                  variants={PlacehoderItem}
-                  className="bg-card border relative w-full aspect-[3.25/4] rounded-2xl shadow-sm"
-                  key={i}
-                ></motion.div>
-              );
-            })}
+          {comingSoon.map((chain) => (
+            <ChainCard
+              key={chain.id}
+              chain={chain}
+              onSelect={(e) => e.stopPropagation()}
+              comingSoon
+            />
+          ))}
+          {comingSoon.length + availableChains.length < 4 &&
+            [...Array(4 - (comingSoon.length + availableChains.length))].map(
+              (_, i) => {
+                return (
+                  <motion.div
+                    variants={PlacehoderItem}
+                    className="bg-card border relative w-full aspect-[3.25/4] rounded-2xl shadow-sm"
+                    key={i}
+                  ></motion.div>
+                );
+              }
+            )}
         </div>
       </motion.div>
     </main>

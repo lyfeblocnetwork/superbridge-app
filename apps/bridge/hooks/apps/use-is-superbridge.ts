@@ -1,4 +1,8 @@
-import { isSuperbridge, isSuperbridgeMainnet } from "@/utils/is-superbridge";
+import {
+  isSuperbridge,
+  isSuperbridgeMainnet,
+  isSuperbridgeTestnet,
+} from "@/utils/is-superbridge";
 
 import { useHost } from "../use-metadata";
 
@@ -8,4 +12,8 @@ export const useIsSuperbridge = () => {
 
 export const useIsSuperbridgeMainnet = () => {
   return isSuperbridgeMainnet(useHost());
+};
+
+export const useIsSuperbridgeTestnet = () => {
+  return isSuperbridgeTestnet(useHost());
 };

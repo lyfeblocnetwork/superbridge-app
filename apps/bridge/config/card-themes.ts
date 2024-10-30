@@ -194,6 +194,7 @@ const redstoneTheme = {
 const liskTheme = {
   icon: "/img/lisk-mainnet/icon.svg",
   card: {
+    
     className: "bg-gradient-to-b from-[#4070F4] to-[#295CE9] ",
     title: "text-white",
   },
@@ -617,6 +618,18 @@ const unichainTheme = {
   },
 };
 
+const inkTheme = {
+  icon: "/img/ink/icon.svg",
+  card: {
+    className: "bg-[#150F1E]",
+    title: "text-white",
+    // overlay: {
+    //   className:
+    //     "bg-[url('/img/ink/bg-card.jpg')] bg-bottom bg-cover opacity-30",
+    // },
+  },
+};
+
 const snaxTheme = {
   icon: "/img/snax/icon.svg",
   card: {
@@ -775,5 +788,7 @@ export const cardThemes: {
   [80084]: beraTheme,
   [984122]: formaTheme,
   [1301]: unichainTheme,
+  [123456789876543211]: inkTheme,
+  [12345678987654321]: inkTheme,
   [9897]: arenaZTheme,
 };

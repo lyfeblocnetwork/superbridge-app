@@ -11,3 +11,4 @@ const all = [...testnets, ...mainnets];
 export const isSuperbridge = (host: string) => all.includes(host);
 
 export const isSuperbridgeMainnet = (host: string) => mainnets.includes(host);
+export const isSuperbridgeTestnet = (host: string) => testnets.includes(host);
