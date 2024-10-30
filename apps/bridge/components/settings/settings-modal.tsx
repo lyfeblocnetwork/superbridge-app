@@ -61,17 +61,22 @@ export const SettingsModal = () => {
   const { setTheme, resolvedTheme } = useTheme();
 
   const onTestnetsChange = (checked: boolean) => {
+    const sorted = allDeployments.sort(
+      (a, b) =>
+        new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+    );
+
     if (checked) {
       setTestnets(true);
 
-      const d = allDeployments.find((x) => x.type === DeploymentType.testnet);
+      const d = sorted.find((x) => x.type === DeploymentType.testnet);
       if (d) {
         setFromChainId(d.l1.id);
         setToChainId(d.l2.id);
       }
     } else {
       setTestnets(false);
-      const d = allDeployments.find((x) => x.type === DeploymentType.mainnet);
+      const d = sorted.find((x) => x.type === DeploymentType.mainnet);
       if (d) {
         setFromChainId(d.l1.id);
         setToChainId(d.l2.id);
