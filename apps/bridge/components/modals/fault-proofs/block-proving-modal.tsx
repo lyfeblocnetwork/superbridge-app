@@ -1,5 +1,5 @@
 import { IconAlert } from "@/components/icons";
-import { optimismFaultProofsUpgrade } from "@/constants/links";
+import { optimismFaultProofs } from "@/constants/links";
 import { useDeploymentById } from "@/hooks/deployments/use-deployment-by-id";
 import { useModal } from "@/hooks/use-modal";
 
@@ -33,7 +33,7 @@ export const BlockProvingModal = () => {
               <p>
                 Find out more at{" "}
                 <a
-                  href={optimismFaultProofsUpgrade}
+                  href={optimismFaultProofs}
                   target="_blank"
                   className="text-foreground underline"
                 >

@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { IconAlert } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { optimismFaultProofsUpgrade } from "@/constants/links";
+import { optimismFaultProofs } from "@/constants/links";
 import { useCancelBridge } from "@/hooks/bridge/use-cancel-bridge";
 import { useDismissAlert } from "@/hooks/bridge/use-dismiss-alert";
 import { useModalsState } from "@/state/modals";
@@ -37,7 +37,7 @@ export const FaultProofsModal = () => {
               <p>
                 Find out more at{" "}
                 <a
-                  href={optimismFaultProofsUpgrade}
+                  href={optimismFaultProofs}
                   target="_blank"
                   className="text-foreground underline"
                 >

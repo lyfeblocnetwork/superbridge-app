@@ -1,4 +1,4 @@
-import { optimismFaultProofsUpgrade } from "@/constants/links";
+import { optimismFaultProofs } from "@/constants/links";
 import { useModal } from "@/hooks/use-modal";
 
 import { Button } from "../../ui/button";
@@ -68,7 +68,7 @@ export const FaultProofInfoModal = () => {
               <p>
                 Find out more at{" "}
                 <a
-                  href={optimismFaultProofsUpgrade}
+                  href={optimismFaultProofs}
                   target="_blank"
                   className="text-foreground underline"
                 >

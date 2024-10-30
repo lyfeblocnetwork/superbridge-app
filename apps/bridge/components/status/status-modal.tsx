@@ -5,7 +5,7 @@ import { IconAlert } from "@/components/icons";
 import { StatusChecks } from "@/components/status/status-checks";
 import { StatusContactModal } from "@/components/status/status-contact-modal";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { optimismFaultProofsUpgrade } from "@/constants/links";
+import { optimismFaultProofs } from "@/constants/links";
 import { useDeploymentStatusChecks } from "@/hooks/status/use-deployment-status-checks";
 import { useFaultProofUpgradeTime } from "@/hooks/use-fault-proof-upgrade-time";
 import { isOptimism } from "@/utils/deployments/is-mainnet";
@@ -108,7 +108,7 @@ const FaultProofAlert = ({
         </p>
         <p>
           <a
-            href={optimismFaultProofsUpgrade}
+            href={optimismFaultProofs}
             target="_blank"
             className="underline text-foreground font-heading"
           >

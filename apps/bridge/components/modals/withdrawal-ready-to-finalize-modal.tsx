@@ -1,5 +1,5 @@
 import { IconAlert } from "@/components/icons";
-import { optimismFaultProofsUpgrade } from "@/constants/links";
+import { optimismFaultProofs } from "@/constants/links";
 import { useDeployment } from "@/hooks/deployments/use-deployment";
 import { useModal } from "@/hooks/use-modal";
 import { useConfigState } from "@/state/config";
@@ -37,7 +37,7 @@ export const WithdrawalReadyToFinalizeModal = () => {
               <p>
                 Find out more at{" "}
                 <a
-                  href={optimismFaultProofsUpgrade}
+                  href={optimismFaultProofs}
                   target="_blank"
                   className="text-foreground underline"
                 >

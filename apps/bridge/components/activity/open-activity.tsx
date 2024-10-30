@@ -6,6 +6,7 @@ import { useInView } from "react-intersection-observer";
 import { P, match } from "ts-pattern";
 import { useAccount } from "wagmi";
 
+import { useDeployments } from "@/hooks/deployments/use-deployments";
 import { useInProgressTxCount } from "@/hooks/use-in-progress-tx-count";
 import { useStatusCheck } from "@/hooks/use-status-check";
 import { useTransactions } from "@/hooks/use-transactions";
@@ -14,6 +15,7 @@ import { useConfigState } from "@/state/config";
 import { usePendingTransactions } from "@/state/pending-txs";
 import { getInitiatingHash } from "@/utils/initiating-tx-hash";
 
+import { BaseMainnetWithdrawalsResetBanner } from "../banners/base-withdrawals-reset-banner";
 import { IconClose, IconSpinner } from "../icons";
 import { TransactionRowV2 } from "../transaction-row-v2";
 
@@ -53,8 +55,6 @@ const item = {
       damping: 12,
     },
   },
-  hover: { opacity: 1, y: 0, scale: 1.02 },
-  tap: { opacity: 1, y: 0, scale: 0.98 },
 };
 
 export const OpenActivity = ({}) => {
@@ -77,6 +77,8 @@ export const OpenActivity = ({}) => {
   const statusCheck = useStatusCheck();
   const inProgressCount = useInProgressTxCount();
   const trackEvent = useTrackEvent();
+
+  const hasBase = !!useDeployments().find((x) => x.name === "base");
 
   useEffect(() => {
     if (isError) return;
@@ -204,14 +206,26 @@ export const OpenActivity = ({}) => {
 
               return (
                 <div className="flex flex-col gap-3 lg:gap-4 w-full px-2 max-w-xl">
+                  {hasBase && (
+                    <motion.div
+                      key={`base-fault-proof-banner-container`}
+                      variants={item}
+                      className={
+                        "relative w-full h-full flex flex-col shrink-0 overflow-hidden rounded-3xl shadow-sm"
+                      }
+                    >
+                      <BaseMainnetWithdrawalsResetBanner key="base-fault-proof-banner" />
+                    </motion.div>
+                  )}
+
                   {[...pendingTransactions, ...transactions].map((t) => {
                     return (
                       <motion.div
                         key={`activity-${getInitiatingHash(t)}`}
                         variants={item}
-                        // hovers must not be a variant or stagger animation fails
-                        whileHover={"hover"}
-                        whileTap={"tap"}
+                        // hovers must NOT be a variant or stagger animation fails
+                        whileHover={{ opacity: 1, scale: 1.02 }}
+                        whileTap={{ opacity: 1, scale: 0.98 }}
                         className={
                           "relative w-full h-full flex flex-col shrink-0 overflow-hidden rounded-3xl shadow-sm cursor-pointer"
                         }
