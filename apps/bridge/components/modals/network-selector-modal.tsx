@@ -10,6 +10,7 @@ import { useSortedChains } from "@/hooks/network-selector/sort";
 import { usePossibleFromChains } from "@/hooks/network-selector/use-possible-from-chains";
 import { useGetPossibleToChains } from "@/hooks/network-selector/use-possible-to-chains";
 import { useFromChain, useToChain } from "@/hooks/use-chain";
+import { useSetQueryParam } from "@/hooks/use-set-query-param";
 import { useTrackEvent } from "@/services/ga";
 import { useConfigState } from "@/state/config";
 import { useInjectedStore } from "@/state/injected";
@@ -99,6 +100,8 @@ export const NetworkSelector = () => {
   const from = useFromChain();
   const trackEvent = useTrackEvent();
 
+  const setQueryParam = useSetQueryParam();
+
   const networkSelectorDirection = useConfigState.useNetworkSelectorDirection();
   const setDisplayNetworkSelector =
     useConfigState.useSetDisplayNetworkSelector();
@@ -120,6 +123,7 @@ export const NetworkSelector = () => {
       trackEvent({ event: "from-chain-select", name: chain.name });
 
       setFromChainId(chain.id);
+      setQueryParam("fromChainId", chain.id.toString());
 
       // invert
       if (chain.id === to?.id) {
@@ -143,6 +147,7 @@ export const NetworkSelector = () => {
       trackEvent({ event: "to-chain-select", name: chain.name });
 
       setToChainId(chain.id);
+      setQueryParam("toChainId", chain.id.toString());
 
       // invert
       if (chain.id === from?.id) {
