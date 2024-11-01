@@ -1,28 +1,45 @@
 import { mainnet, optimism } from "viem/chains";
 
-import { useBridgeControllerGetHyperlaneMailboxes } from "@/codegen/index";
+import {
+  useBridgeControllerGetHyperlaneMailboxes,
+  useBridgeControllerGetLzDomains,
+} from "@/codegen/index";
 import { ChainDto } from "@/codegen/model";
 import { Providers } from "@/components/Providers";
 import { ChainCard } from "@/components/chain-card";
 import { NetworkIcon } from "@/components/network-icon";
+import { cardThemes } from "@/config/card-themes";
 import { InjectedStoreProvider } from "@/state/injected";
 
 function Page() {
   const mailboxes = useBridgeControllerGetHyperlaneMailboxes();
+  const lzDomains = useBridgeControllerGetLzDomains();
 
   if (process.env["NODE_ENV"] !== "development") {
     return null;
   }
 
+  const chains: ChainDto[] = Object.values(
+    [...(mailboxes.data?.data ?? []), ...(lzDomains.data?.data ?? [])].reduce(
+      (accum, c) => ({ ...accum, [c.id]: c.chain }),
+      {}
+    )
+  );
+
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 w-full px-4 max-w-3xl overflow-scroll h-screen">
-      {mailboxes.data?.data.map((x) => (
-        <div key={x.id}>
-          <ChainCard chain={x.chain} onSelect={() => {}} />
-          <NetworkIcon chain={x.chain} />
-          <div>Chain ID: {x.chain.id}</div>
-        </div>
-      ))}
+    <div className="flex gap-4 flex-wrap overflow-scroll h-screen">
+      {chains
+        .sort((a, b) => {
+          if (cardThemes[a.id] && cardThemes[b.id]) return 0;
+          return !cardThemes[a.id] ? -1 : 1;
+        })
+        .map((x) => (
+          <div key={x.id} className="">
+            <ChainCard chain={x} onSelect={() => {}} />
+            <NetworkIcon chain={x} className="h-12 w-12 " />
+            <div>Chain ID: {x.id}</div>
+          </div>
+        ))}
     </div>
   );
 }
