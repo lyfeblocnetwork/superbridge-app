@@ -26,38 +26,36 @@ export const Bridge = () => {
             : "relative px-2 md:px-0  md:w-[468px] mb-24 mt-24 2xl:mt-32"
         )}
       >
-        <div className="flex flex-col gap-4 items-center h-full">
-          <div className="flex flex-col gap-2">
-            {deletedAt && deletedAt < Date.now() ? (
-              <div className="w-full bg-card mx-auto rounded-[24px] md:rounded-[32px] shadow-sm shrink-0 backdrop-blur-sm">
-                <BridgeDeleted />
+        <div className="flex flex-col gap-2 items-center h-full">
+          {deletedAt && deletedAt < Date.now() ? (
+            <div className="w-full bg-card mx-auto rounded-[24px] md:rounded-[32px] shadow-sm shrink-0 backdrop-blur-sm">
+              <BridgeDeleted />
+            </div>
+          ) : (
+            <>
+              {!isWidget && <BridgeHeader />}
+              <div
+                className={clsx(
+                  "bg-card backdrop-blur-sm",
+                  !isWidget &&
+                    "rounded-t-[24px] rounded-b-[32px] shadow-sm w-full",
+                  isWidget && "h-screen w-screen"
+                )}
+              >
+                {/* TODO: maybe make this separate component called WidgetHeader */}
+                {isWidget && <BridgeHeader />}
+                <BridgeBody />
+                {isWidget && (
+                  <div className="flex flex-col gap-2 w-full mt-2 px-4">
+                    <Banners />
+                    <UpgradePromo />
+                  </div>
+                )}
               </div>
-            ) : (
-              <>
-                {!isWidget && <BridgeHeader />}
-                <div
-                  className={clsx(
-                    "bg-card backdrop-blur-sm",
-                    !isWidget &&
-                      "rounded-t-[24px] rounded-b-[32px] shadow-sm w-full",
-                    isWidget && "h-screen w-screen"
-                  )}
-                >
-                  {/* TODO: maybe make this separate component called WidgetHeader */}
-                  {isWidget && <BridgeHeader />}
-                  <BridgeBody />
-                  {isWidget && (
-                    <div className="flex flex-col gap-2 px-4">
-                      <Banners />
-                      <UpgradePromo />
-                    </div>
-                  )}
-                </div>
-              </>
-            )}
-          </div>
+            </>
+          )}
           {!isWidget && (
-            <div className="flex flex-col gap-2 w-full">
+            <div className="flex flex-col gap-2 w-full mt-2">
               <Banners />
               <UpgradePromo />
             </div>

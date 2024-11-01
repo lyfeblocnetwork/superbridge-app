@@ -27,10 +27,11 @@ export function useProveOptimism(w: BridgeWithdrawalDto | undefined) {
       return;
     }
 
-    if (faultProofUpgradeTime) {
-      blockProvingModal.open(deployment?.id);
-      return;
-    }
+    // todo: re enable this
+    // if (faultProofUpgradeTime) {
+    //   blockProvingModal.open(deployment?.id);
+    //   return;
+    // }
 
     const hash = await onSubmit();
     if (hash) {

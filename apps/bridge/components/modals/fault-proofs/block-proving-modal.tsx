@@ -1,6 +1,5 @@
 import { IconAlert } from "@/components/icons";
 import { optimismFaultProofs } from "@/constants/links";
-import { useDeploymentById } from "@/hooks/deployments/use-deployment-by-id";
 import { useModal } from "@/hooks/use-modal";
 
 import { Button } from "../../ui/button";
@@ -8,7 +7,6 @@ import { Dialog, DialogContent } from "../../ui/dialog";
 
 export const BlockProvingModal = () => {
   const modal = useModal("BlockProving");
-  const deployment = useDeploymentById(modal.data || undefined);
 
   return (
     <Dialog open={modal.isOpen} onOpenChange={modal.close}>

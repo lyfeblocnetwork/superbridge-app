@@ -3,6 +3,7 @@ import { DeploymentDto } from "@/codegen/model";
 export const useFaultProofUpgradeTime = (
   deployment: DeploymentDto | null | undefined
 ) => {
-  return null;
-  // return deployment?.name === "base" ? new Date("10/30/2024").getTime() : null;
+  return deployment?.name === "soneium-minato"
+    ? new Date("11/04/2024").getTime()
+    : null;
 };

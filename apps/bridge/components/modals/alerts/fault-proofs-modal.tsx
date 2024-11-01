@@ -24,15 +24,16 @@ export const FaultProofsModal = () => {
               <IconAlert className="w-16 h-16" />
             </div>
             <h1 className="font-heading text-xl  text-left">
-              Base Mainnet Fault Proof upgrade
+              Soneium Mainnet Fault Proof upgrade
             </h1>
             <div className="text-xs text-left md:text-sm prose-sm  leading-relaxed  text-muted-foreground text-pretty">
               <p>
-                The Base Mainnet Fault Proof upgrade has been targeted for June.
+                The Soneium Mainnet Fault Proof upgrade has been targeted for
+                November 4th.
               </p>
               <p>
-                Any withdrawals initiated cannot be proved until the upgrade is
-                complete.
+                Any withdrawals initiated now should be proved before the
+                upgrade is complete, otherwise they will need to be reproven.
               </p>
               <p>
                 Find out more at{" "}

@@ -7,7 +7,7 @@ export const useHasWithdrawalReadyToFinalize = () => {
   const { hasWithdrawalReadyToFinalize } = useTransactions();
   const statusCheck = useStatusCheck();
   const faultProofUpgradeTime = useFaultProofUpgradeTime(
-    useDeployments().find((x) => x.name === "base")
+    useDeployments().find((x) => x.name === "soneium-minato")
   );
 
   if (statusCheck || !faultProofUpgradeTime) {

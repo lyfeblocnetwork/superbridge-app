@@ -57,9 +57,10 @@ export const useSubmitBridge = () => {
       modals.push("gas-expensive");
     }
 
-    if (faultProofUpgradeTime && withdrawing) {
-      modals.push("fault-proofs");
-    }
+    // todo: re enable this
+    // if (faultProofUpgradeTime && withdrawing) {
+    //   modals.push("fault-proofs");
+    // }
 
     if (modals.length === 0) {
       initiateBridge();
