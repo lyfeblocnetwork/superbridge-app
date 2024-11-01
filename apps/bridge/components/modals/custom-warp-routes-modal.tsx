@@ -24,29 +24,34 @@ export const CustomWarpRoutesModal = () => {
   const setCustomRoutesId = useHyperlaneState.useSetCustomRoutesId();
 
   const [file, setFile] = useState("");
+  const [error, setError] = useState("");
 
   useEffect(() => {
     setFile("");
+    setError("");
   }, [modal.isOpen]);
 
   const onSave = async () => {
     if (file) {
-      const result = await saveWarpRouteFile.mutateAsync({ data: { file } });
-      setCustomRoutesId(result.data.id);
+      try {
+        const result = await saveWarpRouteFile.mutateAsync({ data: { file } });
+        setCustomRoutesId(result.data.id);
 
-      router.push(
-        "/",
-        {
-          pathname: "/",
-          query: {
-            hyperlaneWarpRoutes: result.data.id,
+        router.push(
+          "/",
+          {
+            pathname: "/",
+            query: {
+              hyperlaneWarpRoutes: result.data.id,
+            },
           },
-        },
-        { shallow: true }
-      );
+          { shallow: true }
+        );
+        modal.close();
+      } catch (e: any) {
+        setError(e.response?.data?.message ?? e.message);
+      }
     }
-
-    modal.close();
   };
 
   return (
@@ -67,6 +72,12 @@ export const CustomWarpRoutesModal = () => {
             />
           </div>
         </div>
+
+        {error && (
+          <div className="text-red-400 text-xs mx-auto px-6 pt-4 text-center">
+            {error}
+          </div>
+        )}
         <DialogFooter>
           <Button disabled={saveWarpRouteFile.isPending} onClick={onSave}>
             Save
