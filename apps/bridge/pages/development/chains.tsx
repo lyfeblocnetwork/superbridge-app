@@ -20,6 +20,7 @@ function Page() {
         <div key={x.id}>
           <ChainCard chain={x.chain} onSelect={() => {}} />
           <NetworkIcon chain={x.chain} />
+          <div>Chain ID: {x.chain.id}</div>
         </div>
       ))}
     </div>
