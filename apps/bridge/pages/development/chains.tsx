@@ -27,17 +27,19 @@ function Page() {
   );
 
   return (
-    <div className="flex gap-4 flex-wrap overflow-scroll h-screen">
+    <div className="grid grid-cols-4 gap-6 overflow-scroll h-screen max-w-screen-lg mx-auto py-20">
       {chains
         .sort((a, b) => {
           if (cardThemes[a.id] && cardThemes[b.id]) return 0;
           return !cardThemes[a.id] ? -1 : 1;
         })
         .map((x) => (
-          <div key={x.id} className="">
+          <div key={x.id} className="flex flex-col gap-2">
             <ChainCard chain={x} onSelect={() => {}} />
-            <NetworkIcon chain={x} className="h-12 w-12 " />
-            <div>Chain ID: {x.id}</div>
+            <NetworkIcon chain={x} className="h-12 w-12 rounded-sm" />
+            <span className="text-xs text-muted-foreground">
+              Chain ID: {x.id}
+            </span>
           </div>
         ))}
     </div>

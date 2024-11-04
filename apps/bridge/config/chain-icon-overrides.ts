@@ -94,7 +94,7 @@ export const chainIcons: { [chainId: number]: string | undefined } = {
   [scroll.id]: "/img/networks/scroll.svg",
   [polygon.id]: "/img/networks/polygon.svg",
   [48900]: "/img/networks/zircuit.svg",
-  [gravity.id]: "/img/networks/gravity.png",
+
   [360]: "/img/networks/molten.svg",
   [480]: "/img/networks/worldchain.svg",
   [berachainTestnet.id]: "/img/networks/bera.svg",
@@ -139,4 +139,17 @@ export const chainIcons: { [chainId: number]: string | undefined } = {
   [snax.id]: "/img/networks/snaxchain.svg",
   [snaxTestnet.id]: "/img/networks/snaxchain.svg",
   [superlumio.id]: "/img/networks/lumio.svg",
+  [3799]: "/img/networks/tangle.svg",
+  [5845]: "/img/networks/tangle.svg",
+
+  [6321]: "/img/networks/aura.svg",
+  [994873017]: "/img/networks/lumia.svg",
+  [3441006]: "/img/networks/manta.svg",
+  [1513]: "/img/networks/story.svg",
+  [911867]: "/img/networks/odyssey.svg",
+  [52085143]: "/img/networks/ethena.svg",
+  [324]: "/img/networks/zkera.svg",
+  [2222]: "/img/networks/kava.svg",
+  [33139]: "/img/networks/apechain.svg",
+  [gravity.id]: "/img/networks/gravity.svg",
 };

@@ -194,7 +194,6 @@ const redstoneTheme = {
 const liskTheme = {
   icon: "/img/lisk-mainnet/icon.svg",
   card: {
-    
     className: "bg-gradient-to-b from-[#4070F4] to-[#295CE9] ",
     title: "text-white",
   },
@@ -673,6 +672,90 @@ const arenaZTheme = {
   },
 };
 
+const tangleTheme = {
+  icon: "/img/tangle/icon.svg",
+  card: {
+    className: "bg-gradient-to-t from-[#F0F0F8] to-white",
+    title: "text-black",
+  },
+};
+
+const auraTheme = {
+  icon: "/img/aura/icon.svg",
+  card: {
+    className: "bg-gradient-to-b from-[#0C0B0A] to-[#18120B]",
+    title: "text-white",
+  },
+};
+
+const lumiaTheme = {
+  icon: "/img/lumia/icon.svg",
+  card: {
+    className: "bg-[#010101]",
+    title: "text-white",
+  },
+};
+
+const storyTheme = {
+  icon: "/img/story/icon.svg",
+  card: {
+    className: "bg-[#010101]",
+    title: "text-white",
+  },
+};
+
+const odysseyTheme = {
+  icon: "/img/odyssey/icon.svg",
+  card: {
+    className: "bg-[#F6F3F3]",
+    title: "text-black",
+  },
+};
+
+const ethenaTheme = {
+  icon: "/img/ethena/icon.svg",
+  card: {
+    className: "bg-gradient-to-t from-[#1c1c1c] to-[#3a3a3a]",
+    title: "text-white",
+  },
+};
+
+const zkEraTheme = {
+  icon: "/img/zkera/icon.svg",
+  card: {
+    className: "bg-gradient-to-br from-[#06102F] to-[#010101]",
+    title: "text-white",
+  },
+};
+
+const kavaTheme = {
+  icon: "/img/kava/icon.svg",
+  card: {
+    className: "bg-gradient-to-br from-[#FF433E] to-[#ef8534]",
+    title: "text-white",
+    overlay: {
+      className:
+        "bg-[url('/img/kava/bg-card.svg')] bg-bottom bg-cover mix-blend-multiply opacity-50",
+    },
+  },
+};
+
+const apeChainTheme = {
+  icon: "/img/apechain/icon.svg",
+  card: {
+    className: "bg-[#0054FA]",
+    title: "text-white",
+  },
+};
+
+const gravityTheme = {
+  icon: "/img/gravity/icon.svg",
+  card: {
+    className: "bg-[url('/img/gravity/bg-card.jpg')] bg-cover",
+    title: "text-white",
+  },
+};
+
 export const cardThemes: {
   [chainId: string]: { card: CardTheme; icon: string } | undefined;
 } = {
@@ -791,4 +874,18 @@ export const cardThemes: {
   [123456789876543211]: inkTheme,
   [12345678987654321]: inkTheme,
   [9897]: arenaZTheme,
+  [6321]: auraTheme,
+  [994873017]: lumiaTheme,
+  [3441006]: mantaTheme,
+  [1513]: storyTheme,
+  [1516]: storyTheme,
+
+  [5845]: tangleTheme,
+  [3799]: tangleTheme,
+  [911867]: odysseyTheme,
+  [52085143]: ethenaTheme,
+  [324]: zkEraTheme,
+  [2222]: kavaTheme,
+  [33139]: apeChainTheme,
+  [1625]: gravityTheme,
 };
