@@ -33,3 +33,32 @@ export const BaseMainnetWithdrawalsResetBanner = ({ className }: any) => {
     </Alert>
   );
 };
+
+export const SoneiumMinatoWithdrawalsResetBanner = ({ className }: any) => {
+  return (
+    <Alert
+      variant={"horizontal"}
+      className={clsx("flex items-start gap-4", className)}
+    >
+      <div className="animate-wiggle-waggle drop-shadow-lg">
+        <IconAlert className="h-8 w-8 shrink-0" />
+      </div>
+      <div className="prose">
+        <p className="text-xs text-foreground">
+          Pending withdrawals from Soneium Minato were reset on November 4th
+          following activation of the fault proof upgrade. Recently proved
+          withdrawals will need to be reproven.
+        </p>
+        <p className="text-xs">
+          <a
+            href={optimismFaultProofs}
+            target="_blank"
+            className="cursor-pointer hover:underline text-muted-foreground"
+          >
+            More info
+          </a>
+        </p>
+      </div>
+    </Alert>
+  );
+};

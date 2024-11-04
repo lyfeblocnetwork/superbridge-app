@@ -21,41 +21,43 @@ export const FaultProofsBanner = () => {
     return null;
   }
 
-  return (
-    <Alert
-      className={clsx("flex gap-3 md:pl-5", isWidget && "bg-muted shadow-none")}
-    >
-      <div className="relative drop-shadow-lg w-8 h-8 shrink-0 mr-1.5">
-        <NetworkIcon
-          chain={soneium.l2}
-          className="h-8 w-8 rounded-sm shrink-0"
-        />
-        <IconAlert className="w-5 h-5 animate-wiggle-waggle origin-center absolute -bottom-0.5 -right-2" />
-      </div>
+  return null;
 
-      {/* className="h-8 w-auto shrink-0 mt-0.5 ml-0.5 animate-wiggle-waggle origin-center" */}
+  // return (
+  //   <Alert
+  //     className={clsx("flex gap-3 md:pl-5", isWidget && "bg-muted shadow-none")}
+  //   >
+  //     <div className="relative drop-shadow-lg w-8 h-8 shrink-0 mr-1.5">
+  //       <NetworkIcon
+  //         chain={soneium.l2}
+  //         className="h-8 w-8 rounded-sm shrink-0"
+  //       />
+  //       <IconAlert className="w-5 h-5 animate-wiggle-waggle origin-center absolute -bottom-0.5 -right-2" />
+  //     </div>
 
-      <div className="flex items-start justify-between gap-6 w-full">
-        <div>
-          <AlertTitle>Soneium Minato Fault Proof upgrade</AlertTitle>
-          <AlertDescription className="text-foreground opacity-60">
-            {/* {hasWithdrawalReadyToFinalize
-              ? "Be sure sure to finalize any pending withdrawals before October 30th."
-              : "Withdrawals from Soneium Minato via the Native Bridge are paused until after the upgrade is complete."} */}
-            {hasWithdrawalReadyToFinalize
-              ? "Be sure sure to finalize any pending withdrawals before November 4th."
-              : "Withdrawals not proved before the upgrade will need to be reproven."}
-          </AlertDescription>
-        </div>
-        <Button
-          // variant={"secondary"}
-          size={"xs"}
-          onClick={() => modal.open()}
-          className="ml-auto"
-        >
-          More
-        </Button>
-      </div>
-    </Alert>
-  );
+  //     {/* className="h-8 w-auto shrink-0 mt-0.5 ml-0.5 animate-wiggle-waggle origin-center" */}
+
+  //     <div className="flex items-start justify-between gap-6 w-full">
+  //       <div>
+  //         <AlertTitle>Soneium Minato Fault Proof upgrade</AlertTitle>
+  //         <AlertDescription className="text-foreground opacity-60">
+  //           {/* {hasWithdrawalReadyToFinalize
+  //             ? "Be sure sure to finalize any pending withdrawals before October 30th."
+  //             : "Withdrawals from Soneium Minato via the Native Bridge are paused until after the upgrade is complete."} */}
+  //           {hasWithdrawalReadyToFinalize
+  //             ? "Be sure sure to finalize any pending withdrawals before November 4th."
+  //             : "Withdrawals not proved before the upgrade will need to be reproven."}
+  //         </AlertDescription>
+  //       </div>
+  //       <Button
+  //         // variant={"secondary"}
+  //         size={"xs"}
+  //         onClick={() => modal.open()}
+  //         className="ml-auto"
+  //       >
+  //         More
+  //       </Button>
+  //     </div>
+  //   </Alert>
+  // );
 };

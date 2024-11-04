@@ -15,7 +15,10 @@ import { useConfigState } from "@/state/config";
 import { usePendingTransactions } from "@/state/pending-txs";
 import { getInitiatingHash } from "@/utils/initiating-tx-hash";
 
-import { BaseMainnetWithdrawalsResetBanner } from "../banners/base-withdrawals-reset-banner";
+import {
+  BaseMainnetWithdrawalsResetBanner,
+  SoneiumMinatoWithdrawalsResetBanner,
+} from "../banners/base-withdrawals-reset-banner";
 import { IconClose, IconSpinner } from "../icons";
 import { TransactionRowV2 } from "../transaction-row-v2";
 
@@ -79,6 +82,9 @@ export const OpenActivity = ({}) => {
   const trackEvent = useTrackEvent();
 
   const hasBase = !!useDeployments().find((x) => x.name === "base");
+  const hasSoneiumMinato = !!useDeployments().find(
+    (x) => x.name === "soneium-minato"
+  );
 
   useEffect(() => {
     if (isError) return;
@@ -215,6 +221,17 @@ export const OpenActivity = ({}) => {
                       }
                     >
                       <BaseMainnetWithdrawalsResetBanner key="base-fault-proof-banner" />
+                    </motion.div>
+                  )}
+                  {hasSoneiumMinato && (
+                    <motion.div
+                      key={`soneium-fault-proof-banner-container`}
+                      variants={item}
+                      className={
+                        "relative w-full h-full flex flex-col shrink-0 overflow-hidden rounded-3xl shadow-sm"
+                      }
+                    >
+                      <SoneiumMinatoWithdrawalsResetBanner key="soneium-fault-proof-banner" />
                     </motion.div>
                   )}
 
