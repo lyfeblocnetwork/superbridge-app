@@ -10,8 +10,8 @@ const defaultImages = {
   nav: "https://raw.githubusercontent.com/superbridgeapp/assets/f173992662b83e832b24e385da017ffdbd0138b8/rollies/sb-rollies-stamp.svg",
   navDark:
     "https://raw.githubusercontent.com/superbridgeapp/assets/f173992662b83e832b24e385da017ffdbd0138b8/rollies/sb-rollies-stamp.svg",
-  l2: "https://raw.githubusercontent.com/superbridgeapp/assets/main/rollies/L2.png",
-  l3: "https://raw.githubusercontent.com/superbridgeapp/assets/main/rollies/L3.png",
+  l2: "https://raw.githubusercontent.com/superbridgeapp/assets/main/rollies/L2.svg",
+  l3: "https://raw.githubusercontent.com/superbridgeapp/assets/main/rollies/L3.svg",
 };
 
 const L1s: number[] = [
