@@ -13,6 +13,7 @@ import {
   isHyperlaneBridge,
   isLzBridge,
 } from "@/utils/guards";
+import { isBridgeable } from "@/utils/is-bridgeable";
 import { isNativeToken } from "@/utils/tokens/is-eth";
 
 import { useAllTokens } from "../tokens/use-all-tokens";
@@ -28,30 +29,36 @@ const getToken = (
   },
   destChainId?: number
 ) => {
-  let match: MultiChainToken | null = null;
-  for (const t of tokens) {
-    if (
+  const full = tokens.find(
+    (t) =>
       destChainId &&
       t[chainId]?.address &&
       t[destChainId]?.address &&
-      isAddressEqual(t[chainId]!.address as Address, tokenAddress as Address)
-    ) {
-      return t;
-    }
+      isAddressEqual(t[chainId]!.address as Address, tokenAddress as Address) &&
+      isBridgeable(t[chainId], t[destChainId])
+  );
 
-    if (
+  const partial = tokens.find(
+    (t) =>
       t[chainId]?.address &&
       isAddressEqual(t[chainId]!.address as Address, tokenAddress as Address)
-    ) {
-      match = t;
-    }
-  }
+  );
 
-  return match;
+  return full || partial;
 };
 
-const getNativeToken = (tokens: MultiChainToken[], chainId: number) =>
-  tokens.find((x) => x[chainId] && isNativeToken(x));
+const getNativeToken = (
+  tokens: MultiChainToken[],
+  chainId: number,
+  destChainId: number
+) =>
+  tokens.find(
+    (x) =>
+      x[chainId] &&
+      x[destChainId] &&
+      isNativeToken(x) &&
+      isBridgeable(x[chainId], x[destChainId])
+  );
 
 export function useTxMultichainToken(tx: Transaction | null | undefined) {
   const tokens = useAllTokens();
@@ -76,7 +83,7 @@ export function useTxMultichainToken(tx: Transaction | null | undefined) {
 
   if (isAcrossBridge(tx)) {
     if (tx.metadata.data.isEth) {
-      return getNativeToken(tokens.data, from.id);
+      return getNativeToken(tokens.data, from.id, to.id);
     }
 
     return getToken(
@@ -125,7 +132,7 @@ export function useTxMultichainToken(tx: Transaction | null | undefined) {
 
   return match(metadata)
     .with({ type: "eth-deposit" }, () => {
-      return getNativeToken(tokens.data, from.id);
+      return getNativeToken(tokens.data, from.id, to.id);
     })
     .with({ type: "token-deposit" }, (m) => {
       const dto = m as TokenDepositDto;
