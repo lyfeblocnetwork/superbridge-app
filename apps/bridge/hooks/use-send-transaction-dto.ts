@@ -59,6 +59,7 @@ export function useSendTransactionDto(
               maxFeePerGas: fees.data?.maxFeePerGas,
               maxPriorityFeePerGas: fees.data?.maxPriorityFeePerGas,
             }),
+        value: BigInt(result.value ?? "0"),
       });
     } catch (e: any) {
       if (
