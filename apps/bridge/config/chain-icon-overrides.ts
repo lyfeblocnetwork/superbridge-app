@@ -72,7 +72,6 @@ export const chainIcons: { [chainId: number]: string | undefined } = {
   [788988]: "/img/orb3-mainnet/network.svg",
   [pgn.id]: "/img/networks/pgn.svg",
   [kroma.id]: "/img/networks/kroma.svg",
-  1024: "/img/parallel/network.svg",
   [mode.id]: "/img/networks/mode.svg",
   [modeTestnet.id]: "/img/networks/mode.svg",
   [zora.id]: "/img/networks/zora.svg",
@@ -95,7 +94,7 @@ export const chainIcons: { [chainId: number]: string | undefined } = {
   [polygon.id]: "/img/networks/polygon.svg",
   [48900]: "/img/networks/zircuit.svg",
 
-  [360]: "/img/networks/molten.svg",
+  [360]: "/img/shape/icon.svg",
   [480]: "/img/networks/worldchain.svg",
   [berachainTestnet.id]: "/img/networks/bera.svg",
   [berachainTestnetbArtio.id]: "/img/networks/bera.svg",
@@ -141,7 +140,6 @@ export const chainIcons: { [chainId: number]: string | undefined } = {
   [superlumio.id]: "/img/networks/lumio.svg",
   [3799]: "/img/networks/tangle.svg",
   [5845]: "/img/networks/tangle.svg",
-
   [6321]: "/img/networks/aura.svg",
   [994873017]: "/img/networks/lumia.svg",
   [3441006]: "/img/networks/manta.svg",
