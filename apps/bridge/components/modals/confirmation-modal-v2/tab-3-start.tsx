@@ -514,7 +514,7 @@ export const ConfirmationModalStartTab = () => {
             <LineItem
               key={isWaitStep(step) ? step.duration.toString() : step.label}
               step={step}
-              tx={lastSubmittedTx}
+              tx={submittedHash ? lastSubmittedTx : undefined}
             />
           ))}
         </div>
