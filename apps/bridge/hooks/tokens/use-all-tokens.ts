@@ -32,6 +32,7 @@ export function useAllTokens(): {
       customTokenLists.isFetching,
       customTokenLists.data,
       customHyperlaneRoutes?.tokens,
+      customTokens,
     ]
   );
 }

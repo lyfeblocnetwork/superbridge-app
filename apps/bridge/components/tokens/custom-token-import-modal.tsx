@@ -99,10 +99,9 @@ const CustomTokenImport = () => {
       customTokens.find(
         (x) =>
           x[deployment.l1.id] &&
-          x[deployment.l2.id] &&
           isAddressEqual(
             x[deployment.l1.id]!.address as Address,
-            x[deployment.l2.id]!.address as Address
+            l1Token.address as Address
           )
       )
     ) {

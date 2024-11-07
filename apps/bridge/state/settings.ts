@@ -48,12 +48,25 @@ const SettingsState = create<SettingsState>()(
     }),
     {
       name: "settings",
-      version: 2,
+      version: 3,
       migrate: (persistedState, version) => {
         if (version === 1) {
           // @ts-expect-error
           persistedState.preferredExplorer = "etherscan";
         }
+
+        // @ts-expect-error
+        persistedState.customTokens = persistedState.customTokens.filter(
+          (token: MultiChainToken, index: number) => {
+            // @ts-expect-error
+            const i = persistedState.customTokens.findIndex(
+              (x: MultiChainToken) =>
+                JSON.stringify(x) === JSON.stringify(token)
+            );
+            return i === index;
+          }
+        );
+
         return persistedState;
       },
     }
