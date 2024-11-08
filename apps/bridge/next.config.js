@@ -58,10 +58,10 @@ const config = {
             value: [
               "default-src 'self'", // restricts everything to the same origin by default
               "script-src 'self' 'unsafe-inline'", // allow scripts from same origin, inline allowed if necessary
-              "style-src 'self' 'unsafe-inline'", // allow styles from same origin, inline allowed if necessary
+              "style-src 'self' 'unsafe-inline' https://www.googletagmanager.com", // allow styles from same origin, inline allowed if necessary
               "connect-src 'self' *", // allow fetching data from any origin
               "frame-ancestors 'self' https://network.ethena.fi http://localhost", // restricts embedding to the same origin
-              "img-src 'self' *", // allow images from same origin and data URIs
+              "img-src 'self' data: *", // allow images from same origin and data URIs
               "font-src 'self' *", // allow fonts from same origin
               "object-src 'none'", // block plugins like Flash
             ].join("; "),
