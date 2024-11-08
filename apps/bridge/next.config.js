@@ -56,7 +56,7 @@ const config = {
           {
             key: "Content-Security-Policy",
             value:
-              "default-src '*'; frame-ancestors 'self' https://network.ethena.fi http://localhost;",
+              "default-src *; frame-ancestors 'self' https://network.ethena.fi http://localhost;",
           },
         ],
       },
