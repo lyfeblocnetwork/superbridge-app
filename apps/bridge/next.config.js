@@ -47,6 +47,21 @@ const config = {
       },
     ];
   },
+
+  async headers() {
+    return [
+      {
+        source: "/(.*)", // Apply to all routes
+        headers: [
+          {
+            key: "Content-Security-Policy",
+            value:
+              "default-src 'self'; frame-ancestors 'self' https://network.ethena.fi http://localhost;",
+          },
+        ],
+      },
+    ];
+  },
 };
 
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
