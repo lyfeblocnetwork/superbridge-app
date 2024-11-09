@@ -56,14 +56,22 @@ const config = {
           {
             key: "Content-Security-Policy",
             value: [
-              "default-src 'self'", // restricts everything to the same origin by default
-              "script-src 'self' 'unsafe-inline'", // allow scripts from same origin, inline allowed if necessary
-              "style-src 'self' 'unsafe-inline' https://www.googletagmanager.com", // allow styles from same origin, inline allowed if necessary
-              "connect-src 'self' *", // allow fetching data from any origin
-              "frame-ancestors 'self' https://network.ethena.fi http://localhost", // restricts embedding to the same origin
-              "img-src 'self' data: *", // allow images from same origin and data URIs
-              "font-src 'self' *", // allow fonts from same origin
-              "object-src 'none'", // block plugins like Flash
+              "default-src 'self'",
+              // "script-src 'self' data: 'wasm-unsafe-eval'",
+              // SOMETHING IN script-src BLOCKING GOOGLE TAG MANAGER
+              // MAYBE NEED THE NONCE THING FOR GTM
+              "script-src 'self' data: 'unsafe-eval' 'unsafe-inline' 'wasm-unsafe-eval'",
+              "style-src 'self' 'unsafe-inline' https://www.googletagmanager.com",
+              // NEEDS TO HAVE DOMAINS OFF ALL SERVICES AND RPCs IN connect-src
+              // I JUST PASTED A FEW AND SOME RANDOS HERE FROM A UNISWAP EXAMPLE
+              "connect-src 'self' blob: data: https://*.superbridge.app https://pulse.walletconnect.org https://*.publicnode.com https://*.merkle.io https://*.llamarpc.com https://*.alchemy.com https://*.arbitrum.io https://*.base.org/ https://*.coinbase.com https://*.coingecko.com/ https://*.coinmarketcap.com/ https://*.drpc.org/ https://*.gemini.com https://*.googleapis.com https://*.infura.io https://*.nodereal.io https://*.optimism.io https://*.quiknode.pro https://*.twnodes.com https://*.uniswap.org https://*.walletconnect.com https://*.zerion.io https://alfajores-forno.celo-testnet.org https://api.avax.network/ext/bc/C/rpc https://api.moonpay.com/ https://api.opensea.io https://bsc-dataseed1.binance.org/ https://bsc-dataseed1.bnbchain.org https://buy.moonpay.com/ https://cdn.center.app/ https://celo-org.github.io https://cloudflare-eth.com https://ethereum-optimism.github.io/ https://forno.celo.org/ https://gateway.ipfs.io/ https://hardbin.com/ https://i.seadn.io/ https://images-country.meld.io https://invalid.rpki.cloudflare.com/ https://ipfs.io/ https://ipv4-check-perf.radar.cloudflare.com https://ipv6-check-perf.radar.cloudflare.com/ https://lh3.googleusercontent.com/ https://mainnet.base.org/ https://o1037921.ingest.sentry.io https://browser-intake-datadoghq.com https://openseauserdata.com/ https://performance.radar.cloudflare.com/ https://polygon-rpc.com/ https://raw.githubusercontent.com https://raw.seadn.io/ https://rpc-mainnet.maticvigil.com https://rpc-mumbai.maticvigil.com https://rpc.ankr.com https://rpc.blast.io/ https://rpc.degen.tips https://rpc.goerli.mudit.blog/ https://rpc.mevblocker.io/ https://rpc.scroll.io/ https://rpc.sepolia.org/ https://rpc.zora.energy/ https://sockjs-us3.pusher.com/ https://sparrow.cloudflare.com/ https://statsigapi.net https://trustwallet.com https://uniswap.org https://us-central1-uniswap-mobile.cloudfunctions.net/ https://valid.rpki.cloudflare.com https://vercel.com https://vercel.live/ https://wallet.crypto.com https://web3.1inch.io https://mainnet.era.zksync.io/ wss://*.uniswap.org wss://relay.walletconnect.com wss://relay.walletconnect.org wss://ws-us3.pusher.com/ wss://www.walletlink.org",
+              "frame-src 'self' https://*.ethena.fi http://localhost",
+              // IF A ROLLIE THEN THEY CAN HOST ON A SPECIAL DOMAIN THEN SELF WILL WORK FOR ANY
+              // DISABLE PASTING IN SUPERBRIDGE AS A WIDGET FOR RANDOS
+              "frame-ancestors 'self' https://*.ethena.fi http://localhost",
+              "img-src * blob: data:",
+              "font-src 'self' https://superbridge-fonts.vercel.app",
+              "worker-src 'self' blob:",
             ].join("; "),
           },
         ],
