@@ -5,11 +5,9 @@
  * API docs
  * OpenAPI spec version: 1.0
  */
-import type { ChainDto } from './chainDto';
 import type { LzContractAddressesDto } from './lzContractAddressesDto';
 
 export interface LzDomainDto {
-  chain: ChainDto;
   chainId: number;
   contractAddresses: LzContractAddressesDto;
   createdAt: string;

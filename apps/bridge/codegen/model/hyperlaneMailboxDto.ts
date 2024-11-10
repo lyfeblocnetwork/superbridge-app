@@ -5,11 +5,9 @@
  * API docs
  * OpenAPI spec version: 1.0
  */
-import type { ChainDto } from './chainDto';
 import type { HyperlaneContractAddressesDto } from './hyperlaneContractAddressesDto';
 
 export interface HyperlaneMailboxDto {
-  chain: ChainDto;
   chainId: number;
   contractAddresses: HyperlaneContractAddressesDto;
   createdAt: string;

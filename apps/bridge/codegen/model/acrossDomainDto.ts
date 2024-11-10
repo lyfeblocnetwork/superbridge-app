@@ -5,11 +5,9 @@
  * API docs
  * OpenAPI spec version: 1.0
  */
-import type { ChainDto } from './chainDto';
 import type { AcrossContractAddressesDto } from './acrossContractAddressesDto';
 
 export interface AcrossDomainDto {
-  chain: ChainDto;
   chainId: number;
   contractAddresses: AcrossContractAddressesDto;
   createdAt: string;
