@@ -13,7 +13,7 @@ export function useBaseNativeTokenBalance() {
     abi: erc20Abi,
     functionName: "balanceOf",
     args: [account.address as Address],
-    chainId: deployment?.l1.id,
+    chainId: deployment?.l1ChainId,
     address: deployment?.arbitrumNativeToken?.address as Address,
     query: {
       enabled: isArbitrumDeposit,

@@ -71,15 +71,15 @@ export const SettingsModal = () => {
 
       const d = sorted.find((x) => x.type === DeploymentType.testnet);
       if (d) {
-        setFromChainId(d.l1.id);
-        setToChainId(d.l2.id);
+        setFromChainId(d.l1ChainId);
+        setToChainId(d.l2ChainId);
       }
     } else {
       setTestnets(false);
       const d = sorted.find((x) => x.type === DeploymentType.mainnet);
       if (d) {
-        setFromChainId(d.l1.id);
-        setToChainId(d.l2.id);
+        setFromChainId(d.l1ChainId);
+        setToChainId(d.l2ChainId);
       }
     }
   };

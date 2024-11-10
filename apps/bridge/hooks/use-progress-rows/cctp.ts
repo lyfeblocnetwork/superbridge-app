@@ -7,6 +7,7 @@ import { usePendingTransactions } from "@/state/pending-txs";
 import { Transaction } from "@/types/transaction";
 
 import { isCctpBridge } from "../../utils/guards";
+import { useTxFromTo } from "../activity/use-tx-from-to";
 import {
   ActivityStep,
   ButtonComponent,
@@ -21,7 +22,8 @@ export const useCctpProgressRows = (
   const pendingFinalises = usePendingTransactions.usePendingFinalises();
   const domains = useTxCctpDomains(tx);
   const token = useTxMultichainToken(tx);
-  const amount = useTxAmount(tx, token?.[domains?.from.chain.id ?? 0]);
+  const amount = useTxAmount(tx, token?.[domains?.from.chainId ?? 0]);
+  const chains = useTxFromTo(tx);
 
   if (!tx || !isCctpBridge(tx) || !domains) {
     return null;
@@ -30,7 +32,7 @@ export const useCctpProgressRows = (
 
   const burn: TransactionStep = {
     label: t("confirmationModal.startBridgeOn", {
-      from: domains.from.chain.name,
+      from: chains?.from.name,
     }),
     hash: tx.bridge.timestamp ? tx.bridge.transactionHash : undefined,
     pendingHash: tx.bridge.timestamp ? undefined : tx.bridge.transactionHash,
@@ -44,7 +46,7 @@ export const useCctpProgressRows = (
     tx.bridge.timestamp + domains.from.duration < Date.now() && !tx.relay
       ? {
           label: t("confirmationModal.getAmountOn", {
-            to: domains.to.chain.name,
+            to: chains?.to.name,
             formatted: amount?.text,
           }),
           button: {
@@ -60,7 +62,7 @@ export const useCctpProgressRows = (
         }
       : {
           label: t("confirmationModal.getAmountOn", {
-            to: domains.to.chain.name,
+            to: chains?.to.name,
             formatted: amount?.text,
           }),
           hash: tx.relay?.transactionHash,

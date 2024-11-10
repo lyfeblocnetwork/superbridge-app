@@ -32,7 +32,7 @@ export function useRedeemArbitrum(
     writeContract({
       abi: ArbRetryableTxAbi,
       functionName: "redeem",
-      chainId: deployment?.l2.id,
+      chainId: deployment?.l2ChainId,
       address: "0x000000000000000000000000000000000000006e",
       args: [l2TransactionHash as Address],
     });

@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { useCancelBridge } from "@/hooks/bridge/use-cancel-bridge";
 import { useDeployment } from "@/hooks/deployments/use-deployment";
+import { useDeploymentChains } from "@/hooks/deployments/use-deployment-chains";
 import { useSelectedToken } from "@/hooks/tokens/use-token";
 import { useFromChain, useToChain } from "@/hooks/use-chain";
 import { useConfigState } from "@/state/config";
@@ -23,12 +24,13 @@ export const ConfirmationModalV2 = () => {
   const submitted = useConfigState.useSubmittedHash();
 
   const deployment = useDeployment();
+  const deploymentChains = useDeploymentChains();
 
   const common = {
     from: from?.name,
     to: to?.name,
-    base: deployment?.l1.name,
-    rollup: deployment?.l2.name,
+    base: deploymentChains?.l1.name,
+    rollup: deploymentChains?.l2.name,
     symbol: token?.symbol,
   };
 

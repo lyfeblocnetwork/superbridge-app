@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { base, optimism } from "viem/chains";
 
-import { useDeployment } from "@/hooks/deployments/use-deployment";
+import { useDeploymentChains } from "@/hooks/deployments/use-deployment-chains";
 
 const links: { [x: number]: string | undefined } = {
   [base.id]: "https://status.base.org/",
@@ -9,7 +9,7 @@ const links: { [x: number]: string | undefined } = {
 };
 
 export const WithdrawalsPaused = () => {
-  const deployment = useDeployment();
+  const chains = useDeploymentChains();
 
   return (
     <div className="bg-card flex items-center gap-3 w-full p-4 rounded-[16px]">
@@ -40,11 +40,11 @@ export const WithdrawalsPaused = () => {
         </svg>
       </span>
       <span className=" text-xs">
-        Proving and finalizing {deployment?.l2.name} withdrawals is currently
+        Proving and finalizing {chains?.l2.name} withdrawals is currently
         paused. <br />
-        {links[deployment?.l2.id ?? 0] && (
+        {links[chains?.l2.id ?? 0] && (
           <Link
-            href={links[deployment?.l2.id ?? 0] ?? ""}
+            href={links[chains?.l2.id ?? 0] ?? ""}
             target="_blank"
             className=" text-muted-foreground cursor-pointer hover:underline"
           >

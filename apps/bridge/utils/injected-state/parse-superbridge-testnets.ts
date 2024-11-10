@@ -21,8 +21,8 @@ export const parseSuperbridgeTestnets = (
   return (
     dto?.deployments.find(
       (x) =>
-        (x.l1.id === fromChainId && x.l2.id === toChainId) ||
-        (x.l1.id === toChainId && x.l2.id === fromChainId)
+        (x.l1ChainId === fromChainId && x.l2ChainId === toChainId) ||
+        (x.l1ChainId === toChainId && x.l2ChainId === fromChainId)
     )?.type === DeploymentType.testnet
   );
 };

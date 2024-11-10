@@ -8,29 +8,7 @@ import {
 } from "@/codegen/model";
 
 export const isMainnet = (d: DeploymentDto | null) => {
-  if (!d) {
-    return false;
-  }
-
-  if (d.type === DeploymentType.mainnet) {
-    return true;
-  }
-
-  // We have our contracts deployed on Optimism Goerli for testing
-  if (d.type === DeploymentType.testnet && d.l1.id === 5 && d.l2.id === 420) {
-    return true;
-  }
-
-  // We have our contracts deployed on Arbitrum Goerli for testing
-  if (
-    d.type === DeploymentType.testnet &&
-    d.l1.id === 5 &&
-    d.l2.id === 421613
-  ) {
-    return true;
-  }
-
-  return false;
+  return d?.type === DeploymentType.mainnet;
 };
 
 export interface ArbitrumDeploymentDto extends DeploymentDto {

@@ -10,8 +10,8 @@ export const useTxAcrossDomains = (tx: Transaction | undefined | null) => {
     return null;
   }
 
-  const from = acrossDomains.find((x) => x.chain.id === tx.fromChainId);
-  const to = acrossDomains.find((x) => x.chain.id === tx.toChainId);
+  const from = acrossDomains.find((x) => x.chainId === tx.fromChainId);
+  const to = acrossDomains.find((x) => x.chainId === tx.toChainId);
 
   if (!from || !to) {
     return null;

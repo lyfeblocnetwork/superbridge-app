@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useIsSuperbridge } from "@/hooks/apps/use-is-superbridge";
 import { useDeployment } from "@/hooks/deployments/use-deployment";
+import { useApp } from "@/hooks/use-metadata";
 import { useModal } from "@/hooks/use-modal";
 
 import { IconArrowUpRight, IconEllip, IconSB } from "../icons";
@@ -18,6 +19,7 @@ export function HeaderLinks() {
   const { t } = useTranslation();
   const legalModal = useModal("Legal");
   const deployment = useDeployment();
+  const app = useApp();
   const isSuperbridge = useIsSuperbridge();
 
   const defaultLinks = [
@@ -32,11 +34,7 @@ export function HeaderLinks() {
     { url: "https://twitter.com/superbridgeapp", label: "x.com" },
   ];
   const links: (LinkDto | { onClick: () => void; label: string })[] =
-    isSuperbridge
-      ? defaultLinks
-      : deployment?.theme?.links.length
-        ? deployment.theme.links
-        : defaultLinks;
+    isSuperbridge ? defaultLinks : app.links.length ? app.links : defaultLinks;
 
   return (
     <div className="flex gap-3 items-center">
@@ -70,38 +68,36 @@ export function HeaderLinks() {
             })}
 
             {/* if not Superbridge and deployment has custom links */}
-            {!isSuperbridge &&
-              deployment?.theme?.links &&
-              deployment?.theme?.links.length > 0 && (
-                <div className="bg-muted p-3 rounded-lg flex flex-col gap-3 mt-3">
-                  <a
-                    href="https://superbridge.app"
-                    target="_blank"
-                    className=" text-xs  leading-none w-full flex gap-2 items-center"
-                  >
-                    <IconSB className="h-6 w-auto fill-foreground" />
-                    <span>{t("tos.poweredBy")}</span>
-                  </a>
-                  <a
-                    href="https://help.superbridge.app"
-                    target="_blank"
-                    className="text-xs leading-none w-full flex gap-2 items-center"
-                  >
-                    <IconArrowUpRight className="h-4 mx-1 w-auto fill-muted-foreground" />
-                    <span>{t("header.supportAndFaqs")}</span>
-                  </a>
-                  <button
-                    className="text-xs leading-none w-full flex gap-2 items-center"
-                    onClick={() => legalModal.open()}
-                  >
-                    <IconArrowUpRight className="h-4 mx-1 w-auto fill-muted-foreground" />
-                    <span>{t("header.legal")}</span>
-                  </button>
-                </div>
-              )}
+            {!isSuperbridge && app.links && app.links.length > 0 && (
+              <div className="bg-muted p-3 rounded-lg flex flex-col gap-3 mt-3">
+                <a
+                  href="https://superbridge.app"
+                  target="_blank"
+                  className=" text-xs  leading-none w-full flex gap-2 items-center"
+                >
+                  <IconSB className="h-6 w-auto fill-foreground" />
+                  <span>{t("tos.poweredBy")}</span>
+                </a>
+                <a
+                  href="https://help.superbridge.app"
+                  target="_blank"
+                  className="text-xs leading-none w-full flex gap-2 items-center"
+                >
+                  <IconArrowUpRight className="h-4 mx-1 w-auto fill-muted-foreground" />
+                  <span>{t("header.supportAndFaqs")}</span>
+                </a>
+                <button
+                  className="text-xs leading-none w-full flex gap-2 items-center"
+                  onClick={() => legalModal.open()}
+                >
+                  <IconArrowUpRight className="h-4 mx-1 w-auto fill-muted-foreground" />
+                  <span>{t("header.legal")}</span>
+                </button>
+              </div>
+            )}
 
             {/* if not Superbridge and deployment does not have custom links - just show powered by SB and links */}
-            {!isSuperbridge && !deployment?.theme?.links.length && (
+            {!isSuperbridge && !app.links.length && (
               <div className="bg-muted p-3 rounded-lg flex flex-col gap-3 mt-3">
                 <a
                   href="https://superbridge.app"

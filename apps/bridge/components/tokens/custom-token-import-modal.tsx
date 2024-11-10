@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Address, isAddressEqual } from "viem";
 
 import { useDeployment } from "@/hooks/deployments/use-deployment";
+import { useDeploymentChains } from "@/hooks/deployments/use-deployment-chains";
 import { useMetadata } from "@/hooks/use-metadata";
 import { useModal } from "@/hooks/use-modal";
 import { useTrackEvent } from "@/services/ga";
@@ -21,6 +22,7 @@ const CustomTokenImport = () => {
   const { t } = useTranslation();
   const metadata = useMetadata();
   const trackEvent = useTrackEvent();
+  const chains = useDeploymentChains();
 
   const modal = useModal("CustomTokenImport");
   const customTokens = useSettingsState.useCustomTokens();
@@ -40,7 +42,7 @@ const CustomTokenImport = () => {
   const [disclaimerChecked, setDisclaimerChecked] = useState(false);
 
   const onSubmit = () => {
-    if (!deployment) {
+    if (!deployment || !chains) {
       return;
     }
 
@@ -50,21 +52,21 @@ const CustomTokenImport = () => {
     if (OP_L1_BRIDGE && OP_L1_TOKEN && OP_L2_BRIDGE) {
       const opL1Token: Token = {
         address: OP_L1_TOKEN!,
-        chainId: deployment!.l1.id,
+        chainId: deployment!.l1ChainId,
         decimals: decimals!,
         name: name!,
         symbol: symbol!,
         logoURI: "",
-        bridges: [deployment!.l2.id],
+        bridges: [deployment!.l2ChainId],
       };
       const opL2Token: Token = {
         address: modal.data as Address,
-        chainId: deployment!.l2.id,
+        chainId: deployment!.l2ChainId,
         decimals: decimals!,
         name: name!,
         symbol: symbol!,
         logoURI: "",
-        bridges: [deployment!.l1.id],
+        bridges: [deployment!.l1ChainId],
       };
       l1Token = opL1Token;
       l2Token = opL2Token;
@@ -73,21 +75,21 @@ const CustomTokenImport = () => {
     if (ARB_L1_TOKEN && ARB_L2_GATEWAY && ARB_L1_GATEWAY) {
       const arbL1Token: Token = {
         address: ARB_L1_TOKEN,
-        chainId: deployment!.l1.id,
+        chainId: deployment!.l1ChainId,
         decimals: decimals!,
         name: name!,
         symbol: symbol!,
         logoURI: "",
-        bridges: [deployment!.l2.id],
+        bridges: [deployment!.l2ChainId],
       };
       const arbL2Token: Token = {
         address: modal.data as Address,
-        chainId: deployment!.l2.id,
+        chainId: deployment!.l2ChainId,
         decimals: decimals!,
         name: name!,
         symbol: symbol!,
         logoURI: "",
-        bridges: [deployment!.l1.id],
+        bridges: [deployment!.l1ChainId],
       };
       l1Token = arbL1Token;
       l2Token = arbL2Token;
@@ -98,9 +100,9 @@ const CustomTokenImport = () => {
       !l2Token ||
       customTokens.find(
         (x) =>
-          x[deployment.l1.id] &&
+          x[deployment.l1ChainId] &&
           isAddressEqual(
-            x[deployment.l1.id]!.address as Address,
+            x[deployment.l1ChainId]!.address as Address,
             l1Token.address as Address
           )
       )
@@ -109,14 +111,14 @@ const CustomTokenImport = () => {
     }
 
     const token: MultiChainToken = {
-      [deployment!.l1.id]: l1Token,
-      [deployment!.l2.id]: l2Token,
+      [deployment!.l1ChainId]: l1Token,
+      [deployment!.l2ChainId]: l2Token,
     };
 
     trackEvent({
       event: "import-custom-token",
-      l1: deployment!.l1.name,
-      l2: deployment!.l2.name,
+      l1: chains.l1.name,
+      l2: chains.l2.name,
       l1Address: l1Token.address,
       l2Address: l2Token.address,
       name: l1Token.name,
@@ -126,13 +128,10 @@ const CustomTokenImport = () => {
     modal.close();
   };
 
-  const l1Link = addressLink(
-    OP_L1_TOKEN ?? ARB_L1_TOKEN ?? "0x",
-    deployment?.l1
-  );
-  const l2Link = addressLink(modal.data as Address, deployment?.l2);
+  const l1Link = addressLink(OP_L1_TOKEN ?? ARB_L1_TOKEN ?? "0x", chains?.l1);
+  const l2Link = addressLink(modal.data as Address, chains?.l2);
 
-  const isL3 = !L1_BASE_CHAINS.includes(deployment?.l1.id ?? 0);
+  const isL3 = !L1_BASE_CHAINS.includes(deployment?.l1ChainId ?? 0);
 
   return (
     <Dialog open={modal.isOpen} onOpenChange={modal.close}>

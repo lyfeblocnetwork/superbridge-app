@@ -26,12 +26,13 @@ export const NetworkIcon = ({
     | undefined
     | null;
 } & Omit<ImageProps, "src" | "alt">) => {
-  const deployment = useDeployments().find((x) => x.l2.id === chain?.id);
+  const deployment = useDeployments().find((x) => x.l2ChainId === chain?.id);
   const hyperlaneMailboxes = useHyperlaneMailboxes();
 
-  const isBase = !!deployment && chain?.id === deployment?.l1.id;
-  const isRollup = !!deployment && chain?.id === deployment?.l2.id;
-  const isL3 = !!deployment && !L1_BASE_CHAINS.includes(deployment?.l1.id ?? 0);
+  const isBase = !!deployment && chain?.id === deployment?.l1ChainId;
+  const isRollup = !!deployment && chain?.id === deployment?.l2ChainId;
+  const isL3 =
+    !!deployment && !L1_BASE_CHAINS.includes(deployment?.l1ChainId ?? 0);
 
   const rollupIcon = useNetworkIcon(deployment?.id);
 

@@ -10,6 +10,7 @@ import type { AcrossContractAddressesDto } from './acrossContractAddressesDto';
 
 export interface AcrossDomainDto {
   chain: ChainDto;
+  chainId: number;
   contractAddresses: AcrossContractAddressesDto;
   createdAt: string;
   id: string;

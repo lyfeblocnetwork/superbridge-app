@@ -30,10 +30,10 @@ export function useWagmiConfig() {
         // @ts-expect-error
         c.iconUrl = chainIcons[c.id];
       } else {
-        const d = allDeployments.find((x) => x.l2.id === c.id);
-        if (d?.theme?.theme.imageNetwork || d?.rollupNetworkIcon) {
+        const d = allDeployments.find((x) => x.l2ChainId === c.id);
+        if (d?.rollupNetworkIcon) {
           // @ts-expect-error
-          c.iconUrl = d.rollupNetworkIcon || d.theme.theme.imageNetwork;
+          c.iconUrl = d.rollupNetworkIcon;
         }
       }
       return c as unknown as Chain;

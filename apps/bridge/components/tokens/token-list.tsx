@@ -117,8 +117,8 @@ export const TokenList = () => {
             .filter(Boolean)
             .map((symbolOrAddress) => {
               const token = tokens.data?.find((t) => {
-                const l1 = t.token[deployment?.l1.id ?? 0];
-                const l2 = t.token[deployment?.l2.id ?? 0];
+                const l1 = t.token[deployment?.l1ChainId ?? 0];
+                const l2 = t.token[deployment?.l2ChainId ?? 0];
 
                 return (
                   l2?.symbol === symbolOrAddress ||

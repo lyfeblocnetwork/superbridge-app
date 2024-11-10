@@ -1,9 +1,6 @@
 import { mainnet, optimism } from "viem/chains";
 
-import {
-  useBridgeControllerGetHyperlaneMailboxes,
-  useBridgeControllerGetLzDomains,
-} from "@/codegen/index";
+import { useBridgeControllerGetChains } from "@/codegen/index";
 import { ChainDto } from "@/codegen/model";
 import { Providers } from "@/components/Providers";
 import { ChainCard } from "@/components/chain-card";
@@ -12,23 +9,15 @@ import { cardThemes } from "@/config/card-themes";
 import { InjectedStoreProvider } from "@/state/injected";
 
 function Page() {
-  const mailboxes = useBridgeControllerGetHyperlaneMailboxes();
-  const lzDomains = useBridgeControllerGetLzDomains();
+  const chains = useBridgeControllerGetChains();
 
   if (process.env["NODE_ENV"] !== "development") {
     return null;
   }
 
-  const chains: ChainDto[] = Object.values(
-    [...(mailboxes.data?.data ?? []), ...(lzDomains.data?.data ?? [])].reduce(
-      (accum, c) => ({ ...accum, [c.id]: c.chain }),
-      {}
-    )
-  );
-
   return (
     <div className="grid grid-cols-4 gap-6 overflow-scroll h-screen max-w-screen-lg mx-auto py-20">
-      {chains
+      {chains.data?.data
         .sort((a, b) => {
           if (cardThemes[a.id] && cardThemes[b.id]) return 0;
           return !cardThemes[a.id] ? -1 : 1;

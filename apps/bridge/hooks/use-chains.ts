@@ -4,24 +4,24 @@ import { ChainDto } from "@/codegen/model";
 import { useInjectedStore } from "@/state/injected";
 
 import { useIsSuperbridge } from "./apps/use-is-superbridge";
-import { useHyperlaneMailboxes } from "./hyperlane/use-hyperlane-mailboxes";
+import { useHyperlaneCustomRoutes } from "./hyperlane/use-hyperlane-custom-routes";
 
 export const useAllChains = () => {
-  const hyperlaneMailboxes = useHyperlaneMailboxes();
   const injectedChains = useInjectedStore((s) => s.chains);
+  const customHyperlaneRoutes = useHyperlaneCustomRoutes();
 
   return useMemo(() => {
     const cache: { [chainId: number]: ChainDto } = {};
 
     for (const chain of [
       ...injectedChains,
-      ...hyperlaneMailboxes.map((x) => x.chain),
+      ...(customHyperlaneRoutes?.chains ?? []),
     ]) {
       cache[chain.id] = chain;
     }
 
     return Object.values(cache);
-  }, [injectedChains, hyperlaneMailboxes]);
+  }, [injectedChains, customHyperlaneRoutes]);
 };
 
 export const useChains = () => {

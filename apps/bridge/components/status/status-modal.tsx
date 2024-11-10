@@ -6,6 +6,7 @@ import { StatusChecks } from "@/components/status/status-checks";
 import { StatusContactModal } from "@/components/status/status-contact-modal";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { optimismFaultProofs } from "@/constants/links";
+import { useChainsForDeployment } from "@/hooks/deployments/use-deployment-chains";
 import { useDeploymentStatusChecks } from "@/hooks/status/use-deployment-status-checks";
 import { useFaultProofUpgradeTime } from "@/hooks/use-fault-proof-upgrade-time";
 import { isOptimism } from "@/utils/deployments/is-mainnet";
@@ -25,8 +26,9 @@ export const StatusModal = ({
 
   const faultProofUpgradeTime = useFaultProofUpgradeTime(deployment);
 
-  const settlementChain = deployment?.l1.name;
-  const rollupChain = deployment?.l2.name;
+  const chains = useChainsForDeployment(deployment?.id);
+  const settlementChain = chains?.l1.name;
+  const rollupChain = chains?.l2.name;
 
   const finalizationPeriod = getPeriod(
     deployment && isOptimism(deployment)
@@ -39,7 +41,7 @@ export const StatusModal = ({
       <DialogContent>
         <DialogHeader className="pt-12 flex flex-col gap-4 items-center justify-center">
           <img
-            src={deployment?.theme?.theme.imageNetwork}
+            src={deployment?.rollupNetworkIcon || ""}
             alt={rollupChain}
             className="w-16 h-16 rounded-full"
           />
@@ -71,14 +73,15 @@ const FaultProofAlert = ({
 }: {
   deployment: DeploymentDto | null;
 }) => {
+  const chains = useChainsForDeployment(deployment?.id);
   return (
     <Alert size={"lg"}>
       <IconAlert className="w-6 h-6" />
-      <AlertTitle>{deployment?.l2.name} Fault Proof upgrade</AlertTitle>
+      <AlertTitle>{chains?.l2.name} Fault Proof upgrade</AlertTitle>
       <AlertDescription>
         <p>
-          The {deployment?.l2.name} Fault Proof upgrade has been targeted for
-          June. What does that mean for you?
+          The {chains?.l2.name} Fault Proof upgrade has been targeted for June.
+          What does that mean for you?
         </p>
         <h3 className="text-foreground font-heading">
           I want to make a withdrawal

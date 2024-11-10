@@ -6,9 +6,12 @@ import { OptimismPortalAbi } from "@/abis/OptimismPortal";
 import { SupportCheckStatus } from "@/components/status/types";
 import { OptimismDeploymentDto } from "@/utils/deployments/is-mainnet";
 
+import { useChainsForDeployment } from "../deployments/use-deployment-chains";
+
 export const usePaused = (deployment: OptimismDeploymentDto | undefined) => {
+  const chains = useChainsForDeployment(deployment?.id);
   const paused = useReadContract({
-    chainId: deployment?.l1.id,
+    chainId: deployment?.l1ChainId,
     functionName: "paused",
     abi: OptimismPortalAbi,
     address: deployment?.contractAddresses.optimismPortal as Address,
@@ -21,21 +24,21 @@ export const usePaused = (deployment: OptimismDeploymentDto | undefined) => {
     if (paused.isFetching) {
       return {
         status: SupportCheckStatus.Loading,
-        title: `${deployment?.l2.name} withdrawals status`,
+        title: `${chains?.l2.name} withdrawals status`,
         description: "Loading",
       };
     }
 
     if (paused.data) {
       return {
-        title: `${deployment?.l2.name} withdrawals paused`,
+        title: `${chains?.l2.name} withdrawals paused`,
         description: `Withdrawals are unable to be processed in this moment`,
         status: SupportCheckStatus.Warning,
       };
     }
 
     return {
-      title: `${deployment?.l2.name} withdrawals enabled`,
+      title: `${chains?.l2.name} withdrawals enabled`,
       description: `Withdrawals are enabled and processing as normal`,
       status: SupportCheckStatus.Ok,
     };

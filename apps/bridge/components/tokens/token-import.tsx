@@ -2,6 +2,7 @@ import { useTranslation } from "react-i18next";
 import { Address, formatUnits } from "viem";
 
 import { useDeployment } from "@/hooks/deployments/use-deployment";
+import { useDeploymentChains } from "@/hooks/deployments/use-deployment-chains";
 import { useModal } from "@/hooks/use-modal";
 import { formatDecimals } from "@/utils/format-decimals";
 
@@ -13,6 +14,7 @@ export const TokenImport = ({ address }: { address: Address }) => {
   const customTokenImportModal = useModal("CustomTokenImport");
 
   const deployment = useDeployment();
+  const chains = useDeploymentChains();
   const {
     balance,
     isOptimismToken,
@@ -61,8 +63,8 @@ export const TokenImport = ({ address }: { address: Address }) => {
       return (
         <div className="py-8 px-4 text-center font-heading text-xs space-y-2">
           <div>
-            This looks like a token on {deployment?.l1.name}. You need to enter
-            the contract address for a token on {deployment?.l2.name}.
+            This looks like a token on {chains?.l1.name}. You need to enter the
+            contract address for a token on {chains?.l2.name}.
           </div>
 
           <div>

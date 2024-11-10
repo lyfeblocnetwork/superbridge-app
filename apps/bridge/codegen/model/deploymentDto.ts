@@ -43,7 +43,6 @@ export interface DeploymentDto {
   /** @nullable */
   rollupNetworkIcon: string | null;
   status: DeploymentDtoStatus;
-  supportsNftBridging: boolean;
   /** @nullable */
   theme: DeploymentDtoTheme;
   tokens: FetchedMultichainTokenDto[];

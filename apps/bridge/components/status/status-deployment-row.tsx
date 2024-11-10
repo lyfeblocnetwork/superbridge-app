@@ -1,4 +1,5 @@
 import { DeploymentDto } from "@/codegen/model";
+import { useChainsForDeployment } from "@/hooks/deployments/use-deployment-chains";
 import { useDeploymentStatusChecks } from "@/hooks/status/use-deployment-status-checks";
 
 import { SupportCheckStatus } from "./types";
@@ -11,8 +12,7 @@ export function StatusDeploymentRow({
   onClick: () => void;
 }) {
   const statusChecks = useDeploymentStatusChecks(deployment);
-
-  const theme = deployment.theme?.theme;
+  const chains = useChainsForDeployment(deployment.id);
 
   const statusLoading = statusChecks.find(
     (x) => x.status === SupportCheckStatus.Loading
@@ -30,11 +30,11 @@ export function StatusDeploymentRow({
       className="flex gap-2 items-center p-6 w-full cursor-pointer"
     >
       <img
-        src={theme?.imageNetwork}
-        alt={deployment.l2.name}
+        src={deployment.rollupNetworkIcon || ""}
+        alt={chains?.l2.name}
         className="w-10 h-10 rounded-full"
       />
-      <h3 className="font-heading text-xl">{deployment.l2.name}</h3>
+      <h3 className="font-heading text-xl">{chains?.l2.name}</h3>
 
       <div className="bg-card ml-auto">
         {statusLoading ? (

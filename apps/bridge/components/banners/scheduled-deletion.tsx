@@ -1,18 +1,19 @@
 import clsx from "clsx";
 
-import { useDeployment } from "@/hooks/deployments/use-deployment";
+import { useApp, useDeletedAt } from "@/hooks/use-metadata";
 
 import { IconAlert } from "../icons";
 
 export const ScheduledDeletion = () => {
-  const deployment = useDeployment();
+  const app = useApp();
+  const deletedAt = useDeletedAt();
 
   const supportLink =
-    deployment?.theme?.links.find((x) =>
+    app.links.find((x) =>
       ["discord", "twitter", "x.com"].find((y) =>
         x.url.toLowerCase().includes(y)
       )
-    )?.url ?? deployment?.theme?.links[0].url;
+    )?.url ?? app.links[0]?.url;
 
   return (
     <div className="flex relative items-start gap-3 w-full p-4 bg-red-500/80 bg-[url('/img/shutdown-grid.svg')] bg-repeat rounded-[18px] shadow-sm">
@@ -21,9 +22,9 @@ export const ScheduledDeletion = () => {
       </div>
       <div className="prose">
         <p className="text-white text-xs">
-          {deployment?.l2.name} bridge will shut down on{" "}
-          {new Date(deployment?.deletedAt ?? 0).toUTCString()}. Please finalize
-          any withdrawals before the shut down date.
+          {app.head.title} bridge will shut down on{" "}
+          {new Date(deletedAt || 0).toUTCString()}. Please finalize any
+          withdrawals before the shut down date.
         </p>
         <p className="text-white text-xs">
           <a
@@ -33,7 +34,7 @@ export const ScheduledDeletion = () => {
               supportLink && "cursor-pointer hover:underline"
             )}
           >
-            For support contact the {deployment?.l2.name} team.
+            For support contact the {app.head.title} team.
           </a>
         </p>
       </div>

@@ -7,6 +7,7 @@
  */
 import type { OpBridgedUsdcDto } from './opBridgedUsdcDto';
 import type { FetchedTokenDtoOpBridgedUsdcV2 } from './fetchedTokenDtoOpBridgedUsdcV2';
+import type { SkyBridgeDto } from './skyBridgeDto';
 
 export interface FetchedTokenDto {
   address: string;
@@ -17,5 +18,6 @@ export interface FetchedTokenDto {
   name: string;
   opBridgedUsdc?: OpBridgedUsdcDto;
   opBridgedUsdcV2?: FetchedTokenDtoOpBridgedUsdcV2;
+  sky?: SkyBridgeDto;
   symbol: string;
 }

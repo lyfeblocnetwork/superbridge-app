@@ -1,6 +1,7 @@
 import { IconAlert } from "@/components/icons";
 import { optimismFaultProofs } from "@/constants/links";
 import { useDeployment } from "@/hooks/deployments/use-deployment";
+import { useDeploymentChains } from "@/hooks/deployments/use-deployment-chains";
 import { useModal } from "@/hooks/use-modal";
 import { useConfigState } from "@/state/config";
 
@@ -11,6 +12,7 @@ export const WithdrawalReadyToFinalizeModal = () => {
   const deployment = useDeployment();
   const modal = useModal("WithdrawalReadyToFinalize");
   const setDisplayTransactions = useConfigState.useSetDisplayTransactions();
+  const chains = useDeploymentChains();
 
   return (
     <Dialog open={modal.isOpen} onOpenChange={modal.close}>
@@ -21,13 +23,13 @@ export const WithdrawalReadyToFinalizeModal = () => {
               <IconAlert className="w-16 h-16" />
             </div>
             <h1 className="font-heading text-xl  text-left">
-              Finalize your withdrawals before {deployment?.l2.name} Fault Proof
+              Finalize your withdrawals before {chains?.l2.name} Fault Proof
               upgrade
             </h1>
             <div className="text-xs text-left md:text-sm prose-sm  leading-relaxed  text-muted-foreground text-pretty">
               <p>
-                The {deployment?.l2.name} Fault Proof upgrade has been targeted
-                for June 10.
+                The {chains?.l2.name} Fault Proof upgrade has been targeted for
+                June 10.
               </p>
               <p>
                 We recommend you finalize your withdrawals before the upgrade is

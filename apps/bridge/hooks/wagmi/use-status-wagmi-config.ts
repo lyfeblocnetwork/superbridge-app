@@ -1,13 +1,25 @@
 import { getDefaultConfig } from "@rainbow-me/rainbowkit";
 import "@rainbow-me/rainbowkit/styles.css";
 import { useMemo } from "react";
+import { isPresent } from "ts-is-present";
 import { fallback, http } from "wagmi";
 
 import { DeploymentDto } from "@/codegen/model";
 
+import { useAllChains } from "../use-chains";
+
 export function useStatusWagmiConfig(deployments: DeploymentDto[]) {
+  const allChains = useAllChains();
   return useMemo(() => {
-    const chains = deployments.flatMap((d) => [d.l1, d.l2]);
+    const chains = deployments
+      .flatMap((d) => {
+        const l1 = allChains.find((x) => x.id === d.l1ChainId);
+        const l2 = allChains.find((x) => x.id === d.l2ChainId);
+        if (!l1 || !l2) return null;
+        return [l1, l2];
+      })
+      .filter(isPresent);
+
     const transports = chains.reduce(
       (accum, chain) => ({
         ...accum,
@@ -26,5 +38,5 @@ export function useStatusWagmiConfig(deployments: DeploymentDto[]) {
       transports,
       ssr: true,
     });
-  }, [deployments]);
+  }, [deployments, allChains]);
 }

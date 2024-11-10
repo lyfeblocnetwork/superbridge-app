@@ -9,9 +9,12 @@ import {
 import { SupportCheckStatus } from "@/components/status/types";
 import { OptimismDeploymentDto } from "@/utils/deployments/is-mainnet";
 
+import { useChainsForDeployment } from "../deployments/use-deployment-chains";
+
 export const useLatestStateRoot = (
   deployment: OptimismDeploymentDto | undefined
 ): { title: string; description: string; status: SupportCheckStatus } => {
+  const chains = useChainsForDeployment(deployment?.id);
   const latestDisputeGame = useBridgeControllerGetLatestDisputeGame(
     deployment?.id ?? "",
     {
@@ -34,7 +37,7 @@ export const useLatestStateRoot = (
     : latestStateRoot.data?.data.value;
   const block = useBlock({
     blockNumber: BigInt(l2BlockNumber || "0"),
-    chainId: deployment?.l2.id,
+    chainId: deployment?.l2ChainId,
     query: {
       enabled: !!l2BlockNumber,
     },
@@ -112,7 +115,7 @@ export const useLatestStateRoot = (
       return {
         status: SupportCheckStatus.Warning,
         title,
-        description: `Last observed ${name} was more than ${distance} ago. This could affect proving withdrawals from ${deployment?.l2.name}`,
+        description: `Last observed ${name} was more than ${distance} ago. This could affect proving withdrawals from ${chains?.l2.name}`,
       };
     }
 

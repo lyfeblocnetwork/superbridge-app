@@ -17,25 +17,25 @@ export const useCustomToken = (address: string | undefined) => {
       {
         address: address as Address,
         abi: erc20Abi,
-        chainId: deployment?.l2.id,
+        chainId: deployment?.l2ChainId,
         functionName: "name",
       },
       {
         address: address as Address,
         abi: erc20Abi,
-        chainId: deployment?.l2.id,
+        chainId: deployment?.l2ChainId,
         functionName: "symbol",
       },
       {
         address: address as Address,
         abi: erc20Abi,
-        chainId: deployment?.l2.id,
+        chainId: deployment?.l2ChainId,
         functionName: "decimals",
       },
       {
         address: address as Address,
         abi: erc20Abi,
-        chainId: deployment?.l2.id,
+        chainId: deployment?.l2ChainId,
         functionName: "balanceOf",
         args: [account?.address ?? "0x"],
       },
@@ -44,25 +44,25 @@ export const useCustomToken = (address: string | undefined) => {
       {
         address: address as Address,
         abi: OptimismMintableERC20Abi,
-        chainId: deployment?.l2.id,
+        chainId: deployment?.l2ChainId,
         functionName: "BRIDGE",
       },
       {
         address: address as Address,
         abi: OptimismMintableERC20Abi,
-        chainId: deployment?.l2.id,
+        chainId: deployment?.l2ChainId,
         functionName: "l2Bridge",
       },
       {
         address: address as Address,
         abi: OptimismMintableERC20Abi,
-        chainId: deployment?.l2.id,
+        chainId: deployment?.l2ChainId,
         functionName: "REMOTE_TOKEN",
       },
       {
         address: address as Address,
         abi: OptimismMintableERC20Abi,
-        chainId: deployment?.l2.id,
+        chainId: deployment?.l2ChainId,
         functionName: "l1Token",
       },
 
@@ -70,13 +70,13 @@ export const useCustomToken = (address: string | undefined) => {
       {
         address: address as Address,
         abi: StandardArbERC20Abi,
-        chainId: deployment?.l2.id,
+        chainId: deployment?.l2ChainId,
         functionName: "l1Address",
       },
       {
         address: address as Address,
         abi: StandardArbERC20Abi,
-        chainId: deployment?.l2.id,
+        chainId: deployment?.l2ChainId,
         functionName: "l2Gateway",
       },
 
@@ -84,7 +84,7 @@ export const useCustomToken = (address: string | undefined) => {
       {
         address: address as Address,
         abi: erc20Abi,
-        chainId: deployment?.l1.id,
+        chainId: deployment?.l1ChainId,
         functionName: "name",
       },
     ],
@@ -105,13 +105,13 @@ export const useCustomToken = (address: string | undefined) => {
   const opL2Bridge = useReadContract({
     address: OP_L2_BRIDGE,
     abi: L2StandardBridgeAbi,
-    chainId: deployment?.l2.id,
+    chainId: deployment?.l2ChainId,
     functionName: "OTHER_BRIDGE",
   });
   const arbL2Gateway = useReadContract({
     address: ARB_L2_GATEWAY,
     abi: L2ERC20GatewayAbi,
-    chainId: deployment?.l2.id,
+    chainId: deployment?.l2ChainId,
     functionName: "counterpartGateway",
   });
   const OP_L1_BRIDGE = opL2Bridge.data;

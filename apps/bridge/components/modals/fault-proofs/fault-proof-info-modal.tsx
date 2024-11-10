@@ -3,6 +3,7 @@ import { DialogTitle } from "@radix-ui/react-dialog";
 import { IconAlert } from "@/components/icons";
 import { NetworkIcon } from "@/components/network-icon";
 import { optimismFaultProofs } from "@/constants/links";
+import { useChainsForDeployment } from "@/hooks/deployments/use-deployment-chains";
 import { useDeployments } from "@/hooks/deployments/use-deployments";
 import { useModal } from "@/hooks/use-modal";
 
@@ -17,7 +18,9 @@ import {
 export const FaultProofInfoModal = () => {
   const modal = useModal("FaultProofInfo");
 
-  const sonieum = useDeployments().find((x) => x.name === "soneium-minato");
+  const sonieum = useChainsForDeployment(
+    useDeployments().find((x) => x.name === "soneium-minato")?.id
+  );
 
   return (
     <Dialog open={modal.isOpen} onOpenChange={modal.close}>
