@@ -3,6 +3,16 @@ import { useWalletClient } from "wagmi";
 
 import { ChainDto } from "@/codegen/model";
 
+function cleanUrl(url: string) {
+  if (!url.includes("publicnode.com")) {
+    return url;
+  }
+
+  return url.lastIndexOf("/") > url.indexOf(".com")
+    ? url.substring(0, url.lastIndexOf("/"))
+    : url;
+}
+
 export const useSwitchChain = () => {
   const wallet = useWalletClient();
 
@@ -21,6 +31,7 @@ export const useSwitchChain = () => {
         nativeCurrency.decimals = 18;
 
         const chain_ = { ...chain, nativeCurrency } as Chain;
+        chain_.rpcUrls.default.http = chain_.rpcUrls.default.http.map(cleanUrl);
 
         await wallet.data?.addChain({ chain: chain_ });
         await new Promise((resolve) => setTimeout(resolve, 1000));
