@@ -25,18 +25,18 @@ export const useCctpProgressRows = (
   const amount = useTxAmount(tx, token?.[domains?.from.chainId ?? 0]);
   const chains = useTxFromTo(tx);
 
-  if (!tx || !isCctpBridge(tx) || !domains) {
+  if (!tx || !isCctpBridge(tx) || !domains || !chains) {
     return null;
   }
   const pendingFinalise = pendingFinalises[tx?.id ?? ""];
 
   const burn: TransactionStep = {
     label: t("confirmationModal.startBridgeOn", {
-      from: chains?.from.name,
+      from: chains.from.name,
     }),
     hash: tx.bridge.timestamp ? tx.bridge.transactionHash : undefined,
     pendingHash: tx.bridge.timestamp ? undefined : tx.bridge.transactionHash,
-    chain: tx.from,
+    chain: chains.from,
     button: undefined,
     token,
     amount,
@@ -55,7 +55,7 @@ export const useCctpProgressRows = (
           },
           pendingHash: pendingFinalise,
           hash: undefined,
-          chain: tx.to,
+          chain: chains.to,
           gasLimit: BigInt(300_000),
           token,
           amount,
@@ -67,7 +67,7 @@ export const useCctpProgressRows = (
           }),
           hash: tx.relay?.transactionHash,
           pendingHash: pendingFinalise,
-          chain: tx.to,
+          chain: chains.to,
           button: {
             type: ButtonComponent.Mint,
             enabled: false,

@@ -9,10 +9,7 @@ import type { DeploymentDtoArbitrumNativeToken } from './deploymentDtoArbitrumNa
 import type { DeploymentDtoConfig } from './deploymentDtoConfig';
 import type { DeploymentDtoContractAddresses } from './deploymentDtoContractAddresses';
 import type { DeploymentFamily } from './deploymentFamily';
-import type { ChainDto } from './chainDto';
 import type { DeploymentDtoStatus } from './deploymentDtoStatus';
-import type { DeploymentDtoTheme } from './deploymentDtoTheme';
-import type { FetchedMultichainTokenDto } from './fetchedMultichainTokenDto';
 import type { DeploymentDtoTos } from './deploymentDtoTos';
 import type { DeploymentType } from './deploymentType';
 
@@ -31,9 +28,7 @@ export interface DeploymentDto {
   family: DeploymentFamily;
   finalizeDuration: number;
   id: string;
-  l1: ChainDto;
   l1ChainId: number;
-  l2: ChainDto;
   l2ChainId: number;
   name: string;
   /** @nullable */
@@ -43,9 +38,6 @@ export interface DeploymentDto {
   /** @nullable */
   rollupNetworkIcon: string | null;
   status: DeploymentDtoStatus;
-  /** @nullable */
-  theme: DeploymentDtoTheme;
-  tokens: FetchedMultichainTokenDto[];
   /** @nullable */
   tos: DeploymentDtoTos;
   type: DeploymentType;

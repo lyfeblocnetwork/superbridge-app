@@ -74,10 +74,10 @@ export function useTxMultichainToken(tx: Transaction | null | undefined) {
     return getToken(
       tokens.data,
       {
-        chainId: tx.from.id,
+        chainId: tx.fromChainId,
         tokenAddress: tx.token,
       },
-      tx.to.id
+      tx.toChainId
     );
   }
 
