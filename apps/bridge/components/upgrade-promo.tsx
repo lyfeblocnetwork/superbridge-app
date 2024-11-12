@@ -1,13 +1,19 @@
+import { useDeployment } from "@/hooks/deployments/use-deployment";
 import { useIsPaid } from "@/hooks/use-metadata";
 
 import { Button } from "./ui/button";
 
 export const UpgradePromo = () => {
   const isPaid = useIsPaid();
+  const deployment = useDeployment();
 
   if (isPaid) {
     return null;
   }
+
+  const link = deployment?.conduitId
+    ? "https://superbridge.app/rollies?referrer=conduit"
+    : "https://superbridge.app/rollies";
 
   return (
     <div className="w-full flex items-center justify-between px-5 py-4 bg-[#A882FD] bg-[url('/img/upgrade-grid.svg')] bg-repeat rounded-[18px] shadow-lg">
@@ -95,7 +101,7 @@ export const UpgradePromo = () => {
         </div>
       </div>
       <Button size={"xs"} className="bg-black text-white" asChild>
-        <a href="https://superbridge.app/rollies" target="_blank">
+        <a href={link} target="_blank">
           Learn more
         </a>
       </Button>
