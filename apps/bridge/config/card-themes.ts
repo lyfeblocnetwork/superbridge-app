@@ -982,7 +982,7 @@ export const cardThemes: {
   [80084]: beraTheme,
   [984122]: formaTheme,
   [1301]: unichainTheme,
-  [123456789876543211]: inkTheme,
+  [763373]: inkTheme,
   [12345678987654321]: inkTheme,
   [9897]: arenaZTheme,
   [7897]: arenaZTheme,

@@ -41,19 +41,6 @@ const container = {
   },
 };
 
-const item = {
-  hidden: { opacity: 0, scale: 0.85 },
-  show: {
-    opacity: 1,
-    scale: 1,
-    transition: {
-      type: "spring",
-      stiffness: 300,
-      damping: 12,
-    },
-  },
-};
-
 const PlacehoderItem = {
   hidden: { opacity: 0, scale: 0.85 },
   show: {
@@ -73,21 +60,17 @@ const useComingSoonChains = () => {
 
   const testnets = useInjectedStore((s) => s.superbridgeTestnets);
 
-  const testnetInk = {
-    id: 123456789876543211,
-    name: "Ink",
-  };
   const mainnetInk = {
     id: 12345678987654321,
     name: "Ink",
   };
 
   if (isSuperbridgeMainnet) {
-    return testnets ? [testnetInk] : [mainnetInk];
+    return testnets ? [] : [mainnetInk];
   }
 
   if (isSuperbridgeTestnet) {
-    return [testnetInk];
+    return [];
   }
 
   return [];
