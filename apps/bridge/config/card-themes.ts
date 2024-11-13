@@ -881,6 +881,14 @@ const nodgamesTheme = {
   },
 };
 
+const superseedTheme = {
+  icon: "/img/superseed/icon.svg",
+  card: {
+    className: "bg-[#000000]",
+    title: "text-white",
+  },
+};
+
 export const cardThemes: {
   [chainId: string]: { card: CardTheme; icon: string } | undefined;
 } = {
@@ -923,7 +931,7 @@ export const cardThemes: {
   [pgnTestnet.id]: pgnTheme,
   [redstone.id]: redstoneTheme,
   [17069]: redstoneTheme,
-  [lyra.id]: lyraTheme,
+  [lyra.id]: deriveTheme,
   [lisk.id]: liskTheme,
   [liskSepolia.id]: liskTheme,
   [291]: orderlyTheme,
@@ -939,51 +947,28 @@ export const cardThemes: {
   [swanProximaTestnet.id]: swanTheme,
   [snax.id]: snaxTheme,
   [snaxTestnet.id]: snaxTheme,
-  // Race
   [6805]: raceTheme,
-  // Race Testnet
   [6806]: raceTheme,
-  // Degen Chain
   [666666666]: degenTheme,
-  // Fuse
   [122]: fuseTheme,
-  // Gnosis
   [100]: gnosisTheme,
-  // Kroma
   [255]: kromaTheme,
-  // Lukso
   [42]: luksoTheme,
-  // Mantle
   [5000]: mantleTheme,
-  // Merlin
   [4200]: merlinTheme,
-  // Metis
   [1088]: metisTheme,
-  // Moonbeam
   [1284]: moonbeamTheme,
-  // Polygon zkEVM
   [1101]: polygonZkEvmTheme,
-  // Real
   [111188]: realTheme,
-  // Sei
   [1329]: seiTheme,
-  // Taiko
   [167000]: taikoTheme,
-  // Xai
   [660279]: xiaTheme,
-  // xLayer
   [196]: xlayerTheme,
-  // Zeta Chain
   [7000]: zetaTheme,
-  // Proof of Play Apex
   [70700]: proofofplayTheme,
-  // Sanko
   [1996]: sankoTheme,
-  // World Chain
   [480]: worldchainTheme,
-  // Endurance
   [648]: enduranceTheme,
-  // cheesechain
   [383353]: cheesechainTheme,
   [360]: moltenTheme,
   [169]: mantaTheme,
@@ -1000,12 +985,12 @@ export const cardThemes: {
   [123456789876543211]: inkTheme,
   [12345678987654321]: inkTheme,
   [9897]: arenaZTheme,
+  [7897]: arenaZTheme,
   [6321]: auraTheme,
   [994873017]: lumiaTheme,
   [3441006]: mantaTheme,
   [1513]: storyTheme,
   [1516]: storyTheme,
-
   [5845]: tangleTheme,
   [3799]: tangleTheme,
   [911867]: odysseyTheme,
@@ -1015,4 +1000,20 @@ export const cardThemes: {
   [33139]: apeChainTheme,
   [1625]: gravityTheme,
   [flowMainnet.id]: flowTheme,
+  [4801]: worldchainTheme,
+  [19424]: alloTheme,
+  [28122024]: ancient8Theme,
+  [28882]: bobaTheme,
+  [42019]: donatuzTheme,
+  [42026]: donatuzTheme,
+  [233]: ethernityTheme,
+  [183]: ethernityTheme,
+  [3397901]: funkiTheme,
+  [33979]: funkiTheme,
+  [10888]: gameswiftTheme,
+  [80008]: polynominalTheme,
+  [8008]: polynominalTheme,
+  [625]: bnryTheme,
+  [53302]: superseedTheme,
+  [5330]: superseedTheme,
 };
