@@ -7,7 +7,6 @@ import { useNavIcon } from "@/hooks/use-theme";
 
 import { TokenBanner } from "./banners/token-banner";
 import { HeaderLinks } from "./header/header-links";
-import { HeaderVersion } from "./header/header-version";
 import { SBLockup, SBLockupSmall } from "./icons";
 
 export function Header() {
@@ -28,9 +27,6 @@ export function Header() {
           <div className="flex gap-2 items-center">
             <SBLockup className="hidden md:inline-flex h-8 w-auto" />
             <SBLockupSmall className="md:hidden h-8 w-auto" />
-            <span className="bg-primary text-background px-2 py-1 text-[10px] leading-none rounded-full inline-flex">
-              beta
-            </span>
           </div>
         ) : (
           <img
@@ -58,11 +54,6 @@ export function Header() {
           }}
         />
         <HeaderLinks />
-        {isSuperbridge && (
-          <div className="fixed bottom-4 right-6">
-            <HeaderVersion />
-          </div>
-        )}
       </div>
     </nav>
   );
