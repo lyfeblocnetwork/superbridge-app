@@ -854,7 +854,7 @@ const bobaTheme = {
   icon: "/img/boba/icon.svg",
   card: {
     className: "bg-[#E5E6E1]",
-    title: "text-white",
+    title: "text-black",
   },
 };
 const alloTheme = {
