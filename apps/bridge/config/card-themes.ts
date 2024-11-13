@@ -15,6 +15,7 @@ import {
   celoAlfajores,
   cyber,
   cyberTestnet,
+  flowMainnet,
   fraxtal,
   fraxtalTestnet,
   holesky,
@@ -758,6 +759,128 @@ const gravityTheme = {
   },
 };
 
+const flowTheme = {
+  icon: "/img/flow/icon.svg",
+  card: {
+    className: "bg-[#00EF8B]",
+    title: "text-white",
+  },
+};
+
+const bnryTheme = {
+  icon: "/img/bnry/icon.svg",
+  card: {
+    className: "bg-[url('/img/bnry/bg-card.png')] bg-cover",
+    title: "text-white",
+  },
+};
+
+const polynominalTheme = {
+  icon: "/img/polynominal/icon.svg",
+  card: {
+    className: "bg-gradient-to-br from-[#080808] to-[#2C370C]",
+    title: "text-white",
+  },
+};
+
+const ozeanTheme = {
+  icon: "/img/ozean/icon.svg",
+  card: {
+    className: "bg-[#0040FF]",
+    title: "text-white",
+    overlay: {
+      className: "bg-[url('/img/ozean/bg-card.svg')] bg-repeat opacity-50",
+    },
+  },
+};
+
+const deriveTheme = {
+  icon: "/img/derive/icon.svg",
+  card: {
+    className: "bg-[url('/img/derive/bg-card.png')] bg-contain",
+    title: "text-white",
+  },
+};
+
+const hamTheme = {
+  icon: "/img/ham/icon.svg",
+  card: {
+    className: "bg-white border border-2 border-[#EB4747]",
+    title: "text-[#EB4747]",
+  },
+};
+
+const gameswiftTheme = {
+  icon: "/img/gameswift/icon.svg",
+  card: {
+    className: "bg-gradient-to-br from-[#141519] to-black",
+    title: "text-white",
+  },
+};
+
+const funkiTheme = {
+  icon: "/img/funki/icon.svg",
+  card: {
+    className: "bg-[#680DFE]",
+    title: "text-white",
+  },
+};
+
+const fractalTheme = {
+  icon: "/img/fractal/icon.svg",
+  card: {
+    className: "bg-[#2539EF]",
+    title: "text-white",
+  },
+};
+
+const ethernityTheme = {
+  icon: "/img/ethernity/icon.svg",
+  card: {
+    className: "bg-gradient-to-br from-[#191045] to-[#030418]",
+    title: "text-white",
+  },
+};
+
+const donatuzTheme = {
+  icon: "/img/donatuz/icon.png",
+  card: {
+    className: "bg-gradient-to-br from-[#04063D] to-[#1C0B75]",
+    title: "text-white",
+  },
+};
+
+const bobaTheme = {
+  icon: "/img/boba/icon.svg",
+  card: {
+    className: "bg-[#E5E6E1]",
+    title: "text-white",
+  },
+};
+const alloTheme = {
+  icon: "/img/allo/icon.svg",
+  card: {
+    className: "bg-[#F7931A]",
+    title: "text-white",
+  },
+};
+
+const swellTheme = {
+  icon: "/img/swell/icon.svg",
+  card: {
+    className: "bg-gradient-to-br from-[#3068EF] to-[#2F43EC]",
+    title: "text-white",
+  },
+};
+
+const nodgamesTheme = {
+  icon: "/img/nodgames/icon.svg",
+  card: {
+    className: "bg-[#251D1C]",
+    title: "text-white",
+  },
+};
+
 export const cardThemes: {
   [chainId: string]: { card: CardTheme; icon: string } | undefined;
 } = {
@@ -891,4 +1014,5 @@ export const cardThemes: {
   [2222]: kavaTheme,
   [33139]: apeChainTheme,
   [1625]: gravityTheme,
+  [flowMainnet.id]: flowTheme,
 };
