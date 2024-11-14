@@ -197,7 +197,7 @@ const redstoneTheme = {
 const liskTheme = {
   icon: "/img/lisk-mainnet/icon.svg",
   card: {
-    className: "bg-gradient-to-b from-[#4070F4] to-[#295CE9] ",
+    className: "bg-gradient-to-b from-black via-[#1E134D] to-[#5B3CF3] ",
     title: "text-white",
   },
 };
