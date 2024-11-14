@@ -9,6 +9,7 @@ import { useTokenPrice } from "@/hooks/use-prices";
 import { isRouteQuote, isRouteTransactionStep } from "@/utils/guards";
 import { scaleToNativeTokenDecimals } from "@/utils/native-token-scaling";
 
+import { useBridgeGasEstimate } from "../bridge/use-bridge-gas-estimate";
 import { useSelectedBridgeRoute } from "../routes/use-selected-bridge-route";
 import { useEstimateFeesPerGas } from "./use-estimate-fees-per-gas";
 
@@ -23,6 +24,8 @@ export const useEstimateTotalNetworkFees = () => {
   const toNativeToken = useToNativeToken();
 
   const route = useSelectedBridgeRoute();
+
+  const bridgeGasEstimate = useBridgeGasEstimate();
 
   const fromNativeTokenPrice = useTokenPrice(fromNativeToken ?? null);
   const toNativeTokenPrice = useTokenPrice(toNativeToken ?? null);
@@ -46,7 +49,7 @@ export const useEstimateTotalNetworkFees = () => {
     };
   }
 
-  const data = route.data.result.steps.reduce((accum, x) => {
+  const data = route.data.result.steps.reduce((accum, x, index) => {
     if (isRouteTransactionStep(x)) {
       const fromGas = {
         token: fromNativeToken,
@@ -64,8 +67,13 @@ export const useEstimateTotalNetworkFees = () => {
         return accum;
       }
 
+      const estimate =
+        index === 0
+          ? bridgeGasEstimate.data || x.estimatedGasLimit
+          : x.estimatedGasLimit;
+
       const nativeTokenAmount = scaleToNativeTokenDecimals({
-        amount: BigInt(x.estimatedGasLimit) * gas.gasPrice,
+        amount: BigInt(estimate) * gas.gasPrice,
         decimals: gas.token?.decimals ?? 18,
       });
       const formattedAmount = parseFloat(
