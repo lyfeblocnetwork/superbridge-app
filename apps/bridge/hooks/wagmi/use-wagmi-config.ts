@@ -27,8 +27,13 @@ export function useWagmiConfig() {
 
     const chainsWithIcons: Chain[] = chains.map((c) => {
       if (chainIcons[c.id]) {
-        // @ts-expect-error
-        c.iconUrl = chainIcons[c.id];
+        if (c.name === "Molten") {
+          // @ts-expect-error
+          c.iconUrl = "/img/networks/molten.svg";
+        } else {
+          // @ts-expect-error
+          c.iconUrl = chainIcons[c.id];
+        }
       } else {
         const d = allDeployments.find((x) => x.l2ChainId === c.id);
         if (d?.rollupNetworkIcon) {
