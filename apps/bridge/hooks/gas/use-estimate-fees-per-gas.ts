@@ -42,7 +42,7 @@ export const useEstimateFeesPerGas = (
             ? parseUnits("0.2", 9)
             : copy.maxPriorityFeePerGas;
       } else {
-        copy.maxFeePerGas += copy.maxFeePerGas / BigInt(20);
+        copy.maxFeePerGas += copy.maxFeePerGas / BigInt(10);
       }
     }
 
