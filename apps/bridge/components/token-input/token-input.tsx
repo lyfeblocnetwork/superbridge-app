@@ -1,8 +1,11 @@
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { formatUnits } from "viem";
+import { Address, formatUnits, isAddressEqual } from "viem";
 import { useAccount } from "wagmi";
 
 import { DeploymentFamily } from "@/codegen/model";
+import { useArbitrumGasCostsInWei } from "@/hooks/arbitrum/use-arbitrum-gas-costs";
+import { useCustomGasTokenAddress } from "@/hooks/custom-gas-token/use-custom-gas-token-address";
 import { useDeployment } from "@/hooks/deployments/use-deployment";
 import { useActiveTokens } from "@/hooks/tokens";
 import { useIsCustomToken } from "@/hooks/tokens/use-is-custom-token";
@@ -11,6 +14,7 @@ import { useSelectedToken } from "@/hooks/tokens/use-token";
 import { useTokenBalance } from "@/hooks/use-balances";
 import { useModal } from "@/hooks/use-modal";
 import { useSendAmount } from "@/hooks/use-send-amount";
+import { useIsArbitrumDeposit } from "@/hooks/use-withdrawing";
 import { useConfigState } from "@/state/config";
 import { formatDecimals } from "@/utils/format-decimals";
 import { isEth } from "@/utils/tokens/is-eth";
@@ -30,6 +34,11 @@ export const TokenInput = () => {
   const tokenBalance = useTokenBalance(token);
   const isCustomToken = useIsCustomToken(token);
   const isCustomTokenFromList = useIsCustomTokenFromList(token);
+  const arbitrumNativeTokenGasCosts = useArbitrumGasCostsInWei();
+  const isArbitrumDeposit = useIsArbitrumDeposit();
+  const gasToken = useCustomGasTokenAddress(useDeployment()?.id);
+
+  const [clickedMax, setClickedMax] = useState(false);
 
   const rawAmount = useConfigState.useRawAmount();
   const setRawAmount = useConfigState.useSetRawAmount();
@@ -42,6 +51,50 @@ export const TokenInput = () => {
   const isCustomTokenBridgingEnabled =
     useDeployment()?.family === DeploymentFamily.optimism;
 
+  const onSetMax = () => {
+    setClickedMax(true);
+
+    if (
+      isArbitrumDeposit &&
+      !!token?.address &&
+      !!gasToken &&
+      isAddressEqual(token?.address as Address, gasToken)
+    ) {
+      setRawAmount(
+        formatUnits(
+          tokenBalance.data - arbitrumNativeTokenGasCosts.extraAmount,
+          token.decimals
+        )
+      );
+    } else {
+      setRawAmount(formattedTokenBalance);
+    }
+  };
+
+  useEffect(() => {
+    if (
+      clickedMax &&
+      isArbitrumDeposit &&
+      !!token?.address &&
+      !!gasToken &&
+      isAddressEqual(token?.address as Address, gasToken)
+    ) {
+      setRawAmount(
+        formatUnits(
+          tokenBalance.data - arbitrumNativeTokenGasCosts.extraAmount,
+          token.decimals
+        )
+      );
+    }
+  }, [
+    isArbitrumDeposit,
+    clickedMax,
+    arbitrumNativeTokenGasCosts.extraAmount,
+    gasToken,
+    token?.address,
+    tokenBalance.data,
+  ]);
+
   return (
     <div
       className={`flex flex-col gap-2.5 relative rounded-2xl px-4 py-5 border border-transparent focus-within:border-border transition-colors bg-muted `}
@@ -52,6 +105,7 @@ export const TokenInput = () => {
           onChange={(e) => {
             const parsed = e.target.value.replaceAll(",", ".");
             setRawAmount(parsed);
+            setClickedMax(false);
           }}
           type="text"
           inputMode="decimal"
@@ -127,7 +181,7 @@ export const TokenInput = () => {
 
                 {!isEth(token) && (
                   <button
-                    onClick={() => setRawAmount(formattedTokenBalance)}
+                    onClick={onSetMax}
                     className="h-5 text-[10px] font-button bg-card rounded-full px-2 py-1 -mt-1 leading-none text-muted-foreground transition-all hover:scale-105"
                   >
                     {t("buttons.max")}
