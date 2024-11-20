@@ -6,6 +6,7 @@
  * OpenAPI spec version: 1.0
  */
 
-export interface LzContractAddressesDto {
-  endpoint: string;
+export interface GetBridgeConfigV3Dto {
+  host: string;
+  hyperlaneWarpRoutes?: string;
 }

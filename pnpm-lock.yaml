@@ -4021,6 +4021,7 @@ packages:
 
   eciesjs@0.3.20:
     resolution: {integrity: sha512-Rz5AB8v9+xmMdS/R7RzWPe/R8DP5QfyrkA6ce4umJopoB5su2H2aDy/GcgIfwhmCwxnBkqGf/PbGzmKcGtIgGA==}
+    deprecated: Please upgrade to v0.4+
 
   ee-first@1.1.1:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
@@ -6051,12 +6052,6 @@ packages:
     resolution: {integrity: sha512-RSn9F68PjH9HqtltsSnqYC1XXoWe9Bju5+213R98cNGttag9q9yAOTzdbsqvIa7aNm5WffBZFpWYr2aWrklWAw==}
     engines: {node: '>= 6'}
 
-  object-inspect@1.12.3:
-    resolution: {integrity: sha512-geUvdk7c+eizMNUDkRpW1wJwgfOiOeHbxBR/hLXK1aT6zmVSO0jsQcs7fj6MGw89jC/cjGfLcNOrtMYtGqm81g==}
-
-  object-inspect@1.13.1:
-    resolution: {integrity: sha512-5qoj1RUiKOMsCCNLV1CBiPYE10sziTsnmNxkAI/rZhiD63CF7IqdFGC/XzjWjpSgLf0LxXX3bDFIh0E18f6UhQ==}
-
   object-inspect@1.13.2:
     resolution: {integrity: sha512-IRZSRuzJiynemAXPYtPe5BoI/RESNYR7TYm50MC5Mqbd3Jmw5y790sErYw3V6SryFJD64b74qQQs9wn5Bg/k3g==}
     engines: {node: '>= 0.4'}
@@ -6987,9 +6982,6 @@ packages:
   should@13.2.3:
     resolution: {integrity: sha512-ggLesLtu2xp+ZxI+ysJTmNjh2U0TsC+rQ/pfED9bUZZ4DKefP27D+7YJVVTvKsmjLpIi9jAa7itwDGkDDmt1GQ==}
 
-  side-channel@1.0.4:
-    resolution: {integrity: sha512-q5XPytqFEIKHkGdiMIrY10mvLRvnQh42/+GoBlFW3b2LXLE2xxJpZFdm94we0BaoV3RwJyGqg5wS7epxTv0Zvw==}
-
   side-channel@1.0.6:
     resolution: {integrity: sha512-fDW/EZ6Q9RiO8eFG8Hj+7u/oW+XrPTIChwCOM2+th2A6OblDtYYIpve9m+KvI9Z4C9qSEXlaGR6bTEYHReuglA==}
     engines: {node: '>= 0.4'}
@@ -7319,6 +7311,7 @@ packages:
 
   tailwind@4.0.0:
     resolution: {integrity: sha512-LlUNoD/5maFG1h5kQ6/hXfFPdcnYw+1Z7z+kUD/W/E71CUMwcnrskxiBM8c3G8wmPsD1VvCuqGYMHviI8+yrmg==}
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
 
   tailwindcss-animate@1.0.7:
     resolution: {integrity: sha512-bl6mpH3T7I3UFxuvDEXLxy/VuFxBk5bbzplh7tXI68mwMokNYd1t9qPBHlnyTwfa4JGC4zP516I1hYYtQ/vspA==}
@@ -12051,7 +12044,7 @@ snapshots:
 
   array-buffer-byte-length@1.0.0:
     dependencies:
-      call-bind: 1.0.2
+      call-bind: 1.0.7
       is-array-buffer: 3.0.2
 
   array-buffer-byte-length@1.0.1:
@@ -12362,7 +12355,7 @@ snapshots:
   call-bind@1.0.2:
     dependencies:
       function-bind: 1.1.2
-      get-intrinsic: 1.2.0
+      get-intrinsic: 1.2.4
 
   call-bind@1.0.7:
     dependencies:
@@ -12847,7 +12840,7 @@ snapshots:
       object-keys: 1.1.1
       object.assign: 4.1.4
       regexp.prototype.flags: 1.5.1
-      side-channel: 1.0.4
+      side-channel: 1.0.6
       which-boxed-primitive: 1.0.2
       which-collection: 1.0.1
       which-typed-array: 1.1.15
@@ -13092,11 +13085,11 @@ snapshots:
     dependencies:
       array-buffer-byte-length: 1.0.0
       available-typed-arrays: 1.0.7
-      call-bind: 1.0.2
+      call-bind: 1.0.7
       es-set-tostringtag: 2.0.1
       es-to-primitive: 1.2.1
       function.prototype.name: 1.1.5
-      get-intrinsic: 1.2.0
+      get-intrinsic: 1.2.4
       get-symbol-description: 1.0.0
       globalthis: 1.0.3
       gopd: 1.0.1
@@ -13113,7 +13106,7 @@ snapshots:
       is-string: 1.0.7
       is-typed-array: 1.1.13
       is-weakref: 1.0.2
-      object-inspect: 1.12.3
+      object-inspect: 1.13.2
       object-keys: 1.1.1
       object.assign: 4.1.4
       regexp.prototype.flags: 1.5.0
@@ -13151,7 +13144,7 @@ snapshots:
       is-string: 1.0.7
       is-typed-array: 1.1.13
       is-weakref: 1.0.2
-      object-inspect: 1.12.3
+      object-inspect: 1.13.2
       object-keys: 1.1.1
       object.assign: 4.1.4
       regexp.prototype.flags: 1.5.1
@@ -13193,7 +13186,7 @@ snapshots:
       is-string: 1.0.7
       is-typed-array: 1.1.13
       is-weakref: 1.0.2
-      object-inspect: 1.13.1
+      object-inspect: 1.13.2
       object-keys: 1.1.1
       object.assign: 4.1.4
       regexp.prototype.flags: 1.5.1
@@ -13295,7 +13288,7 @@ snapshots:
 
   es-set-tostringtag@2.0.1:
     dependencies:
-      get-intrinsic: 1.2.0
+      get-intrinsic: 1.2.4
       has: 1.0.4
       has-tostringtag: 1.0.2
 
@@ -13943,7 +13936,7 @@ snapshots:
 
   function.prototype.name@1.1.5:
     dependencies:
-      call-bind: 1.0.2
+      call-bind: 1.0.7
       define-properties: 1.2.0
       es-abstract: 1.21.2
       functions-have-names: 1.2.3
@@ -14000,8 +13993,8 @@ snapshots:
 
   get-symbol-description@1.0.0:
     dependencies:
-      call-bind: 1.0.2
-      get-intrinsic: 1.2.0
+      call-bind: 1.0.7
+      get-intrinsic: 1.2.4
 
   get-symbol-description@1.0.2:
     dependencies:
@@ -14391,15 +14384,15 @@ snapshots:
 
   internal-slot@1.0.5:
     dependencies:
-      get-intrinsic: 1.2.1
+      get-intrinsic: 1.2.4
       has: 1.0.4
-      side-channel: 1.0.4
+      side-channel: 1.0.6
 
   internal-slot@1.0.6:
     dependencies:
       get-intrinsic: 1.2.4
       hasown: 2.0.2
-      side-channel: 1.0.4
+      side-channel: 1.0.6
 
   internal-slot@1.0.7:
     dependencies:
@@ -14433,8 +14426,8 @@ snapshots:
 
   is-array-buffer@3.0.2:
     dependencies:
-      call-bind: 1.0.2
-      get-intrinsic: 1.2.0
+      call-bind: 1.0.7
+      get-intrinsic: 1.2.4
       is-typed-array: 1.1.13
 
   is-array-buffer@3.0.4:
@@ -14537,7 +14530,7 @@ snapshots:
 
   is-regex@1.1.4:
     dependencies:
-      call-bind: 1.0.2
+      call-bind: 1.0.7
       has-tostringtag: 1.0.2
 
   is-regexp@1.0.0: {}
@@ -14546,7 +14539,7 @@ snapshots:
 
   is-shared-array-buffer@1.0.2:
     dependencies:
-      call-bind: 1.0.2
+      call-bind: 1.0.7
 
   is-shared-array-buffer@1.0.3:
     dependencies:
@@ -14578,7 +14571,7 @@ snapshots:
 
   is-weakref@1.0.2:
     dependencies:
-      call-bind: 1.0.2
+      call-bind: 1.0.7
 
   is-weakset@2.0.2:
     dependencies:
@@ -15744,10 +15737,6 @@ snapshots:
 
   object-hash@3.0.0: {}
 
-  object-inspect@1.12.3: {}
-
-  object-inspect@1.13.1: {}
-
   object-inspect@1.13.2: {}
 
   object-is@1.1.5:
@@ -16516,7 +16505,7 @@ snapshots:
 
   regexp.prototype.flags@1.5.0:
     dependencies:
-      call-bind: 1.0.2
+      call-bind: 1.0.7
       define-properties: 1.2.1
       functions-have-names: 1.2.3
 
@@ -16672,8 +16661,8 @@ snapshots:
 
   safe-regex-test@1.0.0:
     dependencies:
-      call-bind: 1.0.2
-      get-intrinsic: 1.2.0
+      call-bind: 1.0.7
+      get-intrinsic: 1.2.4
       is-regex: 1.1.4
 
   safe-regex-test@1.0.3:
@@ -16868,12 +16857,6 @@ snapshots:
       should-type-adaptors: 1.1.0
       should-util: 1.0.1
 
-  side-channel@1.0.4:
-    dependencies:
-      call-bind: 1.0.2
-      get-intrinsic: 1.2.1
-      object-inspect: 1.12.3
-
   side-channel@1.0.6:
     dependencies:
       call-bind: 1.0.7
@@ -17038,11 +17021,11 @@ snapshots:
       has-symbols: 1.0.3
       internal-slot: 1.0.5
       regexp.prototype.flags: 1.5.0
-      side-channel: 1.0.4
+      side-channel: 1.0.6
 
   string.prototype.trim@1.2.7:
     dependencies:
-      call-bind: 1.0.2
+      call-bind: 1.0.7
       define-properties: 1.2.0
       es-abstract: 1.21.2
 
@@ -17061,7 +17044,7 @@ snapshots:
 
   string.prototype.trimend@1.0.6:
     dependencies:
-      call-bind: 1.0.2
+      call-bind: 1.0.7
       define-properties: 1.2.0
       es-abstract: 1.21.2
 
@@ -17079,7 +17062,7 @@ snapshots:
 
   string.prototype.trimstart@1.0.6:
     dependencies:
-      call-bind: 1.0.2
+      call-bind: 1.0.7
       define-properties: 1.2.0
       es-abstract: 1.21.2
 
@@ -17549,7 +17532,7 @@ snapshots:
 
   typed-array-length@1.0.4:
     dependencies:
-      call-bind: 1.0.2
+      call-bind: 1.0.7
       for-each: 0.3.3
       is-typed-array: 1.1.13
 
@@ -17581,7 +17564,7 @@ snapshots:
 
   unbox-primitive@1.0.2:
     dependencies:
-      call-bind: 1.0.2
+      call-bind: 1.0.7
       has-bigints: 1.0.2
       has-symbols: 1.0.3
       which-boxed-primitive: 1.0.2

@@ -5,11 +5,11 @@
  * API docs
  * OpenAPI spec version: 1.0
  */
-import type { LzContractAddressesDto } from './lzContractAddressesDto';
+import type { LzDomainDtoContractAddresses } from './lzDomainDtoContractAddresses';
 
 export interface LzDomainDto {
   chainId: number;
-  contractAddresses: LzContractAddressesDto;
+  contractAddresses: LzDomainDtoContractAddresses;
   createdAt: string;
   eId: number;
   id: string;

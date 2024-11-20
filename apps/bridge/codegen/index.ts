@@ -45,6 +45,7 @@ import type {
   GetActivityDto,
   GetActivityV3Dto,
   GetActivityV4Dto,
+  GetBridgeConfigV3Dto,
   HyperlaneCustomWarpRouteFileRequestDto,
   HyperlaneCustomWarpRouteFileResponseDto,
   HyperlaneMailboxDto,
@@ -1359,6 +1360,55 @@ export const useBridgeControllerGetBridgeConfigByDomainV2 = <TData = Awaited<Ret
 
 
 
+export const bridgeControllerGetBridgeConfigByDomainV3 = (
+    getBridgeConfigV3Dto: GetBridgeConfigV3Dto, options?: AxiosRequestConfig
+ ): Promise<AxiosResponse<BridgeConfigDto>> => {
+    
+    return axios.post(
+      `/api/v3/bridge/bridge_config`,
+      getBridgeConfigV3Dto,options
+    );
+  }
+
+
+
+export const getBridgeControllerGetBridgeConfigByDomainV3MutationOptions = <TError = AxiosError<unknown>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof bridgeControllerGetBridgeConfigByDomainV3>>, TError,{data: GetBridgeConfigV3Dto}, TContext>, axios?: AxiosRequestConfig}
+): UseMutationOptions<Awaited<ReturnType<typeof bridgeControllerGetBridgeConfigByDomainV3>>, TError,{data: GetBridgeConfigV3Dto}, TContext> => {
+const {mutation: mutationOptions, axios: axiosOptions} = options ?? {};
+
+      
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof bridgeControllerGetBridgeConfigByDomainV3>>, {data: GetBridgeConfigV3Dto}> = (props) => {
+          const {data} = props ?? {};
+
+          return  bridgeControllerGetBridgeConfigByDomainV3(data,axiosOptions)
+        }
+
+        
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type BridgeControllerGetBridgeConfigByDomainV3MutationResult = NonNullable<Awaited<ReturnType<typeof bridgeControllerGetBridgeConfigByDomainV3>>>
+    export type BridgeControllerGetBridgeConfigByDomainV3MutationBody = GetBridgeConfigV3Dto
+    export type BridgeControllerGetBridgeConfigByDomainV3MutationError = AxiosError<unknown>
+
+    export const useBridgeControllerGetBridgeConfigByDomainV3 = <TError = AxiosError<unknown>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof bridgeControllerGetBridgeConfigByDomainV3>>, TError,{data: GetBridgeConfigV3Dto}, TContext>, axios?: AxiosRequestConfig}
+): UseMutationResult<
+        Awaited<ReturnType<typeof bridgeControllerGetBridgeConfigByDomainV3>>,
+        TError,
+        {data: GetBridgeConfigV3Dto},
+        TContext
+      > => {
+
+      const mutationOptions = getBridgeControllerGetBridgeConfigByDomainV3MutationOptions(options);
+
+      return useMutation(mutationOptions);
+    }
+    
 export const bridgeControllerGetDeploymentSyncStatus = (
     deploymentId: string, options?: AxiosRequestConfig
  ): Promise<AxiosResponse<SyncStatusDto[]>> => {
