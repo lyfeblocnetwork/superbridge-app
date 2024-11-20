@@ -1,5 +1,3 @@
-import { useRouter } from "next/router";
-
 import { useHyperlaneControllerGetWarpRouteYamlFile } from "@/codegen/index";
 import { useHyperlaneState } from "@/state/hyperlane";
 

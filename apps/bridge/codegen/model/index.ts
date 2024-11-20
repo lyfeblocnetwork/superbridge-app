@@ -40,6 +40,7 @@ export * from './bridgeConfigDtoTos';
 export * from './bridgeControllerGetActivityParams';
 export * from './bridgeControllerGetDeploymentsParams';
 export * from './bridgeControllerGetTokens200Item';
+export * from './bridgeControllerGetTokensParams';
 export * from './bridgeWithdrawalDto';
 export * from './bridgeWithdrawalDtoMetadata';
 export * from './bridgeableTokenDto';

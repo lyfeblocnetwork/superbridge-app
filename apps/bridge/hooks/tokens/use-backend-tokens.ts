@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { useMemo } from "react";
 
 import { useBridgeControllerGetTokens } from "@/codegen/index";
@@ -5,9 +6,12 @@ import { useInjectedStore } from "@/state/injected";
 import { MultiChainToken } from "@/types/token";
 
 export function useBackendTokens() {
+  const router = useRouter();
   const host = useInjectedStore((s) => s.host);
 
-  const response = useBridgeControllerGetTokens(host);
+  const response = useBridgeControllerGetTokens(host, {
+    hyperlaneWarpRoutes: router.query.hyperlaneWarpRoutes as string | undefined,
+  });
 
   return useMemo(
     () => ({
