@@ -79,7 +79,10 @@ export const FeeBreakdownModal = () => {
                       className="flex items-center justify-between gap-3 p-3 w-full"
                     >
                       <div className="flex items-center gap-1.5">
-                        <TokenIcon token={f.token.token} className="h-5 w-5" />
+                        <TokenIcon
+                          token={f.token.token}
+                          className="h-5 w-5 !text-[8px]"
+                        />
                         <span className="capitalize text-xs">{t(f.name)}</span>
                       </div>
                       <div className="flex items-center gap-1.5">
