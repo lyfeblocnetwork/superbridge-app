@@ -50,13 +50,14 @@ export const ConfirmationModalTermsTab = ({
     isAcross: route.data?.id === RouteProvider.Across,
     isCctp: route.data?.id === RouteProvider.Cctp,
     isHyperlane: route.data?.id === RouteProvider.Hyperlane,
+    isLz: route.data?.id === RouteProvider.Lz,
     withdrawing: route.data?.id && withdrawalRoutes.includes(route.data.id),
     family:
       route.data?.id && optimismRoutes.includes(route.data.id)
         ? DeploymentFamily.optimism
         : DeploymentFamily.arbitrum,
   })
-    .with({ isAcross: true }, { isHyperlane: true }, () =>
+    .with({ isAcross: true }, { isHyperlane: true }, { isLz: true }, () =>
       transformPeriodText(
         "confirmationModal.checkbox1Bridge",
         commonTranslationProps,
