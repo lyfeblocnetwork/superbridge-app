@@ -23,6 +23,7 @@ export const InnerThemeProvider = ({ children }: { children: any }) => {
 
   let props: ThemeProviderProps = {
     attribute: "class",
+    forcedTheme: !darkModeEnabled ? "light" : undefined,
   };
 
   if (!darkModeEnabled) {

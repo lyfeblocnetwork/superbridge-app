@@ -75,7 +75,6 @@ export default function IndexRoot(
 }
 
 function Index() {
-  const router = useRouter();
   return (
     <PageTransition key={"index"}>
       <AnimatePresence mode="sync">
