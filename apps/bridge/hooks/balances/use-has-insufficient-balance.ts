@@ -7,5 +7,5 @@ export const useHasInsufficientBalance = () => {
   const tokenBalance = useTokenBalance(token);
   const weiAmount = useWeiAmount();
 
-  return weiAmount > tokenBalance.data;
+  return !tokenBalance.isLoading && weiAmount > tokenBalance.data;
 };
