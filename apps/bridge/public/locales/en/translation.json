@@ -153,8 +153,7 @@
 
   "fees": {
     "fees": "Network fees",
-    "networkGas": "{{chain}} gas",
-    "easyModeFee": "Easy mode gas"
+    "networkGas": "{{chain}} gas"
   },
 
   "poweredBy": "Powered by {{name}}",

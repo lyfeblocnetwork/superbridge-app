@@ -153,8 +153,7 @@
 
   "fees": {
     "fees": "Taxas de rede",
-    "networkGas": "Gás {{chain}}",
-    "easyModeFee": "Taxa de modo fácil"
+    "networkGas": "Gás {{chain}}"
   },
 
   "poweredBy": "Fornecido por {{name}}",

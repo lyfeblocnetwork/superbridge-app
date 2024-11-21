@@ -1,7 +1,6 @@
 import clsx from "clsx";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
-import { OpenActivity } from "@/components/activity/open-activity";
 import { useIsSuperbridge } from "@/hooks/apps/use-is-superbridge";
 import { useInitialise } from "@/hooks/use-initialise/use-initialise";
 import {
@@ -12,17 +11,13 @@ import {
   useBackgroundImageRepeat,
   useBackgroundImageSize,
 } from "@/hooks/use-theme";
-import { useConfigState } from "@/state/config";
 
+import { Activity } from "./activity/activity";
 import { Header } from "./header";
 import { Modals } from "./modals";
-import { NetworkSelector } from "./modals/network-selector-modal";
 
 export function Layout({ children }: { children: any }) {
   useInitialise();
-
-  const displayTransactions = useConfigState.useDisplayTransactions();
-  const displayNetworkSelector = useConfigState.useDisplayNetworkSelector();
 
   const imageBackground = useBackgroundIcon();
   const backgroundImageBlendMode = useBackgroundImageBlendMode();
@@ -70,36 +65,7 @@ export function Layout({ children }: { children: any }) {
       {/* bridge */}
       {children}
 
-      {/* Transactions container */}
-      <AnimatePresence mode="wait" initial={false}>
-        {displayTransactions && (
-          <>
-            <OpenActivity key="transactionItemsContainer" />
-            {/* fade background */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              exit={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              // transition={{ ease: "easeOut", duration: 1 }}
-              className="h-screen w-screen z-10 backdrop-blur-lg  bg-white/0"
-            ></motion.div>
-          </>
-        )}
-
-        {displayNetworkSelector && (
-          <>
-            <NetworkSelector key="networkSelector" />
-            {/* fade background */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              exit={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              // transition={{ duration: 0.2 }}
-              className="h-screen w-screen z-10 backdrop-blur-lg  bg-white/0"
-            ></motion.div>
-          </>
-        )}
-      </AnimatePresence>
+      <Activity />
 
       <Modals />
     </div>

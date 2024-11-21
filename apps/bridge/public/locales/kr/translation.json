@@ -153,8 +153,7 @@
 
   "fees": {
     "fees": "네트워크 수수료",
-    "networkGas": "{{chain}} 가스",
-    "easyModeFee": "간편 모드 가스"
+    "networkGas": "{{chain}} 가스"
   },
 
   "poweredBy": "{{name}} 제공",

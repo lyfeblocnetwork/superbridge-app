@@ -3,7 +3,6 @@ import type {
   GetServerSidePropsContext,
   InferGetServerSidePropsType,
 } from "next";
-import { useRouter } from "next/router";
 
 import { bridgeControllerGetBridgeConfigByDomainV3 } from "@/codegen";
 import { Layout } from "@/components/Layout";
@@ -14,8 +13,6 @@ import { Bridge } from "@/components/bridge";
 import { Head } from "@/components/head";
 import { InjectedStoreProvider } from "@/state/injected";
 import { createInjectedState } from "@/utils/injected-state/create-injected-state";
-
-import { HyperlaneLiquidity } from "../components/hyperlane-liquidity";
 
 const ignored = ["favicon", "locales", "_vercel", "_next", "fonts"];
 
@@ -83,11 +80,7 @@ function Index() {
     <PageTransition key={"index"}>
       <AnimatePresence mode="sync">
         <PageTransition key={"bridge"}>
-          {router.asPath === "/hyperlane-liquidity" ? (
-            <HyperlaneLiquidity />
-          ) : (
-            <Bridge key={"bridge"} />
-          )}
+          <Bridge key={"bridge"} />
         </PageTransition>
       </AnimatePresence>
     </PageTransition>

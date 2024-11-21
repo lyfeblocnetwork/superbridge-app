@@ -153,8 +153,7 @@
 
   "fees": {
     "fees": "网络费用",
-    "networkGas": "{{chain}} Gas 费用",
-    "easyModeFee": "简易模式 Gas 费用"
+    "networkGas": "{{chain}} Gas 费用"
   },
 
   "poweredBy": "由 {{name}} 提供支持",

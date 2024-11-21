@@ -13,6 +13,7 @@ import { BlockProvingModal } from "./fault-proofs/block-proving-modal";
 import { FaultProofInfoModal } from "./fault-proofs/fault-proof-info-modal";
 import { FeeBreakdownModal } from "./fee-breakdown-modal";
 import { GasInfoModal } from "./gas-info-modal";
+import { NetworkSelector } from "./network-selector/network-selector";
 import { RecipientAddressModal } from "./recipient-address-modal";
 import { RouteSelectorModal } from "./route-selector-modal";
 import { TransactionDetailsModal } from "./transaction-details-modal";
@@ -47,6 +48,8 @@ export const Modals = () => {
       <BlockProvingModal />
 
       <SettingsModal />
+
+      <NetworkSelector />
     </>
   );
 };

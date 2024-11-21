@@ -483,6 +483,7 @@ export const ConfirmationModalStartTab = () => {
     : preSubmissionProgressRows;
 
   const helpCenterLink = useHelpCenterLinkByProvider(route.data?.id ?? null);
+
   return (
     <Tabs defaultValue="steps" className="flex flex-col">
       <DialogHeader className="items-center gap-3 pt-3 pb-4">

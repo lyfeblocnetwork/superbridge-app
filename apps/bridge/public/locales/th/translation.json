@@ -153,8 +153,7 @@
 
   "fees": {
     "fees": "ค่าธรรมเนียมเครือข่าย",
-    "networkGas": "{{chain}} ก๊าซ",
-    "easyModeFee": "ค่าธรรมเนียมโหมดง่าย"
+    "networkGas": "{{chain}} ก๊าซ"
   },
 
   "poweredBy": "ขับเคลื่อนโดย {{name}}",

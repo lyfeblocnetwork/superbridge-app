@@ -18,7 +18,6 @@ import { IconArrowUpRight, IconEllip, IconSB } from "../icons";
 export function HeaderLinks() {
   const { t } = useTranslation();
   const legalModal = useModal("Legal");
-  const deployment = useDeployment();
   const app = useApp();
   const isSuperbridge = useIsSuperbridge();
 

@@ -19,10 +19,6 @@ interface ConfigState {
   toggleForceViaL1: () => void;
   setForceViaL1: (b: boolean) => void;
 
-  easyMode: boolean;
-  toggleEasyMode: () => void;
-  setEasyMode: (b: boolean) => void;
-
   token: MultiChainToken | null;
   setToken: (token: MultiChainToken) => void;
 
@@ -51,10 +47,6 @@ const ConfigState = create<ConfigState>()((set, get) => ({
   forceViaL1: false,
   toggleForceViaL1: () => set((s) => ({ forceViaL1: !s.forceViaL1 })),
   setForceViaL1: (forceViaL1) => set({ forceViaL1 }),
-
-  easyMode: false,
-  toggleEasyMode: () => set((s) => ({ easyMode: !s.easyMode })),
-  setEasyMode: (easyMode) => set({ easyMode }),
 
   token: null,
   setToken: (token) => set({ token }),

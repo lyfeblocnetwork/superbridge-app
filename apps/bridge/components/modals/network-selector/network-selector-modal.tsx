@@ -14,8 +14,8 @@ import { useTrackEvent } from "@/services/ga";
 import { useConfigState } from "@/state/config";
 import { useInjectedStore } from "@/state/injected";
 
-import { ChainCard } from "../chain-card";
-import { IconClose } from "../icons";
+import { ChainCard } from "../../chain-card";
+import { IconClose } from "../../icons";
 
 // Animations
 const container = {
@@ -76,7 +76,7 @@ const useComingSoonChains = () => {
   return [];
 };
 
-export const NetworkSelector = () => {
+export const NetworkSelectorModal = () => {
   const { t } = useTranslation();
   const to = useToChain();
   const from = useFromChain();

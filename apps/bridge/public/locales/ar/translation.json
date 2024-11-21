@@ -153,8 +153,7 @@
 
   "fees": {
     "fees": "رسوم الشبكة",
-    "networkGas": "غاز {{chain}}",
-    "easyModeFee": "رسوم وضع السهولة"
+    "networkGas": "غاز {{chain}}"
   },
 
   "poweredBy": "مدعوم من {{name}}",

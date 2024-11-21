@@ -153,8 +153,7 @@
 
   "fees": {
     "fees": "Comisiones de red",
-    "networkGas": "Gas de {{chain}}",
-    "easyModeFee": "Gas modo fácil"
+    "networkGas": "Gas de {{chain}}"
   },
 
   "poweredBy": "Impulsado por {{name}}",

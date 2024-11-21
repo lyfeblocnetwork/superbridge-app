@@ -24,8 +24,8 @@ export const useIsContractAccount = () => {
         throw new Error("No account connected");
       }
 
-      return client?.getBytecode({ address: account.address }).then((x) => !!x);
+      return client?.getCode({ address: account.address }).then((x) => !!x);
     },
     enabled: !!account.address,
-  });
+  }).data;
 };

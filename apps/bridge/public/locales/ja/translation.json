@@ -153,8 +153,7 @@
 
   "fees": {
     "fees": "ネットワーク料金",
-    "networkGas": "{{chain}}ガス",
-    "easyModeFee": "簡単モードガス"
+    "networkGas": "{{chain}}ガス"
   },
 
   "poweredBy": "{{name}}提供",

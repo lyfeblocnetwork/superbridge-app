@@ -153,8 +153,7 @@
 
   "fees": {
     "fees": "Biaya jaringan",
-    "networkGas": "Gas {{chain}}",
-    "easyModeFee": "Gas mode mudah"
+    "networkGas": "Gas {{chain}}"
   },
 
   "poweredBy": "Ditenagai oleh {{name}}",

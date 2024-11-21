@@ -153,8 +153,7 @@
 
   "fees": {
     "fees": "नेटवर्क शुल्क",
-    "networkGas": "{{chain}} गैस",
-    "easyModeFee": "आसान मोड गैस"
+    "networkGas": "{{chain}} गैस"
   },
 
   "poweredBy": "{{name}} द्वारा संचालित",

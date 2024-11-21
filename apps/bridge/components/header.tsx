@@ -1,11 +1,11 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { useEffect } from "react";
 
 import { useIsSuperbridge } from "@/hooks/apps/use-is-superbridge";
 import { useDeployments } from "@/hooks/deployments/use-deployments";
 import { useIsWidget } from "@/hooks/use-is-widget";
 import { useNavIcon } from "@/hooks/use-theme";
 
-import { TokenBanner } from "./banners/token-banner";
 import { HeaderLinks } from "./header/header-links";
 import { SBLockup, SBLockupSmall } from "./icons";
 
@@ -40,8 +40,6 @@ export function Header() {
           />
         )}
       </div>
-
-      <TokenBanner />
 
       <div className="flex gap-3">
         <ConnectButton

@@ -153,8 +153,7 @@
 
   "fees": {
     "fees": "Ağ ücretleri",
-    "networkGas": "{{chain}} gaz",
-    "easyModeFee": "Kolay mod gaz ücreti"
+    "networkGas": "{{chain}} gaz"
   },
 
   "poweredBy": "{{name}} tarafından desteklenmektedir",

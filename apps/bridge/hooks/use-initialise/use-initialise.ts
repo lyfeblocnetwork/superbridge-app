@@ -3,7 +3,7 @@ import { useAccountEffect } from "wagmi";
 
 import { useConfigState } from "@/state/config";
 import { usePendingTransactions } from "@/state/pending-txs";
-import { isMainnet, isOptimism } from "@/utils/deployments/is-mainnet";
+import { isOptimism } from "@/utils/deployments/is-mainnet";
 
 import { useDeployment } from "../deployments/use-deployment";
 import { useActivityEffects } from "../use-activity-effects";
@@ -15,7 +15,6 @@ export const useInitialise = () => {
   const isContractAccount = useIsContractAccount();
 
   const deployment = useDeployment();
-  const setEasyMode = useConfigState.useSetEasyMode();
   const setForceViaL1 = useConfigState.useSetForceViaL1();
   const clearPendingTransactionsStorage = usePendingTransactions.useLogout();
 
@@ -30,21 +29,15 @@ export const useInitialise = () => {
   });
 
   useEffect(() => {
-    if (isContractAccount.data === true) {
+    if (isContractAccount === true) {
       setForceViaL1(false);
     }
-  }, [isContractAccount.data]);
+  }, [isContractAccount]);
 
   // reset settings when changing deployment
   useEffect(() => {
     if (!deployment) {
-      setEasyMode(false);
       setForceViaL1(false);
-      return;
-    }
-
-    if (!isMainnet(deployment)) {
-      setEasyMode(false);
       return;
     }
 

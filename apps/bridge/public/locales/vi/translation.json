@@ -153,8 +153,7 @@
 
   "fees": {
     "fees": "Phí mạng",
-    "networkGas": "Gas {{chain}}",
-    "easyModeFee": "Gas chế độ dễ"
+    "networkGas": "Gas {{chain}}"
   },
 
   "poweredBy": "Được hỗ trợ bởi {{name}}",

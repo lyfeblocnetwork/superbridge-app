@@ -153,8 +153,7 @@
 
   "fees": {
     "fees": "Frais de réseau",
-    "networkGas": "Gaz de {{chain}}",
-    "easyModeFee": "Gaz mode facile"
+    "networkGas": "Gaz de {{chain}}"
   },
 
   "poweredBy": "Propulsé par {{name}}",
