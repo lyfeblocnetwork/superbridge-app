@@ -8,6 +8,7 @@ import {
   TransactionStatus,
 } from "@/codegen/model";
 import { ArbitrumMessageStatus } from "@/constants/arbitrum-message-status";
+import { useIsAcrossExpiredAndReturnedBridge } from "@/hooks/across/use-is-expired-and-returned";
 import { useFinalisingTx } from "@/hooks/activity/use-finalising-tx";
 import { useInitiatingTx } from "@/hooks/activity/use-initiating-tx";
 import { useTxAmount } from "@/hooks/activity/use-tx-amount";
@@ -39,6 +40,7 @@ import {
   IconCaretRight,
   IconCheckCircle,
   IconEscapeHatch,
+  IconReturnCircle,
   IconSpinner,
   IconTime,
 } from "./icons";
@@ -48,7 +50,6 @@ import { TokenIcon } from "./token-icon";
 const useNextStateChangeTimestamp = (tx: Transaction) => {
   const initiatingTx = useInitiatingTx(tx);
   const deployment = useTxDeployment(tx);
-  const chains = useTxFromTo(tx);
   const duration = useTxDuration(tx);
 
   if (!initiatingTx) {
@@ -251,8 +252,9 @@ const useIsSuccessfulBridge = (tx: Transaction) => {
 };
 
 const useIsInProgress = (tx: Transaction) => {
+  const isExpiredAndReturned = useIsAcrossExpiredAndReturnedBridge(tx);
   const finalTx = useFinalisingTx(tx);
-  return !finalTx;
+  return !isExpiredAndReturned && !finalTx;
 };
 
 const useAction = (tx: Transaction) => {
@@ -346,6 +348,7 @@ export const TransactionRowV2 = ({ tx }: { tx: Transaction }) => {
   const amount = useTxAmount(tx, token);
 
   const isSuccessful = useIsSuccessfulBridge(tx);
+  const isExpiredAndReturned = useIsAcrossExpiredAndReturnedBridge(tx);
   const isInProgress = useIsInProgress(tx);
   const bars = useProgressBars(tx);
 
@@ -432,11 +435,16 @@ export const TransactionRowV2 = ({ tx }: { tx: Transaction }) => {
               <IconCheckCircle className="fill-primary w-4 h-4" />
               <span className="text-xs lg:text-sm">Bridge successful</span>
             </div>
-
-            {/* Caret */}
-            {/* <div className="rounded-full bg-muted px-2.5 py-2">
-            <IconCaretRight className="fill-foreground w-3.5 h-3.5" />
-          </div> */}
+          </div>
+        )}
+        {isExpiredAndReturned && (
+          <div className="flex justify-between items-center">
+            <div className="flex gap-2 items-center rounded-full border pl-2 pr-3 py-1.5">
+              <IconReturnCircle className="fill-destructive w-4 h-4" />
+              <span className="text-xs lg:text-sm">
+                Bridge expired & returned
+              </span>
+            </div>
           </div>
         )}
       </div>

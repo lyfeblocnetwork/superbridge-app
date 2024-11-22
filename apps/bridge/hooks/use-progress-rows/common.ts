@@ -31,6 +31,8 @@ export type TransactionStep = {
   hash: string | undefined;
   token?: MultiChainToken | null;
   amount?: ReturnType<typeof useTxAmount>;
+
+  isAcrossExpiredAndReturned?: boolean;
 };
 
 export type WaitStepInProgress = {

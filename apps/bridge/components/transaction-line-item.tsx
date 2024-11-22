@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import {
   IconArrowUpRight,
   IconCheckCircle,
+  IconReturnCircle,
   IconSimpleGas,
   IconSpinner,
   IconTime,
@@ -140,6 +141,17 @@ function TransactionLineItem({
               </a>
             )}
 
+            {step.isAcrossExpiredAndReturned && (
+              <a
+                href={"https://app.across.to/transactions"}
+                target="_blank"
+                className="text-muted-foreground flex gap-1 items-center text-xs group hover:text-foreground -mt-0.5"
+              >
+                <span>View on Across</span>
+                <IconArrowUpRight className="w-2 h-2 fill-muted-foreground group-hover:fill-foreground" />
+              </a>
+            )}
+
             {/* Gas and fees */}
             {!!step.gasLimit && !step.pendingHash && !step.hash && (
               <div className="flex gap-1 items-center">
@@ -164,7 +176,11 @@ function TransactionLineItem({
         </div>
 
         <div className="flex flex-col gap-1.5 items-end">
-          {step.hash ? (
+          {step.isAcrossExpiredAndReturned ? (
+            <>
+              <IconReturnCircle className="fill-destructive w-6 h-6" />
+            </>
+          ) : step.hash ? (
             <div className="flex gap-2 items-center group">
               <IconCheckCircle className="w-6 h-6 fill-primary" />
             </div>

@@ -7,6 +7,7 @@ import { useTxMultichainToken } from "@/hooks/activity/use-tx-token";
 import { Transaction } from "@/types/transaction";
 
 import { isAcrossBridge } from "../../utils/guards";
+import { useIsAcrossExpiredAndReturnedBridge } from "../across/use-is-expired-and-returned";
 import { ActivityStep, buildWaitStep } from "./common";
 
 export const useAcrossProgressRows = (
@@ -17,6 +18,7 @@ export const useAcrossProgressRows = (
   const chains = useTxFromTo(tx);
   const inputAmount = useTxAmount(tx, token?.[chains?.from.id ?? 0]);
   const outputAmount = useTxAmountOutput(tx, token?.[chains?.to.id ?? 0]);
+  const isExpiredAndReturned = useIsAcrossExpiredAndReturnedBridge(tx);
 
   if (!tx || !isAcrossBridge(tx) || !chains) {
     return null;
@@ -38,16 +40,19 @@ export const useAcrossProgressRows = (
     },
     buildWaitStep(tx.deposit.timestamp, tx.fill?.timestamp, 2 * 1000 * 60),
     {
-      label: t("confirmationModal.getAmountOn", {
-        to: chains?.to.name,
-        formatted: outputAmount?.text,
-      }),
+      label: isExpiredAndReturned
+        ? `Returned ${outputAmount?.text}`
+        : t("confirmationModal.getAmountOn", {
+            to: chains?.to.name,
+            formatted: outputAmount?.text,
+          }),
       hash: tx.fill?.transactionHash,
       pendingHash: undefined,
       chain: chains.to,
       button: undefined,
       token,
       amount: outputAmount,
+      isAcrossExpiredAndReturned: isExpiredAndReturned,
     },
   ];
 };
