@@ -5,7 +5,13 @@ import { arbitrum, base, mainnet, mode, optimism } from "viem/chains";
 import { DeploymentDto, DeploymentFamily } from "@/codegen/model";
 import { IconGas } from "@/components/icons";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { useIsSuperbridge } from "@/hooks/apps/use-is-superbridge";
 import { useCancelBridge } from "@/hooks/bridge/use-cancel-bridge";
 import { useDismissAlert } from "@/hooks/bridge/use-dismiss-alert";
@@ -90,20 +96,19 @@ export const NoGasModal = () => {
   return (
     <Dialog open={open} onOpenChange={onCancel}>
       <DialogContent>
-        <div className="flex flex-col gap-8 p-6">
-          <div className="flex flex-col gap-2 items-center text-center pt-10">
-            <div className="animate-bounce">
-              {/* <GasDrop /> */}
-              <IconGas className="w-16 h-auto" />
-            </div>
-            <h1 className="font-heading text-2xl  text-pretty">
-              {t("noGasModal.youNeedGasOn", common)}
-            </h1>
-            <p className="text-xs md:text-sm prose-sm font-heading text-muted-foreground text-pretty text-center">
-              {description}
-            </p>
+        <DialogHeader className="flex flex-col gap-2 items-center text-center pt-10 pb-0">
+          <div className="animate-bounce">
+            {/* <GasDrop /> */}
+            <IconGas className="w-16 h-auto" />
           </div>
-
+          <DialogTitle className="font-heading text-2xl  text-pretty">
+            {t("noGasModal.youNeedGasOn", common)}
+          </DialogTitle>
+          <DialogDescription className="text-xs md:text-sm prose-sm font-heading text-pretty text-center text-muted-foreground">
+            {description}
+          </DialogDescription>
+        </DialogHeader>
+        <div className="flex flex-col gap-8 p-6">
           <div className="flex flex-col gap-2">
             <a
               href="https://help.superbridge.app"

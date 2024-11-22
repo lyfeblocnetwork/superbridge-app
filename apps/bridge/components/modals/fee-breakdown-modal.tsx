@@ -10,7 +10,13 @@ import { useModal } from "@/hooks/use-modal";
 import { IconSimpleFees, IconSpinner } from "../icons";
 import { TokenIcon } from "../token-icon";
 import { Button } from "../ui/button";
-import { Dialog, DialogContent } from "../ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "../ui/dialog";
 
 export const FeeBreakdownModal = () => {
   const { t } = useTranslation();
@@ -29,13 +35,13 @@ export const FeeBreakdownModal = () => {
     <Dialog open={modal.isOpen} onOpenChange={modal.close}>
       <DialogContent>
         <div className="flex flex-col gap-8 p-6">
-          <div className="flex flex-col gap-2 items-center text-center pt-10">
+          <DialogHeader className="flex flex-col gap-2 items-center text-center pt-10 pb-0">
             <IconSimpleFees className="w-16 h-auto mb-4 fill-primary drop-shadow" />
 
-            <h1 className="font-heading text-2xl text-pretty">
+            <DialogTitle className="font-heading text-2xl text-pretty">
               {t("feeModal.providerFees", { provider })}
-            </h1>
-            <p className="text-xs md:text-sm prose-sm text-muted-foreground text-pretty text-center">
+            </DialogTitle>
+            <DialogDescription className="text-xs md:text-sm prose-sm text-pretty text-center text-muted-foreground">
               {isAcross && (
                 <Trans
                   i18nKey={"feeModal.acrossFeeBreakdownDescription"}
@@ -62,8 +68,8 @@ export const FeeBreakdownModal = () => {
                   ]}
                 />
               )}
-            </p>
-          </div>
+            </DialogDescription>
+          </DialogHeader>
 
           <div className="flex flex-col rounded-lg border py-0.5 justify-center items-center divide-y">
             {fees.isLoading ? (

@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { useDeployment } from "@/hooks/deployments/use-deployment";
 import { useModal } from "@/hooks/use-modal";
 
-import { Dialog, DialogContent } from "./ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "./ui/dialog";
 
 const ArrowIcon = () => (
   <div className="flex items-center justify-center w-6 h-5 bg-card rounded-full shrink-0">
@@ -29,10 +29,10 @@ export const LegalModal = () => {
   return (
     <Dialog open={modal.isOpen} onOpenChange={modal.close}>
       <DialogContent>
+        <DialogHeader className="pb-0">
+          <DialogTitle>{t("legal.title")}</DialogTitle>
+        </DialogHeader>
         <div className="flex flex-col gap-6 p-6 pt-8">
-          <div className="flex flex-col gap-2">
-            <h1 className="font-heading text-2xl ">{t("legal.title")}</h1>
-          </div>
           <div className="flex flex-col gap-2">
             {deployment?.tos?.customTermsOfService && (
               <div>

@@ -10,7 +10,13 @@ import {
 
 import { IconGas } from "../icons";
 import { Button } from "../ui/button";
-import { Dialog, DialogContent } from "../ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "../ui/dialog";
 
 export const GasInfoModal = () => {
   const { t } = useTranslation();
@@ -33,28 +39,28 @@ export const GasInfoModal = () => {
   return (
     <Dialog open={modal.isOpen} onOpenChange={modal.close}>
       <DialogContent>
-        <div className="flex flex-col gap-8 p-6">
-          <div className="flex flex-col gap-2 items-center text-center pt-10">
+        <div className="flex flex-col gap-4 p-6">
+          <DialogHeader className="flex flex-col gap-2 items-center text-center pt-10 pb-0">
             <div className="animate-wiggle-waggle">
               <IconGas className="w-16 h-auto mb-4" />
             </div>
-            <h1 className="font-heading text-2xl text-pretty">
+            <DialogTitle className="font-heading text-2xl text-pretty">
               {t("gasInfoModal.title")}
-            </h1>
-            <p className="text-xs md:text-sm prose-sm text-muted-foreground text-pretty text-center">
+            </DialogTitle>
+            <DialogDescription className="text-xs md:text-sm prose-sm text-pretty text-center text-muted-foreground">
               {t("gasInfoModal.description", {
                 from: from?.name,
                 symbol: from?.nativeCurrency.symbol,
               })}
-            </p>
-          </div>
-
+            </DialogDescription>
+          </DialogHeader>
           {description && (
-            <p className="text-xs md:text-sm prose-sm text-muted-foreground text-pretty text-center">
-              {description}
-            </p>
+            <div className="rounded-xl bg-muted p-3">
+              <p className="text-xs md:text-sm prose-sm text-pretty text-center text-muted-foreground">
+                {description}
+              </p>
+            </div>
           )}
-
           <Button onClick={modal.close}>{t("ok")}</Button>
         </div>
       </DialogContent>

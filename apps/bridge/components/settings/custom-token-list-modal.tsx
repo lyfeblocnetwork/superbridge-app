@@ -11,7 +11,7 @@ import { SuperchainTokenList } from "@/types/token-lists";
 
 import { Button } from "../ui/button";
 import { Checkbox } from "../ui/checkbox";
-import { Dialog, DialogContent } from "../ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../ui/dialog";
 import { Skeleton } from "../ui/skeleton";
 
 export interface SettingsModalProps {
@@ -96,9 +96,9 @@ export const CustomTokenListModal = () => {
   return (
     <Dialog open={modal.isOpen} onOpenChange={modal.close}>
       <DialogContent>
-        <div className="p-6 pb-0">
-          <h2 className="font-heading">{"Custom token list"}</h2>
-        </div>
+        <DialogHeader className="p-6 pb-0">
+          <DialogTitle>{"Custom token list"}</DialogTitle>
+        </DialogHeader>
         <div className="p-6 pb-0 flex flex-col gap-4">
           <div>
             <label htmlFor="tokenListName" className="font-heading text-sm">

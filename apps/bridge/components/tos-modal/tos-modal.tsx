@@ -16,7 +16,13 @@ import { useModal } from "@/hooks/use-modal";
 import { useSettingsState } from "@/state/settings";
 
 import { Button } from "../ui/button";
-import { Dialog, DialogContent } from "../ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "../ui/dialog";
 import { DocumentIcon, QuestionMark } from "./icons";
 
 export const TosModal = () => {
@@ -64,71 +70,56 @@ export const TosModal = () => {
   );
 
   const tab1 = (
-    <div className="flex flex-col gap-6 p-6">
-      <div className="flex flex-col gap-2">
-        <h1 className="font-heading text-3xl text-center text-foreground">
+    <>
+      <DialogHeader className="flex flex-col gap-2 pt-10 pb-0">
+        <DialogTitle className="font-heading text-3xl text-center text-foreground">
           {t("tos.welcome", { name: metadata.head.title })}
-        </h1>
+        </DialogTitle>
 
         {!isSuperbridge && (
-          <p className="text-xs font-heading text-muted-foreground text-center">
+          <DialogDescription className="text-xs font-heading text-muted-foreground text-center">
             {t("tos.poweredBy")}
-          </p>
+          </DialogDescription>
         )}
+      </DialogHeader>
+      <div className="flex flex-col gap-6 p-6">
+        <div className="flex gap-3">
+          <QuestionMark />
+          <p className="text-sm ">
+            <Trans
+              i18nKey={"tos.superbridge3"}
+              components={[
+                <a
+                  href="https://help.superbridge.app"
+                  key="name"
+                  className="underline"
+                />,
+              ]}
+              values={{ name: metadata.head.title }}
+            />
+          </p>
+        </div>
+
+        <div className="flex gap-3">
+          <DocumentIcon />
+          <p className="text-sm ">
+            <Trans
+              i18nKey={"tos.superbridge4"}
+              components={[
+                <button
+                  onClick={() => legalModal.open()}
+                  key="name"
+                  className="underline"
+                />,
+              ]}
+              values={{ name: metadata.head.title }}
+            />
+          </p>
+        </div>
+
+        <Button onClick={onNext}>{t("tos.agreeAndContinue")}</Button>
       </div>
-
-      {/* <div className="flex gap-3">
-        <SparkleIcon />
-        <p className="text-sm ">
-          <Trans
-            i18nKey={isSuperbridge ? "tos.superbridge1" : "tos.dedicated1"}
-            components={[<span key="name" className="underline" />]}
-            values={{ name: deployment?.l2.name }}
-          />
-        </p>
-      </div> */}
-
-      {/* <div className="flex gap-3">
-        <NoFundsIcon />
-        <p className="text-sm ">{t("tos.superbridge2")}</p>
-      </div> */}
-
-      <div className="flex gap-3">
-        <QuestionMark />
-        <p className="text-sm ">
-          <Trans
-            i18nKey={"tos.superbridge3"}
-            components={[
-              <a
-                href="https://help.superbridge.app"
-                key="name"
-                className="underline"
-              />,
-            ]}
-            values={{ name: metadata.head.title }}
-          />
-        </p>
-      </div>
-
-      <div className="flex gap-3">
-        <DocumentIcon />
-        <p className="text-sm ">
-          <Trans
-            i18nKey={"tos.superbridge4"}
-            components={[
-              <button
-                onClick={() => legalModal.open()}
-                key="name"
-                className="underline"
-              />,
-            ]}
-            values={{ name: metadata.head.title }}
-          />
-        </p>
-      </div>
-
-      <Button onClick={onNext}>{t("tos.agreeAndContinue")}</Button>
-    </div>
+    </>
   );
 
   const ForceReadScroll = ({
@@ -158,27 +149,34 @@ export const TosModal = () => {
     });
 
     return (
-      <div className="flex flex-col">
-        <div className="flex items-start justify-start bg-muted h-1">
-          <motion.div
-            className="w-full bg-muted-foreground h-1 origin-top-left"
-            style={{ scaleX }}
-          />
+      <>
+        <div className="flex flex-col">
+          <div className="flex items-start justify-start bg-muted h-1">
+            <motion.div
+              className="w-full bg-muted-foreground h-1 origin-top-left"
+              style={{ scaleX }}
+            />
+          </div>
+          <div
+            ref={scrollRef}
+            className="max-h-[320px] prose prose-sm prose-headings:font-heading prose-headings:text-foreground prose-a:text-foreground prose-p:text-foreground dark:prose-invert overflow-y-scroll p-6"
+          >
+            <DialogHeader className="p-0">
+              <DialogTitle className="text-lg font-heading text-foreground m-0">
+                {title}
+              </DialogTitle>
+            </DialogHeader>
+
+            <ReactMarkdown>{content}</ReactMarkdown>
+          </div>
+          <div className="border-t border-muted p-6 relative">
+            {!scrolled && <ScrollArrow />}
+            <Button disabled={!scrolled} className="w-full" onClick={onNext}>
+              {t("tos.agreeAndContinue")}
+            </Button>
+          </div>
         </div>
-        <div
-          ref={scrollRef}
-          className="max-h-[320px] prose prose-sm prose-headings:font-heading prose-headings:text-foreground prose-a:text-foreground prose-p:text-foreground dark:prose-invert overflow-y-scroll p-6"
-        >
-          <h1 className="text-lg font-heading text-foreground">{title}</h1>
-          <ReactMarkdown>{content}</ReactMarkdown>
-        </div>
-        <div className="border-t border-muted p-6 relative">
-          {!scrolled && <ScrollArrow />}
-          <Button disabled={!scrolled} className="w-full" onClick={onNext}>
-            {t("tos.agreeAndContinue")}
-          </Button>
-        </div>
-      </div>
+      </>
     );
   };
 
@@ -211,7 +209,7 @@ export const TosModal = () => {
   return (
     <Dialog open={open} onOpenChange={() => {}}>
       <DialogContent
-        hideCloseButton
+        className="[&>button]:hidden"
         onOpenAutoFocus={(e) => e.preventDefault()}
       >
         {tabs.length > 1 && (

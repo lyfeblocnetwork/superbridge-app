@@ -34,7 +34,7 @@ const StatusLineItem = ({
               r="28"
               stroke="currentColor"
               opacity="0.2"
-              stroke-width="12"
+              strokeWidth="12"
             ></circle>
             <circle
               cx="33"
@@ -42,10 +42,10 @@ const StatusLineItem = ({
               fill="none"
               r="28"
               stroke="currentColor"
-              stroke-dasharray="1, 174"
-              stroke-dashoffset="306"
-              stroke-linecap="round"
-              stroke-width="12"
+              strokeDasharray="1, 174"
+              strokeDashoffset="306"
+              strokeLinecap="round"
+              strokeWidth="12"
               className="animate-spinner"
             ></circle>
           </svg>

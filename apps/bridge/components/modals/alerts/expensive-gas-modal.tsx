@@ -3,7 +3,13 @@ import { Trans, useTranslation } from "react-i18next";
 import { IconAlert, IconFees } from "@/components/icons";
 import { TokenIcon } from "@/components/token-icon";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { currencySymbolMap } from "@/constants/currency-symbol-map";
 import { useCancelBridge } from "@/hooks/bridge/use-cancel-bridge";
 import { useDismissAlert } from "@/hooks/bridge/use-dismiss-alert";
@@ -41,29 +47,28 @@ export const ExpensiveGasModal = () => {
   return (
     <Dialog open={open} onOpenChange={onCancel}>
       <DialogContent>
-        <div className="flex flex-col gap-8 p-6">
-          <div className="flex flex-col gap-2 items-center text-center pt-10">
-            <div className="animate-bounce">
-              <IconAlert />
-            </div>
-            <h1 className="font-heading text-2xl  text-pretty">
-              {t("expensiveGasModal.title")}
-            </h1>
-            <p className="text-xs md:text-sm prose-sm  text-muted-foreground text-pretty text-center ">
-              <Trans
-                i18nKey={"expensiveGasModal.notBestOption"}
-                components={[
-                  <a
-                    target="_blank"
-                    key="link"
-                    className="hover:underline text-foreground"
-                    href="https://superbridge.app/alternative-bridges"
-                  />,
-                ]}
-              />
-            </p>
+        <DialogHeader className="flex flex-col gap-2 items-center text-center pt-10 pb-0">
+          <div className="animate-bounce">
+            <IconAlert />
           </div>
-
+          <DialogTitle className="font-heading text-2xl text-pretty">
+            {t("expensiveGasModal.title")}
+          </DialogTitle>
+          <DialogDescription className="text-xs md:text-sm prose-sm text-pretty text-center text-muted-foreground">
+            <Trans
+              i18nKey={"expensiveGasModal.notBestOption"}
+              components={[
+                <a
+                  target="_blank"
+                  key="link"
+                  className="hover:underline text-foreground"
+                  href="https://superbridge.app/alternative-bridges"
+                />,
+              ]}
+            />
+          </DialogDescription>
+        </DialogHeader>
+        <div className="flex flex-col gap-8 p-6">
           <div className="flex flex-col rounded-lg border">
             <div className="flex items-center justify-between border-b px-3 py-2">
               <div className="flex items-center gap-2">

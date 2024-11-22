@@ -1,6 +1,5 @@
 import { IconAlert } from "@/components/icons";
 import { optimismFaultProofs } from "@/constants/links";
-import { useDeployment } from "@/hooks/deployments/use-deployment";
 import { useDeploymentChains } from "@/hooks/deployments/use-deployment-chains";
 import { useModal } from "@/hooks/use-modal";
 import { useConfigState } from "@/state/config";
@@ -9,7 +8,6 @@ import { Button } from "../ui/button";
 import { Dialog, DialogContent } from "../ui/dialog";
 
 export const WithdrawalReadyToFinalizeModal = () => {
-  const deployment = useDeployment();
   const modal = useModal("WithdrawalReadyToFinalize");
   const setDisplayTransactions = useConfigState.useSetDisplayTransactions();
   const chains = useDeploymentChains();
