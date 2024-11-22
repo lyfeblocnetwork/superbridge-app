@@ -117,6 +117,7 @@ export const buildPendingTx = (
       updatedAt: new Date().toString(),
 
       amount: weiAmount.toString(),
+      receiveAmount: receiveAmount.toString(),
       type: "lz-bridge",
       receive: undefined,
       duration: 1000 * 60 * 2,

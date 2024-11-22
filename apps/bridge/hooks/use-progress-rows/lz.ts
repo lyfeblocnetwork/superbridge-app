@@ -7,6 +7,7 @@ import { useChain } from "@/hooks/use-chain";
 import { Transaction } from "@/types/transaction";
 
 import { isLzBridge } from "../../utils/guards";
+import { useTxAmountOutput } from "../activity/use-tx-amount-output";
 import { ActivityStep, buildWaitStep } from "./common";
 
 export const useLzProgressRows = (
@@ -24,7 +25,7 @@ export const useLzProgressRows = (
   const toChain = useChain(toDomain?.chainId);
   const token = useTxMultichainToken(tx);
   const inputAmount = useTxAmount(tx, token?.[fromChain?.id ?? 0]);
-  const outputAmount = useTxAmount(tx, token?.[toChain?.id ?? 0]);
+  const outputAmount = useTxAmountOutput(tx, token?.[toChain?.id ?? 0]);
 
   if (!tx || !isLzBridge(tx) || !fromChain || !toChain) {
     return null;

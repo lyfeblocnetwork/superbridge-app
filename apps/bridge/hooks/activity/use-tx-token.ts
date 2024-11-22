@@ -99,12 +99,12 @@ export function useTxMultichainToken(tx: Transaction | null | undefined) {
   if (isHyperlaneBridge(tx)) {
     const t = tokens.data.find((x) => {
       const src = x[from.id];
-      if (!src) {
+      if (!src?.hyperlane?.router) {
         return false;
       }
-      return isAddressEqual(
-        src.hyperlane?.router as Address,
-        tx.token as Address
+      return (
+        isAddressEqual(src.hyperlane.router as Address, tx.token as Address) ||
+        isAddressEqual(src.address as Address, tx.token as Address)
       );
     });
 
@@ -117,7 +117,10 @@ export function useTxMultichainToken(tx: Transaction | null | undefined) {
       if (!src?.lz?.adapter) {
         return false;
       }
-      return isAddressEqual(src.lz.adapter as Address, tx.token as Address);
+      return (
+        isAddressEqual(src.lz.adapter as Address, tx.token as Address) ||
+        isAddressEqual(src.address as Address, tx.token as Address)
+      );
     });
 
     return t ?? null;

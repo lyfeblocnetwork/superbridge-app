@@ -16,6 +16,7 @@ export interface LzBridgeV2Dto {
   fromEid: number;
   id: string;
   receive?: ConfirmationDto;
+  receiveAmount: string;
   send: ConfirmationDto;
   to: string;
   toEid: number;

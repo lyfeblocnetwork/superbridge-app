@@ -7,7 +7,9 @@
  */
 
 export interface SyncStatusDto {
+  blockNumber: number;
   diff: number;
+  fullName: string;
   name: string;
   type: string;
 }
