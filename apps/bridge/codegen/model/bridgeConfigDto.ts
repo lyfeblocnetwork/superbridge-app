@@ -9,6 +9,7 @@ import type { AcrossDomainDto } from './acrossDomainDto';
 import type { BridgeConfigDtoBanner } from './bridgeConfigDtoBanner';
 import type { CctpDomainDto } from './cctpDomainDto';
 import type { ChainDto } from './chainDto';
+import type { BridgeConfigDtoDefaultRoute } from './bridgeConfigDtoDefaultRoute';
 import type { DeploymentDto } from './deploymentDto';
 import type { HighlightedTokens } from './highlightedTokens';
 import type { HyperlaneMailboxDto } from './hyperlaneMailboxDto';
@@ -24,6 +25,8 @@ export interface BridgeConfigDto {
   banner: BridgeConfigDtoBanner;
   cctpDomains: CctpDomainDto[];
   chains: ChainDto[];
+  /** @nullable */
+  defaultRoute: BridgeConfigDtoDefaultRoute;
   /** @nullable */
   deletedAt: number | null;
   deployments: DeploymentDto[];

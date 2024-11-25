@@ -4,6 +4,7 @@ import { useConfigState } from "@/state/config";
 import { isEth } from "@/utils/tokens/is-eth";
 
 import { useFromChain, useToChain } from "../use-chain";
+import { useDefaultRoute } from "../use-metadata";
 import { useActiveTokens } from "./use-active-tokens";
 
 export const useMultichainToken = () => {
@@ -11,8 +12,26 @@ export const useMultichainToken = () => {
   const token = useConfigState.useToken();
   const to = useToChain();
   const from = useFromChain();
+  const defaultRoute = useDefaultRoute();
 
   if (!token) {
+    if (
+      defaultRoute &&
+      defaultRoute.fromChainId === from?.id &&
+      defaultRoute.toChainId === to?.id
+    ) {
+      let t = tokens.data?.find(
+        (x) =>
+          x[defaultRoute.fromChainId] &&
+          x[defaultRoute.toChainId] &&
+          isAddressEqual(
+            x[defaultRoute.fromChainId]!.address as Address,
+            defaultRoute.tokenAddress as Address
+          )
+      );
+      if (t) return t;
+    }
+
     return (
       tokens.data?.find(
         (x) => isEth(x[from?.id ?? 0] ?? null) || isEth(x[to?.id ?? 0] ?? null)

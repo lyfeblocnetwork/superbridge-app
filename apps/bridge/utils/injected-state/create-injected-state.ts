@@ -20,23 +20,24 @@ export const createInjectedState = (props: {
   );
 
   return {
-    acrossDomains: dto?.acrossDomains ?? [],
-    cctpDomains: dto?.cctpDomains ?? [],
-    deployments: dto?.deployments ?? [],
-    hyperlaneMailboxes: dto?.hyperlaneMailboxes ?? [],
-    lzDomains: dto?.lzDomains ?? [],
+    acrossDomains: dto.acrossDomains,
+    cctpDomains: dto.cctpDomains,
+    deployments: dto.deployments,
+    hyperlaneMailboxes: dto.hyperlaneMailboxes,
+    lzDomains: dto.lzDomains,
     superbridgeConfig:
-      dto?.highlightedTokens && dto?.banner
-        ? { banner: dto?.banner, highlightedTokens: dto?.highlightedTokens }
+      dto.highlightedTokens && dto.banner
+        ? { banner: dto.banner, highlightedTokens: dto.highlightedTokens }
         : null,
     superbridgeTestnets,
     fromChainId,
     toChainId,
     app,
-    chains: dto?.chains ?? [],
+    chains: dto.chains,
     host,
     widget,
     isPaid: dto.isPaid,
     deletedAt: dto.deletedAt,
+    defaultRoute: dto.defaultRoute,
   };
 };

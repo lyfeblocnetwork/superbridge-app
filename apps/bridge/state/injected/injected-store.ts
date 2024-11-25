@@ -4,6 +4,7 @@ import {
   AcrossDomainDto,
   CctpDomainDto,
   ChainDto,
+  DefaultRouteDto,
   DeploymentDto,
   HyperlaneMailboxDto,
   LzDomainDto,
@@ -32,6 +33,7 @@ export type InjectedState = {
 
   isPaid: boolean;
   deletedAt: number | null;
+  defaultRoute: DefaultRouteDto | null;
 };
 
 export type InjectedActions = {
