@@ -6,6 +6,6 @@ export const useIsAcrossExpiredAndReturnedBridge = (tx: Transaction | null) => {
     !!tx &&
     isAcrossBridge(tx) &&
     !tx.fill &&
-    tx.deposit.timestamp < Date.now() - 1000 * 60 * 2
+    tx.deposit.timestamp < Date.now() - 1000 * 60 * 90
   );
 };
