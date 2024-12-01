@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { useRouter } from "next/router";
 import { useDebounce } from "use-debounce";
 import { isAddress } from "viem";
 import { useAccount } from "wagmi";
@@ -19,6 +20,7 @@ export const useBridgeRoutes = () => {
   const to = useToChain();
   const account = useAccount();
   const host = useHost();
+  const router = useRouter();
 
   const fromToken = useSelectedToken();
   const toToken = useDestinationToken();
@@ -46,6 +48,8 @@ export const useBridgeRoutes = () => {
       forceViaL1,
       host,
       hyperlaneCustomRoutesId,
+      router.query.hyperlaneWarpRoutes,
+
       fromToken?.hyperlane?.router,
       toToken?.hyperlane?.router,
 
@@ -56,7 +60,9 @@ export const useBridgeRoutes = () => {
     queryFn: () => {
       return bridgeControllerGetBridgeRoutes({
         host,
-        hyperlaneCustomRoutesId,
+        hyperlaneCustomRoutesId:
+          hyperlaneCustomRoutesId ||
+          (router.query.hyperlaneWarpRoutes as string | undefined),
         amount: weiAmount.toString(),
         fromChainId: from?.id.toString() ?? "",
         toChainId: to?.id.toString() ?? "",
