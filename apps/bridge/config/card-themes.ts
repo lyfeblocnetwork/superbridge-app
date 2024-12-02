@@ -889,6 +889,86 @@ const superseedTheme = {
   },
 };
 
+const opbnbTheme = {
+  icon: "/img/opbnb/icon.svg",
+  card: {
+    className: "bg-[#181A1E]",
+    title: "text-white",
+  },
+};
+
+const auroraTheme = {
+  icon: "/img/aurora/icon.svg",
+  card: {
+    className: "bg-[url('/img/aurora/bg-card.jpg')] bg-cover",
+    title: "text-white",
+  },
+};
+
+const fantomTheme = {
+  icon: "/img/fantom/icon.svg",
+  card: {
+    className: "bg-[#1969FF]",
+    title: "text-white",
+  },
+};
+
+const sonicTheme = {
+  icon: "/img/sonic/icon.svg",
+  card: {
+    className: "bg-[url('/img/sonic/bg-card.png')] bg-cover",
+    title: "text-white",
+  },
+};
+
+const coreTheme = {
+  icon: "/img/core/icon.svg",
+  card: {
+    className: "bg-[url('/img/core/bg-card.svg')] bg-cover",
+    title: "text-white",
+  },
+};
+
+const zeroTheme = {
+  icon: "/img/zero/icon.svg",
+  card: {
+    className: "bg-[url('/img/zero/bg-card.svg')] bg-cover",
+    title: "text-white",
+  },
+};
+
+const astarTheme = {
+  icon: "/img/astar/icon.svg",
+  card: {
+    className: "bg-gradient-to-br from-[#fff] to-[#E3F6FA]",
+    title: "text-black",
+  },
+};
+
+const abstractTheme = {
+  icon: "/img/abstract/icon.svg",
+  card: {
+    className: "bg-[#00DD73]",
+    title: "text-black",
+  },
+};
+
+const kalychainTheme = {
+  icon: "/img/kalychain/icon.svg",
+  card: {
+    className: "bg-[#252525]",
+    title: "text-white",
+  },
+};
+
+const moonriverTheme = {
+  icon: "/img/moonriver/icon.svg",
+  card: {
+    className: "bg-[#15333D]",
+    title: "text-white",
+  },
+};
+
 export const cardThemes: {
   [chainId: string]: { card: CardTheme; icon: string } | undefined;
 } = {
@@ -1016,4 +1096,15 @@ export const cardThemes: {
   [625]: bnryTheme,
   [53302]: superseedTheme,
   [5330]: superseedTheme,
+  [204]: opbnbTheme,
+  [1313161554]: auroraTheme,
+  [1313161555]: auroraTheme,
+  [250]: fantomTheme,
+  [4002]: fantomTheme,
+  [1116]: coreTheme,
+  [543210]: zeroTheme,
+  [592]: astarTheme,
+  [11124]: abstractTheme,
+  [3888]: kalychainTheme,
+  [1285]: moonriverTheme,
 };
