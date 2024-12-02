@@ -889,6 +889,14 @@ const superseedTheme = {
   },
 };
 
+const creatorTheme = {
+  icon: "/img/creator/icon.svg",
+  card: {
+    className: "bg-[#F5E203]",
+    title: "text-black",
+  },
+};
+
 const opbnbTheme = {
   icon: "/img/opbnb/icon.svg",
   card: {
@@ -1107,4 +1115,5 @@ export const cardThemes: {
   [11124]: abstractTheme,
   [3888]: kalychainTheme,
   [1285]: moonriverTheme,
+  [66665]: creatorTheme,
 };
