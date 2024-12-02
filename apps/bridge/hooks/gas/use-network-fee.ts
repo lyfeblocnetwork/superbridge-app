@@ -42,7 +42,7 @@ export const useNetworkFeeForGasLimit = (
   }
 
   const fee = feeData.data.maxFeePerGas
-    ? feeData.data.maxFeePerGas + feeData.data.maxPriorityFeePerGas
+    ? feeData.data.maxFeePerGas
     : (feeData.data.gasPrice ?? BigInt(0));
   const gwei = fee * BigInt(gasLimit);
 
