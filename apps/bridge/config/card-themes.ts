@@ -977,6 +977,14 @@ const moonriverTheme = {
   },
 };
 
+const plumeTheme = {
+  icon: "/img/plume/icon.svg",
+  card: {
+    className: "bg-[url('/img/plume/bg-card.jpg')] bg-cover",
+    title: "text-black",
+  },
+};
+
 export const cardThemes: {
   [chainId: string]: { card: CardTheme; icon: string } | undefined;
 } = {
@@ -1116,4 +1124,5 @@ export const cardThemes: {
   [3888]: kalychainTheme,
   [1285]: moonriverTheme,
   [66665]: creatorTheme,
+  [98865]: plumeTheme,
 };
