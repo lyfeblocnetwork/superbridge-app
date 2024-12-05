@@ -11,6 +11,7 @@ import {
   LogoDerive,
   LogoEthena,
   LogoMode,
+  LogoSwell,
   LogoWBTC,
   StickerCode,
   StickerComputer,
@@ -77,11 +78,11 @@ export function LZContent() {
                 <LogoDonatuz className="w-auto max-h-6 md:max-h-10"/>
                */}
 
-              <LogoMode className="w-auto max-h-6 md:max-h-10" />
+              {/* <LogoMode className="w-auto max-h-6 md:max-h-10" /> */}
 
               <LogoWBTC className="w-auto max-h-6 md:max-h-10" />
 
-              <LogoDerive className="w-auto max-h-5 md:max-h-10" />
+              <LogoSwell className="w-auto max-h-7 md:max-h-11" />
             </div>
           </section>
           <section className="rounded-3xl backdrop-blur-md bg-card  flex flex-col md:flex-row gap-12">
