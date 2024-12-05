@@ -38,7 +38,7 @@ export const getServerSideProps = async ({
     req.headers.host?.includes("ngrok")
   ) {
     // change this to load different apps
-    requestHost = "superbridge.app";
+    requestHost = "c196f5f7-6eea-4ec1-8b19-55e15eb0e46f.bridges.rollbridge.app";
   }
 
   const queryParams = new URLSearchParams(req.url.split("?")[1]);

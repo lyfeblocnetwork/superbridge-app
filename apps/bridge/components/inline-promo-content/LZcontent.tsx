@@ -145,7 +145,7 @@ export function LZContent() {
               className="w-full -mb-0.5"
             >
               <CarouselContent>
-                <CarouselItem key={"csl2"} className="basis-10/12 md:basis-3/5">
+                {/* <CarouselItem key={"csl2"} className="basis-10/12 md:basis-3/5">
                   <div>
                     <Image
                       src={"/img/lz/donatuz.png"}
@@ -158,7 +158,7 @@ export function LZContent() {
                       className="w-full h-auto mt-4 rounded-tr-lg rounded-tl-lg md:rounded-tr-2xl md:rounded-tl-2xl"
                     />
                   </div>
-                </CarouselItem>
+                </CarouselItem> */}
                 <CarouselItem key={"csl1"} className="basis-10/12 md:basis-3/5">
                   <div>
                     <Image
@@ -173,7 +173,7 @@ export function LZContent() {
                     />
                   </div>
                 </CarouselItem>
-                <CarouselItem key={"csl3"} className="basis-10/12 md:basis-3/5">
+                {/* <CarouselItem key={"csl3"} className="basis-10/12 md:basis-3/5">
                   <div>
                     <Image
                       src={"/img/lz/mode.png"}
@@ -186,7 +186,7 @@ export function LZContent() {
                       className="w-full h-auto mt-4 rounded-tr-lg rounded-tl-lg md:rounded-tr-2xl md:rounded-tl-2xl"
                     />
                   </div>
-                </CarouselItem>
+                </CarouselItem> */}
                 <CarouselItem key={"csl4"} className="basis-10/12 md:basis-3/5">
                   <div>
                     <Image
