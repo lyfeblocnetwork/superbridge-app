@@ -45,10 +45,12 @@ export const FromTo = () => {
   };
 
   return (
-    <div className={`relative flex justify-between gap-1 select-none pt-0.5`}>
+    <div
+      className={`relative flex flex-col md:flex-row justify-between gap-1 select-none pt-0.5`}
+    >
       <div
         className={clsx(
-          "flex gap-2 w-full items-start justify-start bg-muted p-4 rounded-xl transition-all origin-right grow-1",
+          "flex gap-2 w-full items-start justify-start bg-muted p-4 rounded-xl transition-all md:origin-right grow-1",
           "cursor-pointer hover:scale-[1.02]"
         )}
         onClick={onClick("from")}
@@ -68,24 +70,27 @@ export const FromTo = () => {
           <span className="leading-none font-button">{from?.name}</span>
         </div>
       </div>
+
       <button
         onClick={switchChains}
-        className="rounded-md bg-card border-2 bg-clip-border border-card absolute left-[50%] top-1/2 -translate-x-[50%] -translate-y-2/4 z-10 transition-all hover:scale-105 overflow-hidden"
+        className="flex justify-center items-center rounded-lg w-8 h-8 bg-muted border-[3px] border-card backdrop-blur-md absolute z-[999] left-[50%] top-1/2 -translate-x-[50%] -translate-y-2/4 z-10 transition-all scale-90 hover:scale-100 rotate-90 md:rotate-0"
       >
-        <div className="before:backdrop-blur-sm before:absolute before:inset-0 before:-z-10">
-          <div className="p-1 bg-muted backdrop-blur-sm">
-            <IconCaretRight className={`w-4 h-4 fill-muted-foreground`} />
-          </div>
-        </div>
+        <IconCaretRight className="w-3 h-3 fill-muted-foreground" />
       </button>
       <div
         className={clsx(
-          "flex gap-2 w-full items-start justify-end bg-muted p-4 rounded-xl transition-all origin-left",
+          "flex gap-2 w-full items-start md:items-end md:flex-row-reverse bg-muted p-4 rounded-xl transition-all md:origin-left",
           "cursor-pointer hover:scale-[1.02]"
         )}
         onClick={onClick("to")}
       >
-        <div className="flex flex-col gap-0.5 text-right">
+        <NetworkIcon
+          chain={to}
+          width={32}
+          height={32}
+          className="pointer-events-none rounded-sm"
+        />
+        <div className="flex flex-col gap-0.5 md:text-right">
           <span
             className={`text-muted-foreground text-xs leading-none block mt-0.5`}
           >
@@ -93,13 +98,6 @@ export const FromTo = () => {
           </span>
           <span className="leading-none  font-button">{to?.name}</span>
         </div>
-
-        <NetworkIcon
-          chain={to}
-          width={32}
-          height={32}
-          className="pointer-events-none rounded-sm"
-        />
       </div>
     </div>
   );

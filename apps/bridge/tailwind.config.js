@@ -59,6 +59,7 @@ module.exports = {
         },
       },
       borderRadius: {
+        "3xl": "calc(var(--radius) + 16px)",
         "2xl": "calc(var(--radius) + 8px)",
         xl: "calc(var(--radius) + 4px)",
         lg: "var(--radius)",
@@ -101,6 +102,10 @@ module.exports = {
             strokeDashoffset: "132",
           },
         },
+        "move-grid": {
+          "0%": { "background-position": "0 0" },
+          "100%": { "background-position": "0 32px" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -111,6 +116,7 @@ module.exports = {
         wiggle: "wiggle 1s ease-in-out infinite",
         "wiggle-waggle": "wiggle-waggle 2s ease-in-out infinite",
         spinner: "spinner 2s linear infinite",
+        "sb-grid": "move-grid 2s linear infinite",
       },
     },
   },

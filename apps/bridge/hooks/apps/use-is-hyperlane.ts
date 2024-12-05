@@ -1,5 +1,6 @@
-import { useInjectedStore } from "@/state/injected";
+import { useHost } from "../use-metadata";
 
 export const useIsHyperlanePlayground = () => {
-  return useInjectedStore((s) => s.host) === "hyperlane.superbridge.app";
+  const host = useHost();
+  return host === "hyperlane.superbridge.app" || host === "hl.superbridge.app";
 };

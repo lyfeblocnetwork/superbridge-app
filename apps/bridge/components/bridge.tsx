@@ -7,6 +7,7 @@ import { Banners } from "./banners";
 import { BridgeBody } from "./bridge-body";
 import { BridgeDeleted } from "./bridge-deleted";
 import { BridgeHeader } from "./bridge-header";
+import { InlinePromoContent } from "./inline-promo-content";
 import { UpgradePromo } from "./upgrade-promo";
 
 export const Bridge = () => {
@@ -15,7 +16,7 @@ export const Bridge = () => {
 
   return (
     <main
-      className="relative flex items-start justify-center w-screen h-screen fixed inset-0 overflow-y-auto overflow-x-hidden"
+      className="relative flex flex-col items-center justify-start w-screen h-screen fixed inset-0 overflow-y-auto overflow-x-hidden"
       key="bridgeMain"
     >
       <div
@@ -28,7 +29,7 @@ export const Bridge = () => {
       >
         <div className="flex flex-col gap-2 items-center h-full">
           {deletedAt && deletedAt < Date.now() ? (
-            <div className="w-full bg-card mx-auto rounded-[24px] md:rounded-[32px] shadow-sm shrink-0 backdrop-blur-sm">
+            <div className="w-full bg-card mx-auto rounded-[24px] md:rounded-[32px] shadow-sm shrink-0">
               <BridgeDeleted />
             </div>
           ) : (
@@ -36,7 +37,7 @@ export const Bridge = () => {
               {!isWidget && <BridgeHeader />}
               <div
                 className={clsx(
-                  "bg-card backdrop-blur-sm",
+                  "bg-card",
                   !isWidget &&
                     "rounded-t-[24px] rounded-b-[32px] shadow-sm w-full",
                   isWidget && "h-screen w-screen"
@@ -62,6 +63,8 @@ export const Bridge = () => {
           )}
         </div>
       </div>
+
+      <InlinePromoContent />
     </main>
   );
 };

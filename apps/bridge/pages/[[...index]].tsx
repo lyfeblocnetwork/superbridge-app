@@ -38,7 +38,7 @@ export const getServerSideProps = async ({
     req.headers.host?.includes("ngrok")
   ) {
     // change this to load different apps
-    requestHost = "hyperlane.superbridge.app";
+    requestHost = "superbridge.app";
   }
 
   const queryParams = new URLSearchParams(req.url.split("?")[1]);
