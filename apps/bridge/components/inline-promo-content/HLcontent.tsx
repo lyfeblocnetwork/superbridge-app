@@ -44,7 +44,7 @@ export function HLContent() {
             <StickerPeace className="-mx-1 md:absolute bottom-0 left-0 rotate-[-24deg] drop-shadow-sm" />
           </div>
           <div className="flex flex-col gap-3 md:gap-6 px-0 py-6 md:p-12 pb-0 md:pb-0">
-            <h2 className="text-3xl md:text-5xl text-center font-heading  leading-tight md:leading-tight">
+            <h2 className="text-3xl md:text-5xl text-center font-heading leading-tight md:leading-tight">
               Superbridge for your Hyperlane Token
             </h2>
             <p className="md:text-lg font-body  text-center text-pretty">

@@ -10,8 +10,6 @@ import { Footer } from "./inline-promo-content/footer";
 export const InlinePromoContent = () => {
   const isHyperlane = useIsHyperlanePlayground();
   const isLz = useIsLzPlayground();
-  const deletedAt = useDeletedAt();
-  const isWidget = useIsWidget();
 
   if (isHyperlane) {
     return (

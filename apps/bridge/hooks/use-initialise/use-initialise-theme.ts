@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 import { ThemeDto } from "@/codegen/model";
@@ -35,7 +34,12 @@ async function refreshFonts(theme: ThemeDto) {
 
 function updateTheme(theme: ThemeDto) {
   Object.entries(theme).forEach(([key, value]) => {
-    if (!value || key.includes("font") || key.includes("image")) {
+    if (
+      !value ||
+      key.includes("font") ||
+      key.includes("image") ||
+      key.includes("radius")
+    ) {
       return;
     }
 
@@ -50,24 +54,9 @@ function updateTheme(theme: ThemeDto) {
 
 export const useInitialiseTheme = () => {
   const app = useApp();
-  const router = useRouter();
   const [themeValues, setThemeValues] = useState<Partial<ThemeDto> | null>(
     app.theme
   );
-
-  useEffect(() => {
-    updateTheme(app.theme);
-
-    const theme = router.query.theme;
-    if (theme) {
-      try {
-        const parsed: Partial<ThemeDto> = JSON.parse(
-          router.query.theme as string
-        );
-        updateTheme(parsed);
-      } catch {}
-    }
-  }, []);
 
   useEffect(() => {
     const listener = (e: MessageEvent) => {
