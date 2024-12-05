@@ -141,7 +141,6 @@ export function LZContent() {
               opts={{
                 align: "center",
                 loop: true,
-                // dragFree: true,
               }}
               className="w-full -mb-0.5"
             >
@@ -161,7 +160,12 @@ export function LZContent() {
                   </div>
                 </CarouselItem> */}
                 <CarouselItem key={"csl1"} className="basis-10/12 md:basis-3/5">
-                  <div>
+                  <div className="relative">
+                    <div className="rotate-[32deg] absolute -right-2 top-2">
+                      <span className="animate-wiggle-waggle bg-gradient-to-l from-[#A882FD] to-[#D098FF] text-white font-heading text-xs md:text-sm shadow-sm px-3 py-1 inline-flex rounded-full font-bold">
+                        Widget
+                      </span>
+                    </div>
                     <Image
                       src={"/img/lz/ethena.png"}
                       alt={
