@@ -15,6 +15,10 @@ export const formatDecimals = (x: number | undefined | null) => {
     }
   }
 
+  if (maximumFractionDigits > 20) {
+    maximumFractionDigits = 10;
+  }
+
   return x.toLocaleString("en-US", {
     maximumFractionDigits,
   });
