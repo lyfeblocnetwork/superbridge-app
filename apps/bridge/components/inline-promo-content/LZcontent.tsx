@@ -38,10 +38,18 @@ export function LZContent() {
       <div className="max-w-[1000px] mx-auto">
         <section className="mx-auto w-full max-w-[720px] mb-12 relative">
           <div className="flex justify-center items-center md:absolute md:inset-0">
-            <StickerLayerzero className="mr-1 md:absolute top-0 left-0 rotate-[-18deg] drop-shadow-sm h-10 md:h-12 w-auto" />
-            <StickerSparkle className="-mx-1 md:absolute bottom-0 right-0 rotate-[20deg] drop-shadow-sm" />
-            <StickerSB className="-mx-1 md:absolute top-0 right-0 rotate-[18deg] drop-shadow-sm" />
-            <StickerPeace className="-mx-1 md:absolute bottom-0 left-0 rotate-[-24deg] drop-shadow-sm" />
+            <div className="animate-float delay-0 mr-1 md:absolute top-0 left-0 ">
+              <StickerLayerzero className="rotate-[-18deg] drop-shadow-sm h-10 md:h-12 w-auto hover:scale-125 transition-all" />
+            </div>
+            <div className="animate-float delay-300 -mx-1 md:absolute bottom-0 right-0 ">
+              <StickerSparkle className="rotate-[20deg] drop-shadow-sm hover:scale-125 transition-all" />
+            </div>
+            <div className="animate-float delay-500 -mx-1 md:absolute top-0 right-0 ">
+              <StickerSB className="rotate-[18deg] drop-shadow-sm hover:scale-125 transition-all" />
+            </div>
+            <div className="animate-float delay-1000 -mx-1 md:absolute bottom-0 left-0 ">
+              <StickerPeace className="rotate-[-24deg] drop-shadow-sm hover:scale-125 transition-all" />
+            </div>
           </div>
           <div className="flex flex-col gap-3 md:gap-6 px-0 py-6 md:p-12 pb-0 md:pb-0">
             <h2 className="text-3xl md:text-5xl text-center font-heading  leading-tight md:leading-tight">
@@ -85,7 +93,7 @@ export function LZContent() {
               <LogoSwell className="w-auto max-h-7 md:max-h-11" />
             </div>
           </section>
-          <section className="rounded-3xl backdrop-blur-md bg-card  flex flex-col md:flex-row gap-12">
+          <section className="rounded-3xl backdrop-blur-md bg-card flex flex-col md:flex-row gap-6 md:gap-12">
             <div className="flex flex-col gap-4 w-full p-6 md:p-10">
               <h3 className="text-2xl md:text-4xl font-heading leading-tight md:leading-tight">
                 Launch your own Superbridge in minutes
@@ -99,10 +107,10 @@ export function LZContent() {
               <Image
                 src={"/img/lz/routes.png"}
                 alt={"Layer Zero OFTs as shown in Superbridge Admin"}
-                width={420}
-                height={288}
+                width={0}
+                height={0}
                 sizes="100vw"
-                className="w-full h-auto"
+                className="w-full min-w-full h-auto"
               />
             </div>
           </section>
@@ -141,6 +149,7 @@ export function LZContent() {
               opts={{
                 align: "center",
                 loop: true,
+                containScroll: false,
               }}
               className="w-full -mb-0.5"
             >
@@ -159,10 +168,13 @@ export function LZContent() {
                     />
                   </div>
                 </CarouselItem> */}
-                <CarouselItem key={"csl1"} className="basis-10/12 md:basis-3/5">
+                <CarouselItem
+                  key={"csl1"}
+                  className="basis-10/12 md:basis-3/5 cursor-grab active:cursor-grabbing"
+                >
                   <div className="relative">
                     <div className="rotate-[32deg] absolute -right-2 top-2">
-                      <span className="animate-wiggle-waggle bg-gradient-to-l from-[#A882FD] to-[#D098FF] text-white font-heading text-xs md:text-sm shadow-sm px-3 py-1 inline-flex rounded-full font-bold">
+                      <span className="animate-wiggle-waggle bg-gradient-to-l from-[#A882FD] to-[#D098FF] text-white font-heading text-[10px] md:text-xs shadow-sm px-3 py-1 inline-flex rounded-full font-bold">
                         Widget
                       </span>
                     </div>
@@ -174,7 +186,7 @@ export function LZContent() {
                       width={958}
                       height={706}
                       sizes="100vw"
-                      className="w-full h-auto mt-4 rounded-tr-lg rounded-tl-lg md:rounded-tr-2xl md:rounded-tl-2xl"
+                      className="w-full h-auto mt-4 rounded-tr-lg rounded-tl-lg md:rounded-tr-2xl md:rounded-tl-2xl border-t border-l border-r border-muted"
                     />
                   </div>
                 </CarouselItem>
@@ -192,7 +204,10 @@ export function LZContent() {
                     />
                   </div>
                 </CarouselItem> */}
-                <CarouselItem key={"csl4"} className="basis-10/12 md:basis-3/5">
+                <CarouselItem
+                  key={"csl4"}
+                  className="basis-10/12 md:basis-3/5 cursor-grab active:cursor-grabbing"
+                >
                   <div>
                     <Image
                       src={"/img/lz/wbtc.png"}
@@ -202,7 +217,7 @@ export function LZContent() {
                       width={958}
                       height={706}
                       sizes="100vw"
-                      className="w-full h-auto mt-4 rounded-tr-lg rounded-tl-lg md:rounded-tr-2xl md:rounded-tl-2xl"
+                      className="w-full h-auto mt-4 rounded-tr-lg rounded-tl-lg md:rounded-tr-2xl md:rounded-tl-2xl border-t border-l border-r border-muted border-muted"
                     />
                   </div>
                 </CarouselItem>
@@ -233,11 +248,21 @@ export function LZContent() {
             </div>
             <div className="rounded-3xl backdrop-blur-md p-8 relative overflow-hidden bg-[#F50FD6] flex flex-col gap-8 justify-between">
               <div className="relative z-10 h-full aspect-[4/3]">
-                <StickerCode className="absolute w-1/4 h-auto left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rotate-[15deg] drop-shadow-sm" />
-                <StickerDomain className="absolute w-1/5 h-auto left-3 top-2 rotate-[-28deg] drop-shadow-sm" />
-                <StickerComputer className="absolute w-1/5 h-auto right-3 top-4 rotate-[28deg] drop-shadow-sm" />
-                <StickerLink className="absolute w-1/5 h-auto left-8 bottom-2 drop-shadow-sm" />
-                <StickerTerms className="absolute w-1/5 h-auto right-8 bottom-2 rotate-[15deg] drop-shadow-sm" />
+                <div className="animate-float delay-0 absolute w-1/4 h-auto left-1/2 top-1/2 ">
+                  <StickerCode className="rotate-[15deg] drop-shadow-sm -translate-x-1/2 -translate-y-1/2" />
+                </div>
+                <div className="animate-float delay-200 absolute w-1/5 h-auto left-3 top-2 ">
+                  <StickerDomain className="rotate-[-28deg] drop-shadow-sm" />
+                </div>
+                <div className="animate-float delay-300 absolute w-1/5 h-auto right-3 top-4 ">
+                  <StickerComputer className="rotate-[28deg] drop-shadow-sm" />
+                </div>
+                <div className="animate-float delay-500 absolute w-1/5 h-auto left-8 bottom-2 ">
+                  <StickerLink className="drop-shadow-sm" />
+                </div>
+                <div className="animate-float delay-700 absolute w-1/5 h-auto right-8 bottom-2">
+                  <StickerTerms className="rotate-[15deg] drop-shadow-sm" />
+                </div>
               </div>
               <div className="relative z-10 flex flex-col gap-2">
                 <h3 className="text-xl md:text-3xl font-heading leading-tight md:leading-tight text-pretty">

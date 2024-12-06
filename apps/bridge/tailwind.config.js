@@ -106,6 +106,11 @@ module.exports = {
           "0%": { "background-position": "0 0" },
           "100%": { "background-position": "0 32px" },
         },
+        float: {
+          "0%": { transform: "translateY(5%)" },
+          "50%": { transform: "translateY(-5%)" },
+          "100%": { transform: "translateY(5%)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -117,6 +122,7 @@ module.exports = {
         "wiggle-waggle": "wiggle-waggle 2s ease-in-out infinite",
         spinner: "spinner 2s linear infinite",
         "sb-grid": "move-grid 2s linear infinite",
+        float: "float 4s ease-in-out infinite",
       },
     },
   },

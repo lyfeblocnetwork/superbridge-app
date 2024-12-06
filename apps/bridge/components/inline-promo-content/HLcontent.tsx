@@ -38,10 +38,18 @@ export function HLContent() {
       <div className="max-w-[1000px] mx-auto">
         <section className="mx-auto w-full max-w-[720px] mb-12 relative">
           <div className="flex justify-center items-center md:absolute md:inset-0">
-            <StickerHyperlane className="md:absolute top-0 left-0 rotate-[-18deg] drop-shadow-sm h-9 md:h-11 w-auto" />
-            <StickerSparkle className="-mx-1 md:absolute bottom-0 right-0 rotate-[20deg] drop-shadow-sm" />
-            <StickerSB className="-mx-1 md:absolute top-0 right-0 rotate-[18deg] drop-shadow-sm" />
-            <StickerPeace className="-mx-1 md:absolute bottom-0 left-0 rotate-[-24deg] drop-shadow-sm" />
+            <div className="animate-float delay-0 mr-1 md:absolute top-0 left-0 ">
+              <StickerHyperlane className="rotate-[-18deg] drop-shadow-sm h-10 md:h-12 w-auto hover:scale-125 transition-all" />
+            </div>
+            <div className="animate-float delay-300 -mx-1 md:absolute bottom-0 right-0 ">
+              <StickerSparkle className="rotate-[20deg] drop-shadow-sm hover:scale-125 transition-all" />
+            </div>
+            <div className="animate-float delay-500 -mx-1 md:absolute top-0 right-0 ">
+              <StickerSB className="rotate-[18deg] drop-shadow-sm hover:scale-125 transition-all" />
+            </div>
+            <div className="animate-float delay-1000 -mx-1 md:absolute bottom-0 left-0 ">
+              <StickerPeace className="rotate-[-24deg] drop-shadow-sm hover:scale-125 transition-all" />
+            </div>
           </div>
           <div className="flex flex-col gap-3 md:gap-6 px-0 py-6 md:p-12 pb-0 md:pb-0">
             <h2 className="text-3xl md:text-5xl text-center font-heading leading-tight md:leading-tight">
@@ -83,7 +91,7 @@ export function HLContent() {
               <LogoFlow className="w-auto max-h-6 md:max-h-10" />
             </div>
           </section>
-          <section className="rounded-3xl backdrop-blur-md bg-card flex flex-col md:flex-row gap-12">
+          <section className="rounded-3xl backdrop-blur-md bg-card flex flex-col md:flex-row gap-6 md:gap-12">
             <div className="flex flex-col gap-4 w-full p-6 md:p-10">
               <h3 className="text-2xl md:text-4xl font-heading leading-tight md:leading-tight">
                 Launch your own Superbridge in minutes
@@ -92,14 +100,14 @@ export function HLContent() {
                 Simply import Hyperlane Warp Routes and begin your expansion.
               </p>
             </div>
-            <div className="w-full pt-6 md:pt-10">
+            <div className="w-full pl-6 md:pt-10 md:pl-0">
               <Image
                 src={"/img/hyperlane/routes.png"}
                 alt={"Hyperlane Warp Routes as shown in Superbridge Admin"}
                 width={420}
                 height={288}
                 sizes="100vw"
-                className="w-full h-auto max-w-[512px]"
+                className="w-full min-w-full h-auto max-w-[512px]"
               />
             </div>
           </section>
@@ -143,7 +151,10 @@ export function HLContent() {
               className="w-full -mb-0.5"
             >
               <CarouselContent>
-                <CarouselItem key={"csl2"} className="basis-10/12 md:basis-3/5">
+                <CarouselItem
+                  key={"csl2"}
+                  className="basis-10/12 md:basis-3/5 cursor-grab active:cursor-grabbing"
+                >
                   <div>
                     <Image
                       src={"/img/hyperlane/flow.png"}
@@ -153,11 +164,14 @@ export function HLContent() {
                       width={958}
                       height={706}
                       sizes="100vw"
-                      className="w-full h-auto mt-4 rounded-tr-lg rounded-tl-lg md:rounded-tr-2xl md:rounded-tl-2xl"
+                      className="w-full h-auto mt-4 rounded-tr-lg rounded-tl-lg md:rounded-tr-2xl md:rounded-tl-2xl border-t border-l border-r border-muted"
                     />
                   </div>
                 </CarouselItem>
-                <CarouselItem key={"csl1"} className="basis-10/12 md:basis-3/5">
+                <CarouselItem
+                  key={"csl1"}
+                  className="basis-10/12 md:basis-3/5 cursor-grab active:cursor-grabbing"
+                >
                   <div>
                     <Image
                       src={"/img/hyperlane/renzo.png"}
@@ -167,11 +181,14 @@ export function HLContent() {
                       width={958}
                       height={706}
                       sizes="100vw"
-                      className="w-full h-auto mt-4 rounded-tr-lg rounded-tl-lg md:rounded-tr-2xl md:rounded-tl-2xl"
+                      className="w-full h-auto mt-4 rounded-tr-lg rounded-tl-lg md:rounded-tr-2xl md:rounded-tl-2xl border-t border-l border-r border-muted"
                     />
                   </div>
                 </CarouselItem>
-                <CarouselItem key={"csl3"} className="basis-10/12 md:basis-3/5">
+                <CarouselItem
+                  key={"csl3"}
+                  className="basis-10/12 md:basis-3/5 cursor-grab active:cursor-grabbing"
+                >
                   <div>
                     <Image
                       src={"/img/hyperlane/molten.png"}
@@ -181,11 +198,14 @@ export function HLContent() {
                       width={958}
                       height={706}
                       sizes="100vw"
-                      className="w-full h-auto mt-4 rounded-tr-lg rounded-tl-lg md:rounded-tr-2xl md:rounded-tl-2xl"
+                      className="w-full h-auto mt-4 rounded-tr-lg rounded-tl-lg md:rounded-tr-2xl md:rounded-tl-2xl border-t border-l border-r border-muted"
                     />
                   </div>
                 </CarouselItem>
-                <CarouselItem key={"csl4"} className="basis-10/12 md:basis-3/5">
+                <CarouselItem
+                  key={"csl4"}
+                  className="basis-10/12 md:basis-3/5 cursor-grab active:cursor-grabbing"
+                >
                   <div>
                     <Image
                       src={"/img/hyperlane/elixir.png"}
@@ -195,7 +215,7 @@ export function HLContent() {
                       width={958}
                       height={706}
                       sizes="100vw"
-                      className="w-full h-auto mt-4 rounded-tr-lg rounded-tl-lg md:rounded-tr-2xl md:rounded-tl-2xl"
+                      className="w-full h-auto mt-4 rounded-tr-lg rounded-tl-lg md:rounded-tr-2xl md:rounded-tl-2xl border-t border-l border-r border-muted"
                     />
                   </div>
                 </CarouselItem>
@@ -226,11 +246,21 @@ export function HLContent() {
             </div>
             <div className="rounded-3xl backdrop-blur-md p-8 relative overflow-hidden bg-[#F50FD6] flex flex-col gap-8 justify-between">
               <div className="relative z-10 h-full aspect-[4/3]">
-                <StickerCode className="absolute w-1/4 h-auto left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rotate-[15deg] drop-shadow-sm" />
-                <StickerDomain className="absolute w-1/5 h-auto left-3 top-2 rotate-[-28deg] drop-shadow-sm" />
-                <StickerComputer className="absolute w-1/5 h-auto right-3 top-4 rotate-[28deg] drop-shadow-sm" />
-                <StickerLink className="absolute w-1/5 h-auto left-8 bottom-2 drop-shadow-sm" />
-                <StickerTerms className="absolute w-1/5 h-auto right-8 bottom-2 rotate-[15deg] drop-shadow-sm" />
+                <div className="animate-float delay-0 absolute w-1/4 h-auto left-1/2 top-1/2 ">
+                  <StickerCode className="rotate-[15deg] drop-shadow-sm -translate-x-1/2 -translate-y-1/2" />
+                </div>
+                <div className="animate-float delay-200 absolute w-1/5 h-auto left-3 top-2 ">
+                  <StickerDomain className="rotate-[-28deg] drop-shadow-sm" />
+                </div>
+                <div className="animate-float delay-300 absolute w-1/5 h-auto right-3 top-4 ">
+                  <StickerComputer className="rotate-[28deg] drop-shadow-sm" />
+                </div>
+                <div className="animate-float delay-500 absolute w-1/5 h-auto left-8 bottom-2 ">
+                  <StickerLink className="drop-shadow-sm" />
+                </div>
+                <div className="animate-float delay-700 absolute w-1/5 h-auto right-8 bottom-2">
+                  <StickerTerms className="rotate-[15deg] drop-shadow-sm" />
+                </div>
               </div>
               <div className="relative z-10 flex flex-col gap-2">
                 <h3 className="text-xl md:text-3xl font-heading leading-tight md:leading-tight text-pretty">
