@@ -29,7 +29,7 @@ export function Footer() {
               </a>
             </li>
             <li>
-              <a href="https://layerzero.superbridge.app" target="_blank">
+              <a href="https://lz.superbridge.app" target="_blank">
                 Layer Zero
               </a>
             </li>

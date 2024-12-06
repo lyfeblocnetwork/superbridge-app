@@ -51,7 +51,7 @@ export function HeaderLinks() {
       label: "Rollups",
     },
     {
-      url: "https://layerzero.superbridge.app",
+      url: "https://lz.superbridge.app",
       label: "Layer Zero",
     },
     {
