@@ -1,23 +1,17 @@
-import { soneiumMinato } from "viem/chains";
-
 import { ChainDto } from "@/codegen/model";
 
 import { useFromChain, useToChain } from "../use-chain";
 
 export const useHasRecipientAddressRestriction = (chain: ChainDto | null) => {
-  return chain?.id === soneiumMinato.id;
+  return chain?.name.toLowerCase().includes("soneium");
 };
 
 export const useFromChainHasRecipientAddressRestriction = () => {
-  const from = useFromChain();
-
-  return from?.id === soneiumMinato.id;
+  return useHasRecipientAddressRestriction(useFromChain());
 };
 
 export const useToChainHasRecipientAddressRestriction = () => {
-  const to = useToChain();
-
-  return to?.id === soneiumMinato.id;
+  return useHasRecipientAddressRestriction(useToChain());
 };
 
 export const useRouteHasRecipientAddressRestriction = () => {
@@ -37,12 +31,10 @@ export const useDirectionHasRecipientAddressRestriction = () => {
 };
 
 export const useChainWithRecipientAddressRestriction = () => {
-  const fromChain = useFromChain();
-  const toChain = useToChain();
   const from = useFromChainHasRecipientAddressRestriction();
   const to = useToChainHasRecipientAddressRestriction();
 
-  if (from) return fromChain;
-  if (to) return toChain;
+  if (from) return from;
+  if (to) return to;
   return null;
 };
