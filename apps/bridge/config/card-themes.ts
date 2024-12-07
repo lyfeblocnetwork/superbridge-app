@@ -865,14 +865,6 @@ const alloTheme = {
   },
 };
 
-const swellTheme = {
-  icon: "/img/swell/icon.svg",
-  card: {
-    className: "bg-gradient-to-br from-[#3068EF] to-[#2F43EC]",
-    title: "text-white",
-  },
-};
-
 const nodgamesTheme = {
   icon: "/img/nodgames/icon.svg",
   card: {
@@ -984,6 +976,22 @@ const plumeTheme = {
     title: "text-black",
   },
 };
+
+const swellTheme = {
+  icon: "/img/swell/icon.svg",
+  card: {
+    className: "bg-gradient-to-b from-[#11012C] to-[#290368]",
+    title: "text-white",
+  },
+};
+
+// const swellTheme = {
+//   icon: "/img/swell/icon.svg",
+//   card: {
+//     className: "bg-gradient-to-br from-[#3068EF] to-[#2F43EC]",
+//     title: "text-white",
+//   },
+// };
 
 export const cardThemes: {
   [chainId: string]: { card: CardTheme; icon: string } | undefined;
@@ -1125,4 +1133,6 @@ export const cardThemes: {
   [1285]: moonriverTheme,
   [66665]: creatorTheme,
   [98865]: plumeTheme,
+  [1923]: swellTheme,
+  [1924]: swellTheme,
 };
