@@ -8,7 +8,7 @@ module.exports = {
       mock: false,
     },
     input: {
-      target: "../../../fugu-monorepo/apps/backend/bridge-swagger.yaml",
+      target: "../../../superbridge-backend/apps/backend/bridge-swagger.yaml",
     },
   },
 };

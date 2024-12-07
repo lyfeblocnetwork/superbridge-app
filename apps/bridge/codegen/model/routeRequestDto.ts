@@ -5,10 +5,12 @@
  * API docs
  * OpenAPI spec version: 1.0
  */
+import type { CcipRouteRequestDto } from './ccipRouteRequestDto';
 import type { HyperlaneRouteRequestDto } from './hyperlaneRouteRequestDto';
 
 export interface RouteRequestDto {
   amount: string;
+  ccip?: CcipRouteRequestDto;
   forceViaL1: boolean;
   fromChainId: string;
   fromTokenAddress: string;

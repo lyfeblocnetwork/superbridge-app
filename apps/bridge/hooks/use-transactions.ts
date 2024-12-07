@@ -7,6 +7,7 @@ import { ActivityV3Dto } from "@/codegen/model";
 import { useInjectedStore } from "@/state/injected";
 
 import { useAcrossDomains } from "./across/use-across-domains";
+import { useCcipDomains } from "./ccip/use-ccip-domains";
 import { useCctpDomains } from "./cctp/use-cctp-domains";
 import { useDeployments } from "./deployments/use-deployments";
 import { useHyperlaneActivityRequest } from "./hyperlane/use-hyperlane-activity-request";
@@ -22,6 +23,7 @@ export const useTransactions = () => {
   );
   const acrossDomains = useAcrossDomains();
   const cctpDomains = useCctpDomains();
+  const ccipDomains = useCcipDomains();
 
   const address = account.address;
   const {
@@ -39,6 +41,7 @@ export const useTransactions = () => {
       deployments.map((x) => x.id),
       acrossDomains.map((x) => x.id),
       cctpDomains.map((x) => x.id),
+      ccipDomains.map((x) => x.id),
       hyperlane.mailboxIds,
       hyperlane.routers,
       lz.domainIds,
@@ -59,6 +62,7 @@ export const useTransactions = () => {
         address,
         acrossDomains: acrossDomains.map((x) => x.id),
         cctpDomains: cctpDomains.map((x) => x.id),
+        ccipDomains: ccipDomains.map((x) => x.id),
         deploymentIds: deployments.map((d) => d.id),
         cursor: pageParam || null,
 

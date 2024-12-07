@@ -9,6 +9,8 @@ import {
   ArbitrumTransactionType,
   ArbitrumWithdrawalDto,
   BridgeWithdrawalDto,
+  CcipBridgeDto,
+  CcipTransactionType,
   CctpBridgeDto,
   CctpTransactionType,
   DeploymentStatus,
@@ -144,6 +146,12 @@ export const isLzBridge = (
   tx: Pick<Transaction, "type">
 ): tx is LzBridgeV2Dto => {
   return tx.type === LzTransactionType["lz-bridge"];
+};
+
+export const isCcipBridge = (
+  tx: Pick<Transaction, "type">
+): tx is CcipBridgeDto => {
+  return tx.type === CcipTransactionType["ccip-bridge"];
 };
 
 export const isActive = (

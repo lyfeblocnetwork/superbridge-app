@@ -9,6 +9,7 @@ import { Transaction } from "@/types/transaction";
 
 import { isOptimismWithdrawal } from "../../utils/guards";
 import { useAcrossProgressRows } from "./across";
+import { useCcipProgressRows } from "./ccip";
 import { useHyperlaneProgressRows } from "./hyperlane";
 import { useLzProgressRows } from "./lz";
 
@@ -30,6 +31,7 @@ export const useProgressRows = (tx: Transaction | null) => {
   const across = useAcrossProgressRows(tx);
   const hyperlaneProgressRows = useHyperlaneProgressRows(tx);
   const lzProgressRows = useLzProgressRows(tx);
+  const ccipProgressRows = useCcipProgressRows(tx);
 
   return (
     arbitrumDeposit ||
@@ -40,6 +42,7 @@ export const useProgressRows = (tx: Transaction | null) => {
     cctp ||
     across ||
     hyperlaneProgressRows ||
-    lzProgressRows
+    lzProgressRows ||
+    ccipProgressRows
   );
 };

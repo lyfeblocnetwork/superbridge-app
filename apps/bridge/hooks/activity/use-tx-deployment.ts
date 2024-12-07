@@ -1,6 +1,7 @@
 import { Transaction } from "@/types/transaction";
 import {
   isAcrossBridge,
+  isCcipBridge,
   isCctpBridge,
   isForcedWithdrawal,
   isHyperlaneBridge,
@@ -16,7 +17,8 @@ export const useTxDeployment = (tx: Transaction | undefined | null) => {
         isAcrossBridge(tx) ||
         isCctpBridge(tx) ||
         isHyperlaneBridge(tx) ||
-        isLzBridge(tx)
+        isLzBridge(tx) ||
+        isCcipBridge(tx)
         ? ""
         : isForcedWithdrawal(tx)
           ? tx.deposit.deploymentId

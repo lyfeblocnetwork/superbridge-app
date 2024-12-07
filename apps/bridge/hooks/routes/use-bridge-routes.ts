@@ -88,6 +88,13 @@ export const useBridgeRoutes = () => {
         opBridgedUsdcAdapter: fromToken?.opBridgedUsdcV2?.[to?.id ?? 0],
         lzAdapter: fromToken?.lz?.adapter,
         skyBridge: fromToken?.sky?.bridge,
+        ccip:
+          fromToken?.ccip && toToken?.ccip
+            ? {
+                fromPool: fromToken.ccip.pool,
+                toPool: toToken.ccip.pool,
+              }
+            : undefined,
       });
     },
     enabled:

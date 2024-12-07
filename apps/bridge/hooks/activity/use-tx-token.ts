@@ -7,6 +7,7 @@ import { MultiChainToken } from "@/types/token";
 import { Transaction } from "@/types/transaction";
 import {
   isAcrossBridge,
+  isCcipBridge,
   isCctpBridge,
   isDeposit,
   isForcedWithdrawal,
@@ -70,14 +71,14 @@ export function useTxMultichainToken(tx: Transaction | null | undefined) {
 
   const { from, to } = chains;
 
-  if (isCctpBridge(tx)) {
+  if (isCctpBridge(tx) || isCcipBridge(tx)) {
     return getToken(
       tokens.data,
       {
-        chainId: tx.fromChainId,
+        chainId: chains.from.id,
         tokenAddress: tx.token,
       },
-      tx.toChainId
+      chains.to.id
     );
   }
 

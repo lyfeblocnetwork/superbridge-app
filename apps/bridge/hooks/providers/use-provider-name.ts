@@ -10,6 +10,7 @@ const names = {
   [RouteProvider.OptimismForcedWithdrawal]: "Native Bridge",
   [RouteProvider.Hyperlane]: "Hyperlane",
   [RouteProvider.Lz]: "Layer Zero",
+  [RouteProvider.Ccip]: "CCIP",
 };
 
 export const useProviderName = (provider: RouteProvider | null) => {

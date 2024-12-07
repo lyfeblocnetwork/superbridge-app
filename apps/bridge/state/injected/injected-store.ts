@@ -2,6 +2,7 @@ import { createStore } from "zustand";
 
 import {
   AcrossDomainDto,
+  CcipDomainDto,
   CctpDomainDto,
   ChainDto,
   DeploymentDto,
@@ -20,6 +21,7 @@ export type InjectedState = {
   acrossDomains: AcrossDomainDto[];
   cctpDomains: CctpDomainDto[];
   lzDomains: LzDomainDto[];
+  ccipDomains: CcipDomainDto[];
   hyperlaneMailboxes: HyperlaneMailboxDto[];
   fromChainId: number;
   toChainId: number;

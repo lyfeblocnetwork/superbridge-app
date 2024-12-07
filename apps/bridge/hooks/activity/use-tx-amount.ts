@@ -5,6 +5,7 @@ import { Token } from "@/types/token";
 import { Transaction } from "@/types/transaction";
 import { formatDecimals } from "@/utils/format-decimals";
 import {
+  isCcipBridge,
   isCctpBridge,
   isForcedWithdrawal,
   isHyperlaneBridge,
@@ -31,11 +32,7 @@ export function useTxAmount(
     amount = tx.metadata.data.inputAmount;
     decimals = token?.decimals ?? 18;
     symbol = token?.symbol ?? "ETH";
-  } else if (isHyperlaneBridge(tx)) {
-    amount = tx.amount;
-    decimals = token?.decimals ?? 18;
-    symbol = token?.symbol ?? "ETH";
-  } else if (isLzBridge(tx)) {
+  } else if (isHyperlaneBridge(tx) || isLzBridge(tx) || isCcipBridge(tx)) {
     amount = tx.amount;
     decimals = token?.decimals ?? 18;
     symbol = token?.symbol ?? "ETH";

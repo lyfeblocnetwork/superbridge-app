@@ -4,6 +4,7 @@ import {
   ArbitrumForcedWithdrawalDto,
   ArbitrumWithdrawalDto,
   BridgeWithdrawalDto,
+  CcipBridgeDto,
   CctpBridgeDto,
   ForcedWithdrawalDto,
   HyperlaneBridgeDto,
@@ -29,6 +30,7 @@ type All =
   | CctpBridgeDto
   | AcrossBridgeDto
   | HyperlaneBridgeDto
-  | LzBridgeV2Dto;
+  | LzBridgeV2Dto
+  | CcipBridgeDto;
 
 export type Transaction = All & { mock?: true };

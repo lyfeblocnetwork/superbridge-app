@@ -2,6 +2,7 @@ import { Transaction } from "@/types/transaction";
 import {
   isAcrossBridge,
   isArbitrumWithdrawal,
+  isCcipBridge,
   isCctpBridge,
   isDeposit,
   isHyperlaneBridge,
@@ -22,8 +23,10 @@ export const useTxDuration = (
       (deployment?.proveDuration ?? 0) + (deployment?.finalizeDuration ?? 0)
     );
   if (isArbitrumWithdrawal(tx)) return deployment?.finalizeDuration;
+
   if (isAcrossBridge(tx)) return tx.duration;
   if (isHyperlaneBridge(tx)) return tx.duration;
   if (isCctpBridge(tx)) return tx.duration;
   if (isLzBridge(tx)) return tx.duration;
+  if (isCcipBridge(tx)) return tx.duration;
 };

@@ -11,6 +11,7 @@ import type { GetLzActivityDto } from './getLzActivityDto';
 export interface GetActivityV4Dto {
   acrossDomains: string[];
   address: string;
+  ccipDomains?: string[];
   cctpDomains: string[];
   /** @nullable */
   cursor: string | null;

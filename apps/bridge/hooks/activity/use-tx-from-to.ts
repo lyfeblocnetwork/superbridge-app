@@ -1,6 +1,7 @@
 import { Transaction } from "@/types/transaction";
 import {
   isAcrossBridge,
+  isCcipBridge,
   isCctpBridge,
   isDeposit,
   isForcedWithdrawal,
@@ -9,6 +10,7 @@ import {
   isWithdrawal,
 } from "@/utils/guards";
 
+import { useCcipDomains } from "../ccip/use-ccip-domains";
 import { useDeployments } from "../deployments/use-deployments";
 import { useHyperlaneMailboxes } from "../hyperlane/use-hyperlane-mailboxes";
 import { useLzDomains } from "../lz/use-lz-domains";
@@ -18,6 +20,7 @@ export const useTxFromTo = (tx: Transaction | undefined | null) => {
   const deployments = useDeployments();
   const hyperlaneMailboxes = useHyperlaneMailboxes();
   const lzDomains = useLzDomains();
+  const ccipDomains = useCcipDomains();
 
   let fromChainId = 0;
   let toChainId = 0;
@@ -50,6 +53,13 @@ export const useTxFromTo = (tx: Transaction | undefined | null) => {
   if (tx && isLzBridge(tx)) {
     fromChainId = lzDomains.find((x) => x.eId === tx.fromEid)?.chainId ?? 0;
     toChainId = lzDomains.find((x) => x.eId === tx.toEid)?.chainId ?? 0;
+  }
+
+  if (tx && isCcipBridge(tx)) {
+    fromChainId =
+      ccipDomains.find((x) => x.selector === tx.fromSelector)?.chainId ?? 0;
+    toChainId =
+      ccipDomains.find((x) => x.selector === tx.toSelector)?.chainId ?? 0;
   }
 
   if (tx && isDeposit(tx)) {

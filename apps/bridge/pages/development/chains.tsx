@@ -41,6 +41,7 @@ export default function ChainsPage() {
       initialValues={{
         acrossDomains: [],
         cctpDomains: [],
+        ccipDomains: [],
         chains: [
           mainnet as unknown as ChainDto,
           optimism as unknown as ChainDto,

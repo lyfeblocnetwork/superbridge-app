@@ -24,6 +24,7 @@ const icons = {
   [RouteProvider.OptimismForcedWithdrawal]: "/img/networks/optimism.svg",
   [RouteProvider.Hyperlane]: "/img/networks/hyperlane.svg",
   [RouteProvider.Lz]: "/img/lz/icon.png",
+  [RouteProvider.Ccip]: "/img/lz/icon.png",
 };
 
 export const routeProviderToTransactionType = {
@@ -39,6 +40,7 @@ export const routeProviderToTransactionType = {
     OptimismTransactionType["forced-withdrawal"],
   [RouteProvider.Hyperlane]: HyperlaneTransactionType["hyperlane-bridge"],
   [RouteProvider.Lz]: LzTransactionType["lz-bridge"],
+  [RouteProvider.Ccip]: CctpTransactionType["cctp-bridge"],
 };
 
 export const RouteProviderName = ({

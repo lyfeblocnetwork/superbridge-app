@@ -22,6 +22,7 @@ export const createInjectedState = (props: {
   return {
     acrossDomains: dto?.acrossDomains ?? [],
     cctpDomains: dto?.cctpDomains ?? [],
+    ccipDomains: dto?.ccipDomains ?? [],
     deployments: dto?.deployments ?? [],
     hyperlaneMailboxes: dto?.hyperlaneMailboxes ?? [],
     lzDomains: dto?.lzDomains ?? [],

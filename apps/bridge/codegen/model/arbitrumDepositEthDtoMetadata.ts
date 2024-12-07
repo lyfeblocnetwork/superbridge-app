@@ -9,5 +9,6 @@ import type { EthDepositDto } from './ethDepositDto';
 import type { TokenDepositDto } from './tokenDepositDto';
 import type { AcrossBridgeMetadataDto } from './acrossBridgeMetadataDto';
 import type { LzBridgeMetadataDto } from './lzBridgeMetadataDto';
+import type { CcipBridgeMetadataDto } from './ccipBridgeMetadataDto';
 
-export type ArbitrumDepositEthDtoMetadata = EthDepositDto | TokenDepositDto | AcrossBridgeMetadataDto | LzBridgeMetadataDto;
+export type ArbitrumDepositEthDtoMetadata = EthDepositDto | TokenDepositDto | AcrossBridgeMetadataDto | LzBridgeMetadataDto | CcipBridgeMetadataDto;

@@ -5,6 +5,7 @@
  * API docs
  * OpenAPI spec version: 1.0
  */
+import type { CcipPoolDto } from './ccipPoolDto';
 import type { HyperlaneRouterDto } from './hyperlaneRouterDto';
 import type { OpBridgedUsdcDto } from './opBridgedUsdcDto';
 import type { BridgeableTokenDtoOpBridgedUsdcV2 } from './bridgeableTokenDtoOpBridgedUsdcV2';
@@ -13,6 +14,7 @@ import type { SkyBridgeDto } from './skyBridgeDto';
 export interface BridgeableTokenDto {
   address: string;
   bridges: number[];
+  ccip?: CcipPoolDto;
   chainId: number;
   coinGeckoId?: string;
   decimals: number;

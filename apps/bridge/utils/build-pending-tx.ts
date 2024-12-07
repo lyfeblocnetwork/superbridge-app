@@ -4,6 +4,8 @@ import {
   ArbitrumDepositRetryableDto,
   ArbitrumWithdrawalDto,
   BridgeWithdrawalDto,
+  CcipBridgeDto,
+  CcipDomainDto,
   CctpBridgeDto,
   ChainDto,
   DeploymentDto,
@@ -35,6 +37,7 @@ export const buildPendingTx = (
   force: boolean,
   provider: RouteProvider,
   hyperlaneMailboxes: HyperlaneMailboxDto[],
+  ccipDomains: CcipDomainDto[],
   lzDomains: LzDomainDto[],
   { from, to }: { from: ChainDto; to: ChainDto }
 ) => {
@@ -125,6 +128,37 @@ export const buildPendingTx = (
       from: account,
       fromEid: fromDomain.eId,
       toEid: toDomain.eId,
+
+      to: recipient,
+      token: fromToken.address,
+    };
+    return b;
+  }
+
+  if (provider == RouteProvider.Ccip) {
+    const fromDomain = ccipDomains.find((x) => x.chainId === from.id);
+    const toDomain = ccipDomains.find((x) => x.chainId === to.id);
+    if (!fromDomain || !toDomain) {
+      return null;
+    }
+    const b: CcipBridgeDto = {
+      id: Math.random().toString(),
+      // @ts-expect-error
+      send: {
+        transactionHash: hash,
+      },
+      createdAt: new Date().toString(),
+      updatedAt: new Date().toString(),
+
+      amount: weiAmount.toString(),
+      receiveAmount: receiveAmount.toString(),
+      type: "ccip-bridge",
+      receive: undefined,
+      duration: 1000 * 60 * 25,
+
+      from: account,
+      fromSelector: fromDomain.selector,
+      toSelector: toDomain.selector,
 
       to: recipient,
       token: fromToken.address,

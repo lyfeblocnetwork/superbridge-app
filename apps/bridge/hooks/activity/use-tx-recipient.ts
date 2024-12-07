@@ -1,5 +1,6 @@
 import { Transaction } from "@/types/transaction";
 import {
+  isCcipBridge,
   isCctpBridge,
   isForcedWithdrawal,
   isHyperlaneBridge,
@@ -10,7 +11,7 @@ export const useTxRecipient = (
   tx: Transaction | null | undefined
 ): string | null => {
   if (!tx) return null;
-  if (isHyperlaneBridge(tx) || isLzBridge(tx)) return tx.to;
+  if (isHyperlaneBridge(tx) || isLzBridge(tx) || isCcipBridge(tx)) return tx.to;
   if (isCctpBridge(tx)) return tx.recipient;
   // @ts-expect-error todo: handle this lz issue
   if (isForcedWithdrawal(tx)) return tx.deposit.metadata.to;
