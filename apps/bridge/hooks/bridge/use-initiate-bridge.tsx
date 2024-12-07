@@ -19,6 +19,7 @@ import { isRouteQuote } from "@/utils/guards";
 import { nativeTokenDecimalsTo18Decimals } from "@/utils/native-token-scaling";
 
 import { useAllowanceGasToken } from "../approvals/use-allowance-gas-token";
+import { useCcipDomains } from "../ccip/use-ccip-domains";
 import { useDeployment } from "../deployments/use-deployment";
 import { useHyperlaneMailboxes } from "../hyperlane/use-hyperlane-mailboxes";
 import { useLzDomains } from "../lz/use-lz-domains";
@@ -57,6 +58,7 @@ export const useInitiateBridge = () => {
   const statusCheck = useStatusCheck();
   const hyperlaneMailboxes = useHyperlaneMailboxes();
   const lzDomains = useLzDomains();
+  const ccipDomains = useCcipDomains();
   const balances = useTokenBalances();
   const receive = useReceiveAmount();
 
@@ -137,6 +139,7 @@ export const useInitiateBridge = () => {
         forceViaL1,
         route.data.id,
         hyperlaneMailboxes,
+        ccipDomains,
         lzDomains,
         { from: from!, to: to! }
       );
