@@ -312,7 +312,7 @@ export function LZContent() {
                   Get Superbridge for Layer Zero
                 </h3>
                 <p className="text-muted-foreground leading-snug">
-                  Starting from $500/month
+                  Starting from $1000/month
                 </p>
               </div>
               <div className="flex flex-col lg:flex-row gap-4">
