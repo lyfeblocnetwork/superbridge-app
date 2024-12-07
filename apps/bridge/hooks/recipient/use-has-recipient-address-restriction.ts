@@ -31,10 +31,12 @@ export const useDirectionHasRecipientAddressRestriction = () => {
 };
 
 export const useChainWithRecipientAddressRestriction = () => {
+  const fromChain = useFromChain();
+  const toChain = useToChain();
   const from = useFromChainHasRecipientAddressRestriction();
   const to = useToChainHasRecipientAddressRestriction();
 
-  if (from) return from;
-  if (to) return to;
+  if (from) return fromChain;
+  if (to) return toChain;
   return null;
 };
