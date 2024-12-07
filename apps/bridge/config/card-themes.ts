@@ -985,6 +985,14 @@ const swellTheme = {
   },
 };
 
+const EtherlinkTheme = {
+  icon: "/img/etherlink/icon.svg",
+  card: {
+    className: "bg-[url('/img/etherlink/bg-card.svg')] bg-cover",
+    title: "text-white",
+  },
+};
+
 // const swellTheme = {
 //   icon: "/img/swell/icon.svg",
 //   card: {
@@ -1135,4 +1143,5 @@ export const cardThemes: {
   [98865]: plumeTheme,
   [1923]: swellTheme,
   [1924]: swellTheme,
+  [42793]: EtherlinkTheme,
 };
