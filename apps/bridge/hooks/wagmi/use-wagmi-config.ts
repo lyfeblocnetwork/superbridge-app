@@ -26,12 +26,12 @@ export function useWagmiConfig() {
     }
 
     const chainsWithIcons: Chain[] = chains.map((c) => {
-      if (c.id === 1) {
-        // @ts-expect-error
-        (c as Chain).fees = {
-          baseFeeMultiplier: 1.1,
-        };
-      }
+      // if (c.id === 1) {
+      //   // @ts-expect-error
+      //   (c as Chain).fees = {
+      //     baseFeeMultiplier: 1.1,
+      //   };
+      // }
 
       if (chainIcons[c.id]) {
         if (c.name === "Molten") {
