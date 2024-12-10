@@ -9,6 +9,7 @@ import { useRef, useState } from "react";
 import { Trans, useTranslation } from "react-i18next";
 import ReactMarkdown from "react-markdown";
 
+import { useIsPepe } from "@/hooks/apps/use-is-pepe";
 import { useIsSuperbridge } from "@/hooks/apps/use-is-superbridge";
 import { useIsWidget } from "@/hooks/use-is-widget";
 import { useMetadata } from "@/hooks/use-metadata";
@@ -32,6 +33,7 @@ export const TosModal = () => {
   const legalModal = useModal("Legal");
   const metadata = useMetadata();
   const isSuperbridge = useIsSuperbridge();
+  const isPepe = useIsPepe();
   const widget = useIsWidget();
 
   const [activeIndex, setActiveIndex] = useState(0);
@@ -76,7 +78,7 @@ export const TosModal = () => {
           {t("tos.welcome", { name: metadata.head.title })}
         </DialogTitle>
 
-        {!isSuperbridge && (
+        {!isSuperbridge && !isPepe && (
           <DialogDescription className="text-xs font-heading text-muted-foreground text-center">
             {t("tos.poweredBy")}
           </DialogDescription>

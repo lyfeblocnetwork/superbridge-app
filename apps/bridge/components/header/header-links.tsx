@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useIsHyperlanePlayground } from "@/hooks/apps/use-is-hyperlane";
 import { useIsLzPlayground } from "@/hooks/apps/use-is-lz";
+import { useIsPepe } from "@/hooks/apps/use-is-pepe";
 import { useIsSuperbridge } from "@/hooks/apps/use-is-superbridge";
 import { useApp } from "@/hooks/use-metadata";
 import { useModal } from "@/hooks/use-modal";
@@ -32,6 +33,7 @@ export function HeaderLinks() {
   const isSuperbridge = useIsSuperbridge();
   const isLz = useIsLzPlayground();
   const isHyperlane = useIsHyperlanePlayground();
+  const isPepe = useIsPepe();
 
   const isPlayground = isSuperbridge || isLz || isHyperlane;
 
@@ -144,18 +146,21 @@ export function HeaderLinks() {
                 </button>
               </DropdownMenuItem>
             </DropdownMenuGroup>
-            <DropdownMenuGroup className="my-2">
-              <div className="px-2 pr-6">
-                <a
-                  href="https://superbridge.app"
-                  target="_blank"
-                  className=" text-[10px] leading-none w-full flex gap-1.5 items-center"
-                >
-                  <StickerSB className="h-5 w-auto fill-foreground" />
-                  <span>{t("tos.poweredBy")}</span>
-                </a>
-              </div>
-            </DropdownMenuGroup>
+
+            {!isPepe && (
+              <DropdownMenuGroup className="my-2">
+                <div className="px-2 pr-6">
+                  <a
+                    href="https://superbridge.app"
+                    target="_blank"
+                    className=" text-[10px] leading-none w-full flex gap-1.5 items-center"
+                  >
+                    <StickerSB className="h-5 w-auto fill-foreground" />
+                    <span>{t("tos.poweredBy")}</span>
+                  </a>
+                </div>
+              </DropdownMenuGroup>
+            )}
           </>
         ) : (
           <>

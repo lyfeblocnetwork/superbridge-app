@@ -13,6 +13,8 @@ import {
 import { AppConfig } from "@/types/app-config";
 
 export type InjectedState = {
+  id: string;
+
   /* superbridge  */
   superbridgeTestnets: boolean;
   superbridgeConfig: SuperbridgeConfigDto | null;

@@ -20,6 +20,7 @@ export const createInjectedState = (props: {
   );
 
   return {
+    id: dto.id,
     acrossDomains: dto?.acrossDomains ?? [],
     cctpDomains: dto?.cctpDomains ?? [],
     ccipDomains: dto?.ccipDomains ?? [],

@@ -4,6 +4,10 @@ export const useMetadata = () => {
   return useInjectedStore((s) => s.app);
 };
 
+export const useId = () => {
+  return useInjectedStore((s) => s.id);
+};
+
 export const useApp = () => {
   return useInjectedStore((s) => s.app);
 };

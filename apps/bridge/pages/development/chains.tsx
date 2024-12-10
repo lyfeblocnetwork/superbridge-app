@@ -39,6 +39,7 @@ export default function ChainsPage() {
   return (
     <InjectedStoreProvider
       initialValues={{
+        id: "",
         acrossDomains: [],
         cctpDomains: [],
         ccipDomains: [],
