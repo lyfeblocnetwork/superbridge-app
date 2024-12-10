@@ -117,6 +117,8 @@ export * from './lzDomainDto';
 export * from './lzDomainDtoContractAddresses';
 export * from './lzTransactionType';
 export * from './numberDto';
+export * from './onrampAsset';
+export * from './onrampAssetsResponse';
 export * from './opBridgedUsdcDto';
 export * from './optimismConfigDto';
 export * from './optimismContractAddressesDto';

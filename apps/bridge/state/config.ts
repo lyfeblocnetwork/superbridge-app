@@ -6,6 +6,9 @@ import { RouteProvider } from "@/codegen/model";
 import { MultiChainToken } from "@/types/token";
 
 interface ConfigState {
+  fiatOnramp: boolean;
+  setFiatOnramp: (x: boolean) => void;
+
   displayConfirmationModal: boolean;
   setDisplayConfirmationModal: (x: boolean) => void;
 
@@ -48,6 +51,9 @@ interface ConfigState {
 }
 
 const ConfigState = create<ConfigState>()((set, get) => ({
+  fiatOnramp: false,
+  setFiatOnramp: (fiatOnramp) => set({ fiatOnramp }),
+
   forceViaL1: false,
   toggleForceViaL1: () => set((s) => ({ forceViaL1: !s.forceViaL1 })),
   setForceViaL1: (forceViaL1) => set({ forceViaL1 }),

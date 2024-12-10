@@ -28,10 +28,12 @@ import {
   IconSettings,
   IconSpinner,
 } from "./icons";
+import { Button } from "./ui/button";
 
 export const BridgeHeader = () => {
   const { t } = useTranslation();
   const setDisplayTransactions = useConfigState.useSetDisplayTransactions();
+  const setFiatOnramp = useConfigState.useSetFiatOnramp();
   const settingsModal = useModal("Settings");
   const legalModal = useModal("Legal");
 
@@ -62,6 +64,9 @@ export const BridgeHeader = () => {
             <TestnetBadge />
           </div>
         ) : null}
+
+        <Button onClick={() => setFiatOnramp(false)}>Bridge</Button>
+        <Button onClick={() => setFiatOnramp(true)}>Buy</Button>
 
         <div className="flex gap-1.5 items-center">
           <button
