@@ -945,6 +945,14 @@ const astarTheme = {
   },
 };
 
+const astarZkTheme = {
+  icon: "/img/astar-zk/icon.svg",
+  card: {
+    className: "bg-gradient-to-br from-[#fff] to-[#E3F6FA]",
+    title: "text-black",
+  },
+};
+
 const abstractTheme = {
   icon: "/img/abstract/icon.svg",
   card: {
@@ -1000,6 +1008,53 @@ const EtherlinkTheme = {
 //     title: "text-white",
 //   },
 // };
+
+const flareTheme = {
+  icon: "/img/flare/icon.svg",
+  card: {
+    className: "bg-[url('/img/flare/bg-card.svg')] bg-cover",
+    title: "text-black",
+  },
+};
+
+const iotaTheme = {
+  icon: "/img/iota/icon.svg",
+  card: {
+    className: "bg-[url('/img/iota/bg-card.jpg')] bg-cover",
+    title: "text-white",
+  },
+};
+
+const telosTheme = {
+  icon: "/img/telos/icon.svg",
+  card: {
+    className: "bg-white",
+    title: "text-black",
+  },
+};
+
+const peaqTheme = {
+  icon: "/img/peaq/icon.svg",
+  card: {
+    className: "bg-[#2F1D74]",
+    title: "text-white",
+  },
+};
+const lightlinkTheme = {
+  icon: "/img/lightlink/icon.svg",
+  card: {
+    className: "bg-[#2F2D7B]",
+    title: "text-white",
+  },
+};
+
+const b2Theme = {
+  icon: "/img/b2/icon.svg",
+  card: {
+    className: "bg-gradient-to-t from-[#FFB852] via-[#FFDFB6] to-[#FFE3BD]",
+    title: "text-black",
+  },
+};
 
 export const cardThemes: {
   [chainId: string]: { card: CardTheme; icon: string } | undefined;
@@ -1136,6 +1191,7 @@ export const cardThemes: {
   [1116]: coreTheme,
   [543210]: zeroTheme,
   [592]: astarTheme,
+  [3776]: astarZkTheme,
   [11124]: abstractTheme,
   [3888]: kalychainTheme,
   [1285]: moonriverTheme,
@@ -1144,4 +1200,10 @@ export const cardThemes: {
   [1923]: swellTheme,
   [1924]: swellTheme,
   [42793]: EtherlinkTheme,
+  [14]: flareTheme,
+  [8822]: iotaTheme,
+  [40]: telosTheme,
+  [3338]: peaqTheme,
+  [1890]: lightlinkTheme,
+  [223]: b2Theme,
 };
