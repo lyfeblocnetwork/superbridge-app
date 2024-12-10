@@ -54,6 +54,8 @@ import type {
   LzDomainDto,
   NumberDto,
   OnrampAssetsResponse,
+  OnrampControllerGetQuotesParams,
+  OnrampQuoteResponse,
   PricesDto,
   RouteRequestDto,
   RouteResponseDto,
@@ -1814,6 +1816,65 @@ export const useOnrampControllerGetSupportedAssets = <TData = Awaited<ReturnType
   ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } => {
 
   const queryOptions = getOnrampControllerGetSupportedAssetsQueryOptions(domain,options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  query.queryKey = queryOptions.queryKey ;
+
+  return query;
+}
+
+
+
+
+export const onrampControllerGetQuotes = (
+    domain: string,
+    params: OnrampControllerGetQuotesParams, options?: AxiosRequestConfig
+ ): Promise<AxiosResponse<OnrampQuoteResponse>> => {
+    
+    return axios.get(
+      `/api/v1/onramp/quote/${domain}`,{
+    ...options,
+        params: {...params, ...options?.params},}
+    );
+  }
+
+
+export const getOnrampControllerGetQuotesQueryKey = (domain: string,
+    params: OnrampControllerGetQuotesParams,) => {
+    return [`/api/v1/onramp/quote/${domain}`, ...(params ? [params]: [])] as const;
+    }
+
+    
+export const getOnrampControllerGetQuotesQueryOptions = <TData = Awaited<ReturnType<typeof onrampControllerGetQuotes>>, TError = AxiosError<unknown>>(domain: string,
+    params: OnrampControllerGetQuotesParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof onrampControllerGetQuotes>>, TError, TData>>, axios?: AxiosRequestConfig}
+) => {
+
+const {query: queryOptions, axios: axiosOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getOnrampControllerGetQuotesQueryKey(domain,params);
+
+  
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof onrampControllerGetQuotes>>> = ({ signal }) => onrampControllerGetQuotes(domain,params, { signal, ...axiosOptions });
+
+      
+
+      
+
+   return  { queryKey, queryFn, enabled: !!(domain), ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof onrampControllerGetQuotes>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type OnrampControllerGetQuotesQueryResult = NonNullable<Awaited<ReturnType<typeof onrampControllerGetQuotes>>>
+export type OnrampControllerGetQuotesQueryError = AxiosError<unknown>
+
+export const useOnrampControllerGetQuotes = <TData = Awaited<ReturnType<typeof onrampControllerGetQuotes>>, TError = AxiosError<unknown>>(
+ domain: string,
+    params: OnrampControllerGetQuotesParams, options?: { query?:Partial<UseQueryOptions<Awaited<ReturnType<typeof onrampControllerGetQuotes>>, TError, TData>>, axios?: AxiosRequestConfig}
+
+  ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } => {
+
+  const queryOptions = getOnrampControllerGetQuotesQueryOptions(domain,params,options)
 
   const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
 
