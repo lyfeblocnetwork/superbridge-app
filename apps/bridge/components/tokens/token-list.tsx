@@ -160,11 +160,16 @@ export const TokenList = () => {
       </div>
 
       <div className="overflow-y-scroll flex flex-col basis-full">
-        {match({ filteredTokens, searchIsToken: isAddress(search) })
+        {match({
+          filteredTokens,
+          searchIsToken: isAddress(search),
+          supportsImports: !!deployment,
+        })
           .with(
             {
               filteredTokens: P.when((x) => x?.length === 0),
               searchIsToken: true,
+              supportsImports: true,
             },
             () => <TokenImport address={search as Address} />
           )
