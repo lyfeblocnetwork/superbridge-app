@@ -59,7 +59,7 @@ export const FiatOnrampQuote = ({ quote }: { quote: OnrampQuote }) => {
       <div className="flex gap-3 justify-start mt-4">
         <div
           className={
-            "bg-primary rounded-full py-0.5 pl-0.5 pr-1.5 flex gap-1 items-center"
+            "bg-transparent rounded-full py-0.5 pl-0.5 pr-1.5 flex gap-1 items-center"
           }
         >
           <IconSimpleFees

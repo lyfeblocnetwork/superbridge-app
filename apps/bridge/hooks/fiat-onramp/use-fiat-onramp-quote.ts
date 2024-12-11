@@ -12,14 +12,22 @@ export const useFiatOnrampQuote = () => {
 
   const { chain, asset } = useFiatState();
 
-  const quotes = useOnrampControllerGetQuotes(useHost(), {
-    chainId: chain?.id.toString() ?? "",
-    fiatCurrency: fiatCurrency,
-    tokenAddress: asset?.address ?? "",
+  const quotes = useOnrampControllerGetQuotes(
+    useHost(),
+    {
+      chainId: chain?.id.toString() ?? "",
+      fiatCurrency: fiatCurrency,
+      tokenAddress: asset?.address ?? "",
 
-    tokenAmount: fiatInput ? undefined : amount,
-    fiatAmount: fiatInput ? amount : undefined,
-  });
+      tokenAmount: fiatInput ? undefined : amount,
+      fiatAmount: fiatInput ? amount : undefined,
+    },
+    {
+      query: {
+        enabled: !!amount && !!chain && !!asset,
+      },
+    }
+  );
 
   const quote = quotes.data?.data.results[0];
 

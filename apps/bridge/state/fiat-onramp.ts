@@ -17,7 +17,7 @@ interface FiatOnrampState {
 }
 
 const FiatOnrampState = create<FiatOnrampState>()((set, get) => ({
-  amount: "",
+  amount: "100",
   setAmount: (amount) => set({ amount }),
 
   fiatInput: true,

@@ -28,7 +28,6 @@ import {
   IconSettings,
   IconSpinner,
 } from "./icons";
-import { Button } from "./ui/button";
 
 export const BridgeHeader = () => {
   const { t } = useTranslation();
@@ -72,15 +71,17 @@ export const BridgeHeader = () => {
               <span className="relative z-10">Bridge</span>
             </button>
 
-            <button
-              onClick={() => setFiatOnramp(true)}
-              className={clsx(
-                "text-sm font-button overflow-hidden relative after:absolute after:content-[''] after:bg-card after:inset-0 after:opacity-10 px-4 h-8 rounded-full hover:scale-105 origin-bottom transition-all after:transition-all",
-                fiatOnramp && "after:opacity-100 shadow-xs"
-              )}
-            >
-              <span className="relative z-10">Buy</span>
-            </button>
+            {isSuperbridge && (
+              <button
+                onClick={() => setFiatOnramp(true)}
+                className={clsx(
+                  "text-sm font-button overflow-hidden relative after:absolute after:content-[''] after:bg-card after:inset-0 after:opacity-10 px-4 h-8 rounded-full hover:scale-105 origin-bottom transition-all after:transition-all",
+                  fiatOnramp && "after:opacity-100 shadow-xs"
+                )}
+              >
+                <span className="relative z-10">Buy</span>
+              </button>
+            )}
           </div>
         ) : null}
 
