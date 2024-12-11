@@ -42,6 +42,7 @@ export const BridgeHeader = () => {
   const superbridgeTestnets = useInjectedStore((s) => s.superbridgeTestnets);
   const isSuperbridge = useIsSuperbridge();
   const isHyperlanePlayground = useIsHyperlanePlayground();
+  const fiatOnramp = useConfigState.useFiatOnramp();
 
   const chains = useChains();
   const isTestnet = !!chains.find((x) => x.testnet);
@@ -54,7 +55,7 @@ export const BridgeHeader = () => {
     <>
       <div
         className={clsx(
-          "flex items-center justify-end gap-8 w-full",
+          "flex items-center justify-between  gap-8 w-full",
           isWidget ? "pt-4 -mb-2 px-4" : "px-0.5"
         )}
       >
@@ -65,8 +66,26 @@ export const BridgeHeader = () => {
           </div>
         ) : null}
 
-        <Button onClick={() => setFiatOnramp(false)}>Bridge</Button>
-        <Button onClick={() => setFiatOnramp(true)}>Buy</Button>
+        <div className="flex gap-1 items-center">
+          <button
+            onClick={() => setFiatOnramp(false)}
+            className={clsx(
+              "overflow-hidden relative after:absolute after:content-[''] after:bg-card after:inset-0 after:opacity-10 px-4 h-8 rounded-full hover:scale-105 transition-all after:transition-all",
+              !fiatOnramp && "after:opacity-100 shadow-xs"
+            )}
+          >
+            <span className="relative z-10 text-sm font-button">Bridge</span>
+          </button>
+          <button
+            onClick={() => setFiatOnramp(true)}
+            className={clsx(
+              "overflow-hidden relative after:absolute after:content-[''] after:bg-card after:inset-0 after:opacity-10 px-4 h-8 rounded-full hover:scale-105 transition-all after:transition-all",
+              fiatOnramp && "after:opacity-100 shadow-xs"
+            )}
+          >
+            <span className="relative z-10 text-sm font-button">Buy</span>
+          </button>
+        </div>
 
         <div className="flex gap-1.5 items-center">
           <button
