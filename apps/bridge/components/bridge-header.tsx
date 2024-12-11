@@ -59,34 +59,39 @@ export const BridgeHeader = () => {
           isWidget ? "pt-4 -mb-2 px-4" : "px-0.5"
         )}
       >
-        <div className="flex gap-1 items-center">
-          <button
-            onClick={() => setFiatOnramp(false)}
-            className={clsx(
-              "overflow-hidden relative after:absolute after:content-[''] after:bg-card after:inset-0 after:opacity-10 px-4 h-8 rounded-full hover:scale-105 origin-bottom transition-all after:transition-all",
-              !fiatOnramp && "after:opacity-100 shadow-xs"
-            )}
-          >
-            <span className="relative z-10 text-sm font-button">Bridge</span>
-          </button>
-          <button
-            onClick={() => setFiatOnramp(true)}
-            className={clsx(
-              "overflow-hidden relative after:absolute after:content-[''] after:bg-card after:inset-0 after:opacity-10 px-4 h-8 rounded-full hover:scale-105 origin-bottom transition-all after:transition-all",
-              fiatOnramp && "after:opacity-100 shadow-xs"
-            )}
-          >
-            <span className="relative z-10 text-sm font-button">Buy</span>
-          </button>
-        </div>
+        {(isSuperbridge && !superbridgeTestnets) ||
+        (!isHyperlanePlayground && !isTestnet) ? (
+          <div className="flex gap-1 items-center">
+            <button
+              onClick={() => setFiatOnramp(false)}
+              className={clsx(
+                "text-sm font-button overflow-hidden relative after:absolute after:content-[''] after:bg-card after:inset-0 after:opacity-10 px-4 h-8 rounded-full hover:scale-105 origin-bottom transition-all after:transition-all",
+                !fiatOnramp && "after:opacity-100 shadow-xs"
+              )}
+            >
+              <span className="relative z-10">Bridge</span>
+            </button>
+
+            <button
+              onClick={() => setFiatOnramp(true)}
+              className={clsx(
+                "text-sm font-button overflow-hidden relative after:absolute after:content-[''] after:bg-card after:inset-0 after:opacity-10 px-4 h-8 rounded-full hover:scale-105 origin-bottom transition-all after:transition-all",
+                fiatOnramp && "after:opacity-100 shadow-xs"
+              )}
+            >
+              <span className="relative z-10">Buy</span>
+            </button>
+          </div>
+        ) : null}
+
+        {(isSuperbridge && superbridgeTestnets) ||
+        (!isHyperlanePlayground && isTestnet) ? (
+          <div className="pl-0.5 mr-auto">
+            <TestnetBadge />
+          </div>
+        ) : null}
 
         <div className="flex gap-1.5 items-center">
-          {(isSuperbridge && superbridgeTestnets) ||
-          (!isHyperlanePlayground && isTestnet) ? (
-            <div className="pl-0.5 mr-auto">
-              <TestnetBadge />
-            </div>
-          ) : null}
           <button
             className={clsx(
               inProgressCount > 0 ? "bg-card pr-3 pl-2" : "bg-card",
@@ -105,7 +110,7 @@ export const BridgeHeader = () => {
             />
             {inProgressCount > 0 && (
               <div className="flex items-center gap-1.5 pr-1.5 pl-2.5 h-5 rounded-full bg-primary">
-                <span className="text-[10px] leading-none text-primary-foreground">
+                <span className="text-[11px] leading-none text-primary-foreground">
                   {actionRequiredCount > 0 ? "Action needed" : inProgressCount}
                 </span>
                 <IconSpinner className="w-2.5 h-2.5 text-primary-foreground" />
