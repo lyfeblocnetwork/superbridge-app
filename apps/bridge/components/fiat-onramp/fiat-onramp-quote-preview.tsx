@@ -1,11 +1,13 @@
 import { AnimatePresence, motion } from "framer-motion";
 
 import { useFiatOnrampQuote } from "@/hooks/fiat-onramp/use-fiat-onramp-quote";
+import { useFiatOnrampState } from "@/state/fiat-onramp";
 
 import { IconSpinner } from "../icons";
 import { FiatOnrampQuote } from "./fiat-onramp-quote";
 
 export const FiatOnrampQuotePreview = () => {
+  const amount = useFiatOnrampState.useAmount();
   const quote = useFiatOnrampQuote();
 
   return (
@@ -24,7 +26,7 @@ export const FiatOnrampQuotePreview = () => {
         </motion.div>
       )}
 
-      {!quote.isLoading && !quote.data && (
+      {!quote.isLoading && !quote.data && !!amount && (
         <motion.div key={"empty route quote"} exit={{ opacity: 0 }}>
           No quotes
         </motion.div>

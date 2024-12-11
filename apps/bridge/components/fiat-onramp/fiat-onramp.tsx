@@ -72,13 +72,14 @@ export const FiatOnramp = () => {
     account: account.address,
     quote: quote.data,
     isLoading: quote.isLoading,
+    amount,
   })
     .with({ account: undefined }, () => ({
       label: "Connect",
       onClick: () => connectModal.openConnectModal?.(),
       disabled: false,
     }))
-    .with({ isLoading: true }, () => ({
+    .with({ isLoading: true }, { amount: "" }, () => ({
       label: "Continue",
       onClick: () => {},
       disabled: true,
