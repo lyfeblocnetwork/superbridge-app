@@ -59,13 +59,6 @@ export const BridgeHeader = () => {
           isWidget ? "pt-4 -mb-2 px-4" : "px-0.5"
         )}
       >
-        {(isSuperbridge && superbridgeTestnets) ||
-        (!isHyperlanePlayground && isTestnet) ? (
-          <div className="pl-0.5 mr-auto">
-            <TestnetBadge />
-          </div>
-        ) : null}
-
         <div className="flex gap-1 items-center">
           <button
             onClick={() => setFiatOnramp(false)}
@@ -88,6 +81,12 @@ export const BridgeHeader = () => {
         </div>
 
         <div className="flex gap-1.5 items-center">
+          {(isSuperbridge && superbridgeTestnets) ||
+          (!isHyperlanePlayground && isTestnet) ? (
+            <div className="pl-0.5 mr-auto">
+              <TestnetBadge />
+            </div>
+          ) : null}
           <button
             className={clsx(
               inProgressCount > 0 ? "bg-card pr-3 pl-2" : "bg-card",
