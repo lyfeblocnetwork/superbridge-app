@@ -115,6 +115,7 @@ export * from './lzContractAddressesV1Dto';
 export * from './lzContractAddressesV2Dto';
 export * from './lzDomainDto';
 export * from './lzDomainDtoContractAddresses';
+export * from './lzRouteRequestDto';
 export * from './lzTransactionType';
 export * from './numberDto';
 export * from './opBridgedUsdcDto';

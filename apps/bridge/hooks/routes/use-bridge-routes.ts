@@ -95,6 +95,14 @@ export const useBridgeRoutes = () => {
                 toPool: toToken.ccip.pool,
               }
             : undefined,
+
+        lz:
+          fromToken?.lz?.adapter && toToken?.lz?.adapter
+            ? {
+                fromAdapter: fromToken.lz.adapter,
+                toAdapter: toToken.lz.adapter,
+              }
+            : undefined,
       });
     },
     enabled:

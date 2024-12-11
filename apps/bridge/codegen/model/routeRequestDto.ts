@@ -7,6 +7,7 @@
  */
 import type { CcipRouteRequestDto } from './ccipRouteRequestDto';
 import type { HyperlaneRouteRequestDto } from './hyperlaneRouteRequestDto';
+import type { LzRouteRequestDto } from './lzRouteRequestDto';
 
 export interface RouteRequestDto {
   amount: string;
@@ -20,6 +21,7 @@ export interface RouteRequestDto {
   hyperlaneCustomRoutesId?: string;
   hyperlaneFromTokenRouterAddress?: string;
   hyperlaneToTokenRouterAddress?: string;
+  lz?: LzRouteRequestDto;
   lzAdapter?: string;
   opBridgedUsdcAdapter?: string;
   recipient: string;
