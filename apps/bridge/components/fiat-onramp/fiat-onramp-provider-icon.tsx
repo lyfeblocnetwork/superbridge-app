@@ -3,7 +3,7 @@ import Image from "next/image";
 import { OnrampQuoteProvider } from "@/codegen/model";
 
 const icons = {
-  [OnrampQuoteProvider.Moonpay]: "/img/networks/across.svg",
+  [OnrampQuoteProvider.Moonpay]: "/img/fiat/moonpay.jpeg",
   [OnrampQuoteProvider.Halliday]: "/img/networks/across.svg",
   [OnrampQuoteProvider.Transak]: "/img/networks/across.svg",
   [OnrampQuoteProvider.ramp]: "/img/networks/across.svg",
