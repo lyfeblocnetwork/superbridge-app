@@ -63,7 +63,7 @@ export const BridgeHeader = () => {
           <button
             onClick={() => setFiatOnramp(false)}
             className={clsx(
-              "overflow-hidden relative after:absolute after:content-[''] after:bg-card after:inset-0 after:opacity-10 px-4 h-8 rounded-full hover:scale-105 transition-all after:transition-all",
+              "overflow-hidden relative after:absolute after:content-[''] after:bg-card after:inset-0 after:opacity-10 px-4 h-8 rounded-full hover:scale-105 origin-bottom transition-all after:transition-all",
               !fiatOnramp && "after:opacity-100 shadow-xs"
             )}
           >
@@ -72,7 +72,7 @@ export const BridgeHeader = () => {
           <button
             onClick={() => setFiatOnramp(true)}
             className={clsx(
-              "overflow-hidden relative after:absolute after:content-[''] after:bg-card after:inset-0 after:opacity-10 px-4 h-8 rounded-full hover:scale-105 transition-all after:transition-all",
+              "overflow-hidden relative after:absolute after:content-[''] after:bg-card after:inset-0 after:opacity-10 px-4 h-8 rounded-full hover:scale-105 origin-bottom transition-all after:transition-all",
               fiatOnramp && "after:opacity-100 shadow-xs"
             )}
           >
