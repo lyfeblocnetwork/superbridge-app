@@ -31,7 +31,8 @@ export const getServerSideProps = async ({
     throw new Error("Invalid request");
   }
 
-  let requestHost = req.headers.host;
+  // todo: undo this
+  let requestHost = "superbridge.app"; // req.headers.host;
 
   if (
     req.headers.host?.includes("localhost") ||
