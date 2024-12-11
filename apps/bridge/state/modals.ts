@@ -34,6 +34,7 @@ const modalNames = [
   "BlockProving",
   "FaultProof",
   "CustomWarpRoutes",
+  "FiatOnrampTokenSelector",
 ] as const;
 export type ModalName = (typeof modalNames)[number];
 

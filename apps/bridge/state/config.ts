@@ -40,8 +40,11 @@ interface ConfigState {
   displayTransactions: boolean;
   setDisplayTransactions: (b: boolean) => void;
 
-  displayNetworkSelector: boolean;
-  setDisplayNetworkSelector: (x: boolean) => void;
+  displayTokenNetworkSelector: boolean;
+  setDisplayTokenNetworkSelector: (x: boolean) => void;
+
+  displayFiatNetworkSelector: boolean;
+  setDisplayFiatNetworkSelector: (x: boolean) => void;
 
   networkSelectorDirection: "from" | "to";
   setNetworkSelectorDirection: (x: "from" | "to") => void;
@@ -86,9 +89,13 @@ const ConfigState = create<ConfigState>()((set, get) => ({
   setDisplayConfirmationModal: (displayConfirmationModal) =>
     set({ displayConfirmationModal }),
 
-  displayNetworkSelector: false,
-  setDisplayNetworkSelector: (displayNetworkSelector) =>
-    set({ displayNetworkSelector }),
+  displayTokenNetworkSelector: false,
+  setDisplayTokenNetworkSelector: (displayTokenNetworkSelector) =>
+    set({ displayTokenNetworkSelector }),
+
+  displayFiatNetworkSelector: false,
+  setDisplayFiatNetworkSelector: (displayFiatNetworkSelector) =>
+    set({ displayFiatNetworkSelector }),
 
   networkSelectorDirection: "from",
   setNetworkSelectorDirection: (networkSelectorDirection) =>

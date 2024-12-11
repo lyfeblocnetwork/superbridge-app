@@ -16,13 +16,17 @@ import { useConfigState } from "@/state/config";
 
 import { Header } from "./header";
 import { Modals } from "./modals";
-import { NetworkSelector } from "./modals/network-selector-modal";
+import { FiatNetworkSelectorModal } from "./modals/network-selector/fiat-network-selector-modal";
+import { TokenNetworkSelectorModal } from "./modals/network-selector/token-network-selector-modal";
 
 export function Layout({ children }: { children: any }) {
   useInitialise();
 
   const displayTransactions = useConfigState.useDisplayTransactions();
-  const displayNetworkSelector = useConfigState.useDisplayNetworkSelector();
+  const displayTokenNetworkSelector =
+    useConfigState.useDisplayTokenNetworkSelector();
+  const displayFiatNetworkSelector =
+    useConfigState.useDisplayFiatNetworkSelector();
 
   const imageBackground = useBackgroundIcon();
   const backgroundImageBlendMode = useBackgroundImageBlendMode();
@@ -86,9 +90,23 @@ export function Layout({ children }: { children: any }) {
           </>
         )}
 
-        {displayNetworkSelector && (
+        {displayTokenNetworkSelector && (
           <>
-            <NetworkSelector key="networkSelector" />
+            <TokenNetworkSelectorModal key="tokenNetworkSelector" />
+            {/* fade background */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              exit={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              // transition={{ duration: 0.2 }}
+              className="h-screen w-screen z-10 backdrop-blur-lg  bg-white/0"
+            ></motion.div>
+          </>
+        )}
+
+        {displayFiatNetworkSelector && (
+          <>
+            <FiatNetworkSelectorModal key="fiatNetworkSelector" />
             {/* fade background */}
             <motion.div
               initial={{ opacity: 0 }}
