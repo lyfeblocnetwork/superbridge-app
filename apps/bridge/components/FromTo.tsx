@@ -46,7 +46,7 @@ export const FromTo = () => {
 
   return (
     <div
-      className={`relative flex flex-col md:flex-row justify-between gap-1 select-none pt-0.5`}
+      className={`relative grid grid-rows-2 md:grid-rows-1 grid-cols-1 md:grid-cols-2 gap-1 select-none pt-0.5`}
     >
       <div
         className={clsx(
@@ -70,16 +70,16 @@ export const FromTo = () => {
           <span className="leading-none font-button">{from?.name}</span>
         </div>
       </div>
-
       <button
         onClick={switchChains}
-        className="flex justify-center items-center rounded-lg w-8 h-8 bg-muted border-[3px] border-card backdrop-blur-md absolute z-[999] left-[50%] top-1/2 -translate-x-[50%] -translate-y-2/4 z-10 transition-all scale-90 hover:scale-100 rotate-90 md:rotate-0"
+        className="flex justify-center items-center rounded-lg w-8 h-8 bg-muted border-[3px] border-card backdrop-blur-md absolute z-[999] left-1/2 top-1/2 -translate-x-[50%] -translate-y-2/4 z-10 transition-all scale-90 hover:scale-100 rotate-90 md:rotate-0"
       >
         <IconCaretRight className="w-3 h-3 fill-muted-foreground" />
       </button>
+
       <div
         className={clsx(
-          "flex gap-2 w-full items-start md:items-end md:flex-row-reverse bg-muted p-4 rounded-xl transition-all md:origin-left",
+          "flex gap-2 w-full items-start md:flex-row-reverse bg-muted p-4 rounded-xl transition-all md:origin-left",
           "cursor-pointer hover:scale-[1.02]"
         )}
         onClick={onClick("to")}
