@@ -4,13 +4,18 @@ import { useReadContract } from "wagmi";
 import { useAllTokens } from "@/hooks/tokens";
 import { useChain } from "@/hooks/use-chain";
 import { Token } from "@/types/token";
+import { formatDecimals } from "@/utils/format-decimals";
 
 const TokenView = ({ token }: { token: Token }) => {
   const balance = useReadContract({
     abi: erc20Abi,
     functionName: "balanceOf",
     address: token.address as Address,
-    args: [token.hyperlane?.router as Address],
+    args: [
+      (token.hyperlane?.type == "EvmHypXERC20Lockbox"
+        ? token.hyperlane?.xERC20
+        : token.address) as Address,
+    ],
     chainId: token.chainId,
   });
 
@@ -24,9 +29,12 @@ const TokenView = ({ token }: { token: Token }) => {
     <div className="">
       <div>{chain?.name}</div>
       <div>
-        {token.hyperlane.type === "EvmHypSynthetic"
+        {token.hyperlane.type === "EvmHypSynthetic" ||
+        token.hyperlane.type === "EvmHypXERC20"
           ? Infinity
-          : formatUnits(balance.data ?? BigInt(0), token.decimals)}
+          : formatDecimals(
+              parseFloat(formatUnits(balance.data ?? BigInt(0), token.decimals))
+            )}
       </div>
     </div>
   );
@@ -36,7 +44,7 @@ export const HyperlaneLiquidity = () => {
   const tokens = useAllTokens();
 
   return (
-    <div className="mt-20 p-8 flex w-full">
+    <div className="mt-20 p-8 flex flex-col gap-2 w-full">
       {tokens.data.map((x) => {
         const [t] = Object.values(x);
         if (!t.hyperlane) {
