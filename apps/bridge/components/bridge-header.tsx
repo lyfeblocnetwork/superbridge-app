@@ -52,16 +52,19 @@ export const BridgeHeader = () => {
   const supportsOnRamp = useSupportsOnRamp();
   const { disconnect } = useDisconnect();
 
+  const testnetBadge =
+    (isSuperbridge && superbridgeTestnets) ||
+    (!isHyperlanePlayground && isTestnet);
+
   return (
     <>
       <div
         className={clsx(
-          "flex items-center justify-between  gap-8 w-full",
+          "flex items-center justify-between gap-8 w-full",
           isWidget ? "pt-4 -mb-2 px-4" : "px-0.5"
         )}
       >
-        {(isSuperbridge && !superbridgeTestnets) ||
-        (!isHyperlanePlayground && !isTestnet) ? (
+        {supportsOnRamp ? (
           <div className="flex gap-1 items-center">
             <button
               onClick={() => setFiatOnramp(false)}
@@ -73,26 +76,23 @@ export const BridgeHeader = () => {
               <span className="relative z-10">Bridge</span>
             </button>
 
-            {supportsOnRamp && (
-              <button
-                onClick={() => setFiatOnramp(true)}
-                className={clsx(
-                  "text-sm font-button overflow-hidden relative after:absolute after:content-[''] after:bg-card after:inset-0 after:opacity-10 px-4 h-8 rounded-full hover:scale-105 origin-bottom transition-all after:transition-all",
-                  fiatOnramp && "after:opacity-100 shadow-xs"
-                )}
-              >
-                <span className="relative z-10">Buy</span>
-              </button>
-            )}
+            <button
+              onClick={() => setFiatOnramp(true)}
+              className={clsx(
+                "text-sm font-button overflow-hidden relative after:absolute after:content-[''] after:bg-card after:inset-0 after:opacity-10 px-4 h-8 rounded-full hover:scale-105 origin-bottom transition-all after:transition-all",
+                fiatOnramp && "after:opacity-100 shadow-xs"
+              )}
+            >
+              <span className="relative z-10">Buy</span>
+            </button>
           </div>
-        ) : null}
-
-        {(isSuperbridge && superbridgeTestnets) ||
-        (!isHyperlanePlayground && isTestnet) ? (
+        ) : testnetBadge ? (
           <div className="pl-0.5 mr-auto">
             <TestnetBadge />
           </div>
-        ) : null}
+        ) : (
+          <div />
+        )}
 
         <div className="flex gap-1.5 items-center">
           <button
