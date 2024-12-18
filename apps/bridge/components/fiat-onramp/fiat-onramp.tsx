@@ -65,7 +65,12 @@ export const FiatOnramp = () => {
       params.set("currencyCode", quote.data.result.moonPay.currencyCode!);
       params.set("baseCurrencyCode", fiatCurrency);
       params.set("walletAddress", account.address ?? "");
-      params.set("quoteCurrencyAmount", quote.data.result.tokenAmount);
+
+      if (fiatInput) {
+        params.set("baseCurrencyAmount", quote.data.result.fiatAmount);
+      } else {
+        params.set("quoteCurrencyAmount", quote.data.result.tokenAmount);
+      }
 
       window.open(
         `https://buy.moonpay.com?apiKey=pk_live_aPFIe7Yed2t3C2AeYtOUShkT9bNUfB&${params.toString()}`,
