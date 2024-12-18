@@ -36,6 +36,7 @@ export type InjectedState = {
 
   isPaid: boolean;
   deletedAt: number | null;
+  supportsOnRamp: boolean;
 };
 
 export type InjectedActions = {

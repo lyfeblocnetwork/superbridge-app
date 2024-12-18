@@ -6,6 +6,9 @@ import { RouteProvider } from "@/codegen/model";
 import { MultiChainToken } from "@/types/token";
 
 interface ConfigState {
+  fiatOnramp: boolean;
+  setFiatOnramp: (x: boolean) => void;
+
   displayConfirmationModal: boolean;
   setDisplayConfirmationModal: (x: boolean) => void;
 
@@ -37,8 +40,11 @@ interface ConfigState {
   displayTransactions: boolean;
   setDisplayTransactions: (b: boolean) => void;
 
-  displayNetworkSelector: boolean;
-  setDisplayNetworkSelector: (x: boolean) => void;
+  displayTokenNetworkSelector: boolean;
+  setDisplayTokenNetworkSelector: (x: boolean) => void;
+
+  displayFiatNetworkSelector: boolean;
+  setDisplayFiatNetworkSelector: (x: boolean) => void;
 
   networkSelectorDirection: "from" | "to";
   setNetworkSelectorDirection: (x: "from" | "to") => void;
@@ -48,6 +54,9 @@ interface ConfigState {
 }
 
 const ConfigState = create<ConfigState>()((set, get) => ({
+  fiatOnramp: false,
+  setFiatOnramp: (fiatOnramp) => set({ fiatOnramp }),
+
   forceViaL1: false,
   toggleForceViaL1: () => set((s) => ({ forceViaL1: !s.forceViaL1 })),
   setForceViaL1: (forceViaL1) => set({ forceViaL1 }),
@@ -80,9 +89,13 @@ const ConfigState = create<ConfigState>()((set, get) => ({
   setDisplayConfirmationModal: (displayConfirmationModal) =>
     set({ displayConfirmationModal }),
 
-  displayNetworkSelector: false,
-  setDisplayNetworkSelector: (displayNetworkSelector) =>
-    set({ displayNetworkSelector }),
+  displayTokenNetworkSelector: false,
+  setDisplayTokenNetworkSelector: (displayTokenNetworkSelector) =>
+    set({ displayTokenNetworkSelector }),
+
+  displayFiatNetworkSelector: false,
+  setDisplayFiatNetworkSelector: (displayFiatNetworkSelector) =>
+    set({ displayFiatNetworkSelector }),
 
   networkSelectorDirection: "from",
   setNetworkSelectorDirection: (networkSelectorDirection) =>

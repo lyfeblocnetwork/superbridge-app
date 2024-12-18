@@ -1,10 +1,12 @@
 import { useTranslation } from "react-i18next";
 
 import { useIsWidget } from "@/hooks/use-is-widget";
+import { useConfigState } from "@/state/config";
 
 import { FromTo } from "./FromTo";
 import { AnimateChangeInHeight } from "./animate-height";
 import { BridgeButton } from "./bridge-button";
+import { FiatOnramp } from "./fiat-onramp/fiat-onramp";
 import { IconSB } from "./icons";
 import { RoutePreview } from "./route-preview";
 import { TokenInput } from "./token-input";
@@ -12,6 +14,12 @@ import { TokenInput } from "./token-input";
 export const BridgeBody = () => {
   const { t } = useTranslation();
   const isWidget = useIsWidget();
+  const fiatOnramp = useConfigState.useFiatOnramp();
+
+  if (fiatOnramp) {
+    return <FiatOnramp />;
+  }
+
   return (
     <div className="flex flex-col gap-3 px-4 py-4">
       <div className="flex flex-col gap-1.5">

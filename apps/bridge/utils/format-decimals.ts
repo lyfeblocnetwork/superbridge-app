@@ -19,6 +19,10 @@ export const formatDecimals = (x: number | undefined | null) => {
     maximumFractionDigits = 10;
   }
 
+  if (isNaN(maximumFractionDigits)) {
+    maximumFractionDigits = 2;
+  }
+
   return x.toLocaleString("en-US", {
     maximumFractionDigits,
   });

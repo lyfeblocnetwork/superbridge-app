@@ -14,6 +14,7 @@ import { useIsHyperlanePlayground } from "@/hooks/apps/use-is-hyperlane";
 import { useIsSuperbridge } from "@/hooks/apps/use-is-superbridge";
 import { useChains } from "@/hooks/use-chains";
 import { useIsWidget } from "@/hooks/use-is-widget";
+import { useSupportsOnRamp } from "@/hooks/use-metadata";
 import { useModal } from "@/hooks/use-modal";
 import { useTransactions } from "@/hooks/use-transactions";
 import { useConfigState } from "@/state/config";
@@ -32,6 +33,7 @@ import {
 export const BridgeHeader = () => {
   const { t } = useTranslation();
   const setDisplayTransactions = useConfigState.useSetDisplayTransactions();
+  const setFiatOnramp = useConfigState.useSetFiatOnramp();
   const settingsModal = useModal("Settings");
   const legalModal = useModal("Legal");
 
@@ -40,22 +42,51 @@ export const BridgeHeader = () => {
   const superbridgeTestnets = useInjectedStore((s) => s.superbridgeTestnets);
   const isSuperbridge = useIsSuperbridge();
   const isHyperlanePlayground = useIsHyperlanePlayground();
+  const fiatOnramp = useConfigState.useFiatOnramp();
 
   const chains = useChains();
   const isTestnet = !!chains.find((x) => x.testnet);
 
   const isWidget = useIsWidget();
   const account = useAccount();
+  const supportsOnRamp = useSupportsOnRamp();
   const { disconnect } = useDisconnect();
 
   return (
     <>
       <div
         className={clsx(
-          "flex items-center justify-end gap-8 w-full",
+          "flex items-center justify-between  gap-8 w-full",
           isWidget ? "pt-4 -mb-2 px-4" : "px-0.5"
         )}
       >
+        {(isSuperbridge && !superbridgeTestnets) ||
+        (!isHyperlanePlayground && !isTestnet) ? (
+          <div className="flex gap-1 items-center">
+            <button
+              onClick={() => setFiatOnramp(false)}
+              className={clsx(
+                "text-sm font-button overflow-hidden relative after:absolute after:content-[''] after:bg-card after:inset-0 after:opacity-10 px-4 h-8 rounded-full hover:scale-105 origin-bottom transition-all after:transition-all",
+                !fiatOnramp && "after:opacity-100 shadow-xs"
+              )}
+            >
+              <span className="relative z-10">Bridge</span>
+            </button>
+
+            {supportsOnRamp && (
+              <button
+                onClick={() => setFiatOnramp(true)}
+                className={clsx(
+                  "text-sm font-button overflow-hidden relative after:absolute after:content-[''] after:bg-card after:inset-0 after:opacity-10 px-4 h-8 rounded-full hover:scale-105 origin-bottom transition-all after:transition-all",
+                  fiatOnramp && "after:opacity-100 shadow-xs"
+                )}
+              >
+                <span className="relative z-10">Buy</span>
+              </button>
+            )}
+          </div>
+        ) : null}
+
         {(isSuperbridge && superbridgeTestnets) ||
         (!isHyperlanePlayground && isTestnet) ? (
           <div className="pl-0.5 mr-auto">
@@ -82,7 +113,7 @@ export const BridgeHeader = () => {
             />
             {inProgressCount > 0 && (
               <div className="flex items-center gap-1.5 pr-1.5 pl-2.5 h-5 rounded-full bg-primary">
-                <span className="text-[10px] leading-none text-primary-foreground">
+                <span className="text-[11px] leading-none text-primary-foreground">
                   {actionRequiredCount > 0 ? "Action needed" : inProgressCount}
                 </span>
                 <IconSpinner className="w-2.5 h-2.5 text-primary-foreground" />

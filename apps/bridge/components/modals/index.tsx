@@ -12,6 +12,7 @@ import { CustomWarpRoutesModal } from "./custom-warp-routes-modal";
 import { BlockProvingModal } from "./fault-proofs/block-proving-modal";
 import { FaultProofInfoModal } from "./fault-proofs/fault-proof-info-modal";
 import { FeeBreakdownModal } from "./fee-breakdown-modal";
+import { FiatOnrampTokensModal } from "./fiat-onramp/fiat-onramp-token-modal";
 import { GasInfoModal } from "./gas-info-modal";
 import { RecipientAddressModal } from "./recipient-address-modal";
 import { RouteSelectorModal } from "./route-selector-modal";
@@ -45,6 +46,7 @@ export const Modals = () => {
       <CustomTokenImportModal />
       <CustomTokenListModal />
       <BlockProvingModal />
+      <FiatOnrampTokensModal />
 
       <SettingsModal />
     </>

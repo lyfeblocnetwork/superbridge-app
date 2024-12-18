@@ -72,6 +72,7 @@ export default function ChainsPage() {
         superbridgeConfig: null,
         isPaid: true,
         deletedAt: null,
+        supportsOnRamp: false,
       }}
     >
       <Providers>

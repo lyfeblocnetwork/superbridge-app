@@ -42,6 +42,7 @@ export interface BridgeConfigDto {
   lzDomains: LzDomainDto[];
   metadata: PaidDeploymentMetadataDto;
   name: string;
+  supportsOnRamp: boolean;
   /** @nullable */
   theme: BridgeConfigDtoTheme;
   /** @nullable */

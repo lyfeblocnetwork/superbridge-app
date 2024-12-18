@@ -16,8 +16,8 @@ export const FromTo = () => {
   const to = useToChain();
   const setFromChainId = useInjectedStore((s) => s.setFromChainId);
   const setToChainId = useInjectedStore((s) => s.setToChainId);
-  const setDisplayNetworkSelector =
-    useConfigState.useSetDisplayNetworkSelector();
+  const setDisplayTokenNetworkSelector =
+    useConfigState.useSetDisplayTokenNetworkSelector();
   const setNetworkSelectorDirection =
     useConfigState.useSetNetworkSelectorDirection();
   const { t } = useTranslation();
@@ -38,7 +38,7 @@ export const FromTo = () => {
   const onClick = (dir: "from" | "to") => () => {
     if (networkSelectorEnabled) {
       setNetworkSelectorDirection(dir);
-      setDisplayNetworkSelector(true);
+      setDisplayTokenNetworkSelector(true);
     } else {
       switchChains();
     }
