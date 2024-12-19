@@ -136,11 +136,6 @@ export const BridgeButton = () => {
       buttonText: t("recipient.checkRecipientAddress"),
       disabled: true,
     }))
-    .with({ estimateSuccess: false }, () => ({
-      onSubmit: () => {},
-      buttonText: "This bridge is likely to fail",
-      disabled: true,
-    }))
     .with({ disabled: true }, () => ({
       onSubmit: () => {},
       buttonText: t("buttons.bridgingDisabled"),
@@ -214,6 +209,11 @@ export const BridgeButton = () => {
       buttonText: t("insufficientGas", {
         symbol: to?.nativeCurrency.symbol,
       }),
+      disabled: true,
+    }))
+    .with({ estimateSuccess: false }, () => ({
+      onSubmit: () => {},
+      buttonText: "This bridge is likely to fail",
       disabled: true,
     }))
     .with({ isSubmitting: true }, () => ({
