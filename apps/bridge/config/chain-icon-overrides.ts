@@ -180,6 +180,7 @@ export const chainIcons: { [chainId: number]: string | undefined } = {
   [53302]: "/img/networks/53302.svg",
   [5330]: "/img/networks/5330.svg",
   [763373]: "/img/networks/763373.svg",
+  [57073]: "/img/networks/57073.svg",
   [747]: "/img/networks/747.svg",
   [1740]: "/img/networks/1740.svg",
   [1750]: "/img/networks/1750.svg",

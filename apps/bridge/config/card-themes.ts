@@ -1150,7 +1150,7 @@ export const cardThemes: {
   [984122]: formaTheme,
   [1301]: unichainTheme,
   [763373]: inkTheme,
-  [12345678987654321]: inkTheme,
+  [57073]: inkTheme,
   [9897]: arenaZTheme,
   [7897]: arenaZTheme,
   [6321]: auraTheme,

@@ -19,13 +19,8 @@ const useComingSoonChains = () => {
 
   const testnets = useInjectedStore((s) => s.superbridgeTestnets);
 
-  const mainnetInk = {
-    id: 12345678987654321,
-    name: "Ink",
-  };
-
   if (isSuperbridgeMainnet) {
-    return testnets ? [] : [mainnetInk];
+    return testnets ? [] : [];
   }
 
   if (isSuperbridgeTestnet) {
