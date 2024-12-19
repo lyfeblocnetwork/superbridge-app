@@ -19,8 +19,17 @@ export const GravityBanner = () => {
           target="_blank"
           className="underline"
         >
-          Stargate.
+          Stargate
+        </a>{" "}
+        or{" "}
+        <a
+          href="https://app.symbiosis.finance/swap?chainIn=Ethereum&chainOut=Gravity&tokenIn=ETH&tokenOut=G"
+          target="_blank"
+          className="underline"
+        >
+          Symbiosis
         </a>
+        .
       </AlertDescription>
     </Alert>
   );
