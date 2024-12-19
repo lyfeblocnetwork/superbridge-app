@@ -10,6 +10,11 @@ export const useBridgeGasEstimate = () => {
   return useBridgeGasEstimateForRoute(route.data);
 };
 
+export const useBridgeGasEstimateStatus = () => {
+  const route = useSelectedBridgeRoute();
+  return useBridgeGasEstimateStatusForRoute(route.data);
+};
+
 export const useBridgeGasEstimateForRoute = (route: RouteResultDto | null) => {
   const estimate = useRouteGasEstimate(route);
 
@@ -22,6 +27,25 @@ export const useBridgeGasEstimateForRoute = (route: RouteResultDto | null) => {
     queryFn: () => {
       if (!estimate.data) return null;
       return estimate.data.estimates[estimate.data.estimates.length - 1].limit;
+    },
+  });
+};
+
+export const useBridgeGasEstimateStatusForRoute = (
+  route: RouteResultDto | null
+) => {
+  const estimate = useRouteGasEstimate(route);
+
+  return useQuery({
+    queryKey: [
+      "bridge gas estimate status",
+      route?.id,
+      ...(estimate?.data?.estimates.map((x) => x.limit) ?? []),
+      estimate?.data?.success,
+    ],
+    queryFn: () => {
+      if (!estimate.data) return null;
+      return estimate.data.success;
     },
   });
 };

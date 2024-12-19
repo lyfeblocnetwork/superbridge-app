@@ -8,6 +8,7 @@ import { useIsAcrossRoute } from "@/hooks/across/use-is-across-route";
 import { useHasInsufficientBalance } from "@/hooks/balances/use-has-insufficient-balance";
 import { useBridge } from "@/hooks/bridge/use-bridge";
 import { useBridgeDisabled } from "@/hooks/bridge/use-bridge-disabled";
+import { useBridgeGasEstimateStatus } from "@/hooks/bridge/use-bridge-gas-estimate";
 import { useBridgeMax } from "@/hooks/bridge/use-bridge-max";
 import { useBridgeMin } from "@/hooks/bridge/use-bridge-min";
 import { useBridgePaused } from "@/hooks/bridge/use-bridge-paused";
@@ -55,6 +56,7 @@ export const BridgeButton = () => {
   const route = useSelectedBridgeRoute();
   const routeRequest = useRouteRequest();
   const recipientAddressModal = useModal("RecipientAddress");
+  const estimateSuccess = useBridgeGasEstimateStatus();
 
   const initiatingChain = useInitiatingChain();
   const fromEthBalance = useBalance({
@@ -127,10 +129,16 @@ export const BridgeButton = () => {
       !!recipient &&
       hasRecipientAddressRestriction &&
       !isAddressEqual(account.address, recipient),
+    estimateSuccess: estimateSuccess.data,
   })
     .with({ bridgingIsRestrictedToSameAddress: true }, () => ({
       onSubmit: () => {},
       buttonText: t("recipient.checkRecipientAddress"),
+      disabled: true,
+    }))
+    .with({ estimateSuccess: false }, () => ({
+      onSubmit: () => {},
+      buttonText: "This bridge is likely to fail",
       disabled: true,
     }))
     .with({ disabled: true }, () => ({
