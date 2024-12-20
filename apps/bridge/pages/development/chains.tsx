@@ -73,6 +73,7 @@ export default function ChainsPage() {
         isPaid: true,
         deletedAt: null,
         supportsOnRamp: false,
+        defaultRoute: null,
       }}
     >
       <Providers>

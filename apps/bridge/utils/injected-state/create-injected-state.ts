@@ -40,6 +40,7 @@ export const createInjectedState = (props: {
     widget,
     isPaid: dto.isPaid,
     deletedAt: dto.deletedAt,
+    defaultRoute: dto.defaultRoute,
     supportsOnRamp: dto.supportsOnRamp,
   };
 };

@@ -5,6 +5,7 @@ import {
   CcipDomainDto,
   CctpDomainDto,
   ChainDto,
+  DefaultRouteDto,
   DeploymentDto,
   HyperlaneMailboxDto,
   LzDomainDto,
@@ -36,6 +37,7 @@ export type InjectedState = {
 
   isPaid: boolean;
   deletedAt: number | null;
+  defaultRoute: DefaultRouteDto | null;
   supportsOnRamp: boolean;
 };
 
