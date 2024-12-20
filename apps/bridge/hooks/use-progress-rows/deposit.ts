@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import { Address, isAddressEqual } from "viem";
 
 import { DeploymentDto } from "@/codegen/model";
 import { useTxAmount } from "@/hooks/activity/use-tx-amount";
@@ -22,6 +23,22 @@ export const useOptimismDepositProgressRows = (
 
   if (!tx || !isOptimismDeposit(tx) || !deployment || !l1 || !l2) {
     return null;
+  }
+
+  // handle Echos wrap
+  if (
+    inputAmount &&
+    outputAmount &&
+    deployment.l2ChainId === 4321 &&
+    token?.[deployment.l1ChainId]?.address &&
+    isAddressEqual(
+      token[deployment.l1ChainId]!.address as Address,
+      "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+    )
+  ) {
+    outputAmount.raw = inputAmount.raw;
+    outputAmount.formatted = inputAmount.formatted;
+    outputAmount.text = inputAmount.text.replace("USDC", "wUSDC");
   }
 
   return [
