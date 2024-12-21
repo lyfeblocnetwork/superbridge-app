@@ -211,11 +211,11 @@ export const BridgeButton = () => {
       }),
       disabled: true,
     }))
-    .with({ estimateSuccess: false }, () => ({
-      onSubmit: () => {},
-      buttonText: "This bridge is likely to fail",
-      disabled: true,
-    }))
+    // .with({ estimateSuccess: false }, () => ({
+    //   onSubmit: () => {},
+    //   buttonText: "This bridge is likely to fail",
+    //   disabled: true,
+    // }))
     .with({ isSubmitting: true }, () => ({
       onSubmit: () => {},
       buttonText: t("bridging"),
