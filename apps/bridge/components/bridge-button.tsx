@@ -24,7 +24,7 @@ import { useInitiatingChain } from "@/hooks/use-initiating-chain-id";
 import { useModal } from "@/hooks/use-modal";
 import { useRequiredCustomGasTokenBalance } from "@/hooks/use-required-custom-gas-token-balance";
 import { useWeiAmount } from "@/hooks/use-wei-amount";
-import { useIsWithdrawal } from "@/hooks/use-withdrawing";
+import { useIsArbitrumDeposit, useIsWithdrawal } from "@/hooks/use-withdrawing";
 import { useConfigState } from "@/state/config";
 import { formatDecimals } from "@/utils/format-decimals";
 import { isRouteQuote } from "@/utils/guards";
@@ -46,6 +46,7 @@ export const BridgeButton = () => {
 
   const setConfirmationModal = useConfigState.useSetDisplayConfirmationModal();
   const withdrawing = useIsWithdrawal();
+  const isArbitrumDeposit = useIsArbitrumDeposit();
   const isAcross = useIsAcrossRoute();
   const recipient = useConfigState.useRecipientAddress();
   const nativeToken = useNativeToken();
@@ -211,11 +212,11 @@ export const BridgeButton = () => {
       }),
       disabled: true,
     }))
-    // .with({ estimateSuccess: false }, () => ({
-    //   onSubmit: () => {},
-    //   buttonText: "This bridge is likely to fail",
-    //   disabled: true,
-    // }))
+    .with({ estimateSuccess: false, isArbitrumDeposit: false }, () => ({
+      onSubmit: () => {},
+      buttonText: "This bridge is likely to fail",
+      disabled: true,
+    }))
     .with({ isSubmitting: true }, () => ({
       onSubmit: () => {},
       buttonText: t("bridging"),
