@@ -9,6 +9,7 @@ import { useFiatOnrampQuote } from "@/hooks/fiat-onramp/use-fiat-onramp-quote";
 import { useFiatState } from "@/hooks/fiat-onramp/use-fiat-state";
 import { useModal } from "@/hooks/use-modal";
 import { useTokenPrice } from "@/hooks/use-prices";
+import { useTrackEvent } from "@/services/ga";
 import { useConfigState } from "@/state/config";
 import { useFiatOnrampState } from "@/state/fiat-onramp";
 import { useSettingsState } from "@/state/settings";
@@ -34,6 +35,7 @@ export const FiatOnramp = () => {
   const setAmount = useFiatOnrampState.useSetAmount();
   const fiatInput = useFiatOnrampState.useFiatInput();
   const setFiatInput = useFiatOnrampState.useSetFiatInput();
+  const trackEvent = useTrackEvent();
 
   const tokenSelectorModal = useModal("FiatOnrampTokenSelector");
 
@@ -55,9 +57,20 @@ export const FiatOnramp = () => {
       return;
     }
 
+    if (!isOnrampQuote(quote.data.result)) {
+      return;
+    }
+
+    trackEvent({
+      event: "onramp-purchase",
+      amount: quote.data.result.tokenAmount.toString(),
+      network: chain.name,
+      symbol: asset.symbol,
+      provider: quote.data.id,
+    });
+
     if (
       quote.data.id === OnrampQuoteProvider.Moonpay &&
-      isOnrampQuote(quote.data.result) &&
       quote.data.result.moonPay
     ) {
       const params = new URLSearchParams();

@@ -86,6 +86,23 @@ type CctpMint = {
   burnTransactionHash: string;
 };
 
+type OnrampChainSelect = {
+  event: "onramp-chain-select";
+  name: string;
+};
+type OnrampTokenSelect = {
+  event: "onramp-token-select";
+  symbol: string;
+  network: string;
+};
+type OnrampPurchase = {
+  event: "onramp-purchase";
+  symbol: string;
+  network: string;
+  amount: string;
+  provider: string;
+};
+
 export const useTrackEvent = () => {
   const gId = useApp().metadata.gId;
 
@@ -108,6 +125,9 @@ export const useTrackEvent = () => {
       | ProveWithdrawal
       | FinalizeWithdrawal
       | CctpMint
+      | OnrampChainSelect
+      | OnrampTokenSelect
+      | OnrampPurchase
   ) => {
     if (gId) {
       sendGAEvent("event", args.event, args);
