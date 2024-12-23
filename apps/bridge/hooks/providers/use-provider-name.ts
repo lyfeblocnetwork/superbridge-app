@@ -9,7 +9,7 @@ const names = {
   [RouteProvider.OptimismWithdrawal]: "Native Bridge",
   [RouteProvider.OptimismForcedWithdrawal]: "Native Bridge",
   [RouteProvider.Hyperlane]: "Hyperlane",
-  [RouteProvider.Lz]: "Layer Zero",
+  [RouteProvider.Lz]: "LayerZero",
   [RouteProvider.Ccip]: "CCIP",
 };
 
