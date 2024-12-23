@@ -1,5 +1,6 @@
 import {
   ancient8,
+  ancient8Sepolia,
   arbitrum,
   arbitrumSepolia,
   avalanche,
@@ -1076,6 +1077,7 @@ export const cardThemes: {
   [88]: victionTheme,
   [inEVM.id]: injectiveTheme,
   [ancient8.id]: ancient8Theme,
+  [ancient8Sepolia.id]: ancient8Theme,
   [mainnet.id]: ethereumTheme,
   [sepolia.id]: ethereumTheme,
   [holesky.id]: ethereumTheme,
@@ -1170,7 +1172,6 @@ export const cardThemes: {
   [flowMainnet.id]: flowTheme,
   [4801]: worldchainTheme,
   [19424]: alloTheme,
-  [28122024]: ancient8Theme,
   [28882]: bobaTheme,
   [288]: bobaTheme,
   [42019]: donatuzTheme,
