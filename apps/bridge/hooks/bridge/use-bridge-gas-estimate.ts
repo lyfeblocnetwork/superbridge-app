@@ -36,16 +36,15 @@ export const useBridgeGasEstimateStatusForRoute = (
 ) => {
   const estimate = useRouteGasEstimate(route);
 
-  return useQuery({
-    queryKey: [
-      "bridge gas estimate status",
-      route?.id,
-      ...(estimate?.data?.estimates.map((x) => x.limit) ?? []),
-      estimate?.data?.success,
-    ],
-    queryFn: () => {
-      if (!estimate.data) return null;
-      return estimate.data.success;
-    },
-  });
+  if (estimate.isFetching) {
+    return {
+      isFetching: true,
+      data: undefined,
+    };
+  }
+
+  return {
+    isFetching: false,
+    data: estimate.data ? estimate.data.success : undefined,
+  };
 };

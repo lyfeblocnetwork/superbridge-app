@@ -130,7 +130,8 @@ export const BridgeButton = () => {
       !!recipient &&
       hasRecipientAddressRestriction &&
       !isAddressEqual(account.address, recipient),
-    estimateSuccess: estimateSuccess.data,
+    estimateSuccess,
+    isArbitrumDeposit,
   })
     .with({ bridgingIsRestrictedToSameAddress: true }, () => ({
       onSubmit: () => {},
@@ -212,11 +213,14 @@ export const BridgeButton = () => {
       }),
       disabled: true,
     }))
-    .with({ estimateSuccess: false, isArbitrumDeposit: false }, () => ({
-      onSubmit: () => {},
-      buttonText: "This bridge is likely to fail",
-      disabled: true,
-    }))
+    .with(
+      { estimateSuccess: { data: false }, isArbitrumDeposit: false },
+      () => ({
+        onSubmit: () => {},
+        buttonText: "This bridge is likely to fail",
+        disabled: true,
+      })
+    )
     .with({ isSubmitting: true }, () => ({
       onSubmit: () => {},
       buttonText: t("bridging"),
@@ -225,7 +229,11 @@ export const BridgeButton = () => {
     .otherwise((d) => ({
       onSubmit: handleSubmitClick,
       buttonText: t("reviewBridge"),
-      disabled: d.routeLoading || d.zeroRouteAddress || !d.validRoute,
+      disabled:
+        d.routeLoading ||
+        d.zeroRouteAddress ||
+        !d.validRoute ||
+        d.estimateSuccess.isFetching,
     }));
 
   return (
