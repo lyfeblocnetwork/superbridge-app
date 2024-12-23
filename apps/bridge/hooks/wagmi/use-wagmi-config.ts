@@ -9,6 +9,7 @@ import { ChainDto } from "@/codegen/model";
 import { chainIcons } from "@/config/chain-icon-overrides";
 import { useMetadata } from "@/hooks/use-metadata";
 
+import { useIsEchos } from "../apps/use-is-echos";
 import { useIsSuperbridge } from "../apps/use-is-superbridge";
 import { useAllDeployments } from "../deployments/use-all-deployments";
 import { useAllChains } from "../use-chains";
@@ -18,6 +19,7 @@ export function useWagmiConfig() {
   const allDeployments = useAllDeployments();
   const metadata = useMetadata();
   const isSuperbridge = useIsSuperbridge();
+  const isEchos = useIsEchos();
 
   return useMemo(() => {
     // Rainbowkit doesn't like no chains
@@ -80,6 +82,7 @@ export function useWagmiConfig() {
       chains,
       transports,
       ssr: true,
+      multiInjectedProviderDiscovery: isEchos ? false : true,
       wallets: [...wallets, { groupName: "More", wallets: [safeWallet] }],
     });
   }, [chains, allDeployments, metadata]);

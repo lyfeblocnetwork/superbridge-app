@@ -13,7 +13,9 @@ export const EchosBanner = () => {
     <Alert>
       <AlertTitle>Wrapping or unwrapping USDC?</AlertTitle>
       <AlertDescription>
-        Please visit{" "}
+        Make sure you're using a wallet like{" "}
+        <a href="https://metamask.io/">MetaMask</a> that supports Echos, then
+        visit the{" "}
         <a
           href="https://bridge.echos.fun"
           target="_blank"
