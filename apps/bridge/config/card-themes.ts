@@ -624,12 +624,8 @@ const unichainTheme = {
 const inkTheme = {
   icon: "/img/ink/icon.svg",
   card: {
-    className: "bg-[#150F1E]",
+    className: "bg-[#7538F5]",
     title: "text-white",
-    // overlay: {
-    //   className:
-    //     "bg-[url('/img/ink/bg-card.jpg')] bg-bottom bg-cover opacity-30",
-    // },
   },
 };
 

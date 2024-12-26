@@ -220,6 +220,9 @@ export const chainIcons: { [chainId: number]: string | undefined } = {
   [1890]: "/img/networks/1890.svg",
   [223]: "/img/networks/223.svg",
   [478]: "/img/networks/478.svg",
+  [146]: "/img/networks/146.svg",
+  [57054]: "/img/networks/57054.svg",
+  [64165]: "/img/networks/64165.svg",
 
   // [swell.id]: "/img/networks/xxx.svg",
   // [nodgames.id]: "/img/networks/xxx.svg",
