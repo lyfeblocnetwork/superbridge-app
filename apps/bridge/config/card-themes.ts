@@ -1210,4 +1210,7 @@ export const cardThemes: {
   [3338]: peaqTheme,
   [1890]: lightlinkTheme,
   [223]: b2Theme,
+  [146]: sonicTheme,
+  [57054]: sonicTheme,
+  [64165]: sonicTheme,
 };
