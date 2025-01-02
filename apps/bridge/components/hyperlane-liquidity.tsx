@@ -14,7 +14,7 @@ const TokenView = ({ token }: { token: Token }) => {
     args: [
       (token.hyperlane?.type == "EvmHypXERC20Lockbox"
         ? token.hyperlane?.xERC20
-        : token.address) as Address,
+        : token.hyperlane?.router) as Address,
     ],
     chainId: token.chainId,
   });
