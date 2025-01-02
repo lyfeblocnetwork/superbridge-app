@@ -10,8 +10,16 @@ export const PepuBanner = () => {
 
   return (
     <Alert>
-      <AlertTitle>Important! Check your wallet before you bridge</AlertTitle>
+      <AlertTitle>IMPORTANT! Check your wallet before you bridge</AlertTitle>
       <AlertDescription>
+        <div className="text-foreground my-2">
+          DO NOT BRIDGE TO PEPE UNCHAINED L2 WITH:
+          <ul className="list-inside list-disc">
+            <li>Binance Web3 wallet</li>
+            <li>Best Wallet</li>
+            <li>ByBit (cloud wallet)</li>
+          </ul>
+        </div>
         To make transactions, stake, or withdraw from Pepe Unchained Layer 2
         your wallet needs support for custom networks. If your wallet does not
         have support for custom networks, then do not bridge until you have
