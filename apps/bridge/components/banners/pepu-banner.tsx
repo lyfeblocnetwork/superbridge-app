@@ -10,14 +10,26 @@ export const PepuBanner = () => {
 
   return (
     <Alert>
-      <AlertTitle>IMPORTANT! Check your wallet before you bridge</AlertTitle>
+      <AlertTitle>
+        IMPORTANT! Check your wallet supports custom networks BEFORE you bridge
+      </AlertTitle>
       <AlertDescription>
         <div className="text-foreground my-2">
           DO NOT BRIDGE TO PEPE UNCHAINED L2 WITH:
           <ul className="list-inside list-disc">
             <li>Binance Web3 wallet</li>
+            <li>Coinbase Smart Wallet</li>
             <li>Best Wallet</li>
             <li>ByBit (cloud wallet)</li>
+            <li>
+              <a
+                href="https://help.superbridge.app/en/articles/10293436-pepe-unchained-pepu-troubleshooting"
+                target="_blank"
+                className="underline text-foreground"
+              >
+                And more…
+              </a>
+            </li>
           </ul>
         </div>
         To make transactions, stake, or withdraw from Pepe Unchained Layer 2
