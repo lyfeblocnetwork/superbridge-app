@@ -1,6 +1,5 @@
 import clsx from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
-import Snowfall from "react-snowfall";
 
 import { OpenActivity } from "@/components/activity/open-activity";
 import { useIsSuperbridge } from "@/hooks/apps/use-is-superbridge";
@@ -52,9 +51,6 @@ export function Layout({ children }: { children: any }) {
             animate={{ opacity: 1 }}
             className="bg-gradient-to-t from-[rgba(168,130,253,0.27)] via-[rgba(168,130,253,0.05)] to-[rgba(168,130,253,0)] inset-0 z-0 fixed mix-blend-plus-lighter"
           />
-          <div className="dark:opacity-50">
-            <Snowfall radius={[1.0, 2.0]} snowflakeCount={80} />
-          </div>
         </>
       )}
       <div

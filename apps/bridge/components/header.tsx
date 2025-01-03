@@ -7,7 +7,7 @@ import { useNavIcon } from "@/hooks/use-theme";
 
 import { TokenBanner } from "./banners/token-banner";
 import { HeaderLinks } from "./header/header-links";
-import { XmasSBLogo, XmasSBLogoSmall } from "./icons";
+import { SBLogo, SBLogoSmall } from "./icons";
 
 export function Header() {
   const deployments = useDeployments();
@@ -25,8 +25,8 @@ export function Header() {
       <div>
         {isSuperbridge ? (
           <div className="flex gap-2 items-center">
-            <XmasSBLogo className="hidden md:inline-flex h-9 w-auto transform-gpu overflow-visible -ml-1" />
-            <XmasSBLogoSmall className="md:hidden h-9 w-auto -ml-0.5" />
+            <SBLogo className="hidden md:inline-flex h-9 w-auto transform-gpu overflow-visible -ml-1" />
+            <SBLogoSmall className="md:hidden h-9 w-auto -ml-0.5" />
           </div>
         ) : (
           <img
