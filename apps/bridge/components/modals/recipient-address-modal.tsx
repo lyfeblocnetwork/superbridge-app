@@ -234,6 +234,27 @@ export const RecipientAddressModal = () => {
                         </div>
                       )
                     )
+                    .when(
+                      (x) =>
+                        x.isContractAccount === true &&
+                        !!x.profile?.address &&
+                        !!x.account &&
+                        isAddressEqual(x.account, x.profile.address),
+                      () => (
+                        <div className="flex flex-col gap-2 pl-2 pr-3 py-2 rounded-lg border">
+                          <div className="flex items-center gap-2">
+                            <IconAlert className="w-4 h-4 fill-primary" />
+                            <span className="text-xs leading-none text-foreground">
+                              This looks like a smart wallet
+                            </span>
+                          </div>
+                          <span className="text-xs leading-none text-foreground">
+                            By clicking Save, you are confirming your smart
+                            wallet is supported on {toChain?.name}
+                          </span>
+                        </div>
+                      )
+                    )
                     .with(
                       { transactions: { isLoading: false, isError: false } },
                       ({ transactions, profile }) => {
