@@ -245,12 +245,12 @@ export const RecipientAddressModal = () => {
                           <div className="flex items-center gap-2">
                             <IconAlert className="w-4 h-4 fill-primary" />
                             <span className="text-xs leading-none text-foreground">
-                              This looks like a smart wallet
+                              This looks like a smart contract wallet
                             </span>
                           </div>
                           <span className="text-xs leading-none text-foreground">
                             By clicking Save, you are confirming your smart
-                            wallet is supported on {toChain?.name}
+                            contract wallet is supported on {toChain?.name}
                           </span>
                         </div>
                       )

@@ -21,6 +21,10 @@ import { useSelectedToken } from "@/hooks/tokens/use-token";
 import { useBaseNativeTokenBalance } from "@/hooks/use-base-native-token-balance";
 import { useFromChain, useToChain } from "@/hooks/use-chain";
 import { useInitiatingChain } from "@/hooks/use-initiating-chain-id";
+import {
+  SMART_WALLET_CHAIN_IDS,
+  useIsSmartWallet,
+} from "@/hooks/use-is-contract-account";
 import { useModal } from "@/hooks/use-modal";
 import { useRequiredCustomGasTokenBalance } from "@/hooks/use-required-custom-gas-token-balance";
 import { useWeiAmount } from "@/hooks/use-wei-amount";
@@ -58,6 +62,7 @@ export const BridgeButton = () => {
   const routeRequest = useRouteRequest();
   const recipientAddressModal = useModal("RecipientAddress");
   const estimateSuccess = useBridgeGasEstimateStatus();
+  const isSmartWallet = useIsSmartWallet();
 
   const initiatingChain = useInitiatingChain();
   const fromEthBalance = useBalance({
@@ -132,7 +137,28 @@ export const BridgeButton = () => {
       !isAddressEqual(account.address, recipient),
     estimateSuccess,
     isArbitrumDeposit,
+
+    isSmartWallet,
+    smartWalletSupportedOnDestination: SMART_WALLET_CHAIN_IDS.includes(
+      to?.id ?? 0
+    ),
+    isRecipientAddressTheSameAsConnectedAccount:
+      !!account.address &&
+      !!recipient &&
+      isAddressEqual(account.address, recipient),
   })
+    .with(
+      {
+        isSmartWallet: true,
+        smartWalletSupportedOnDestination: false,
+        isRecipientAddressTheSameAsConnectedAccount: true,
+      },
+      () => ({
+        onSubmit: () => {},
+        buttonText: `Smart Wallets not supported on ${to?.name}`,
+        disabled: true,
+      })
+    )
     .with({ bridgingIsRestrictedToSameAddress: true }, () => ({
       onSubmit: () => {},
       buttonText: t("recipient.checkRecipientAddress"),
