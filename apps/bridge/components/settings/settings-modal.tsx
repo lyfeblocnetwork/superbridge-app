@@ -351,7 +351,7 @@ export const SettingsModal = () => {
                   <Switch
                     checked={forceViaL1}
                     onCheckedChange={toggleForceViaL1}
-                    disabled={isContractAccount.data === true}
+                    disabled={isContractAccount === true}
                   />
                 </div>
               </div>

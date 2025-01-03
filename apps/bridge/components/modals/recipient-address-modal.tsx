@@ -187,7 +187,7 @@ export const RecipientAddressModal = () => {
                     isValidProfile:
                       !!profile.data?.address &&
                       isAddress(profile.data.address),
-                    isContractAccount: isContractAccount.data,
+                    isContractAccount,
                     account: account.address,
                     recipientIsERC20,
                   })
@@ -317,7 +317,7 @@ export const RecipientAddressModal = () => {
                     )
                     .otherwise(() => null)}
 
-                  {!isContractAccount.data && !!account.address && (
+                  {!isContractAccount && !!account.address && (
                     <Button
                       size={"xs"}
                       variant={"outline"}

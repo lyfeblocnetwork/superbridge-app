@@ -27,6 +27,10 @@ import { useSelectedBridgeRoute } from "../routes/use-selected-bridge-route";
 import { useNativeToken } from "../tokens/use-native-token";
 import { useTokenBalances } from "../use-balances";
 import { useInitiatingChainId } from "../use-initiating-chain-id";
+import {
+  SMART_WALLET_CHAIN_IDS,
+  useIsSmartWallet,
+} from "../use-is-contract-account";
 import { useReceiveAmount } from "../use-receive-amount";
 import { useWeiAmount } from "../use-wei-amount";
 import { useIsWithdrawal } from "../use-withdrawing";
@@ -61,6 +65,7 @@ export const useInitiateBridge = () => {
   const ccipDomains = useCcipDomains();
   const balances = useTokenBalances();
   const receive = useReceiveAmount();
+  const isSmartWallet = useIsSmartWallet();
 
   const gasToken = useNativeToken();
 
@@ -82,6 +87,11 @@ export const useInitiateBridge = () => {
       !initiatingChain ||
       !isRouteQuote(route.data?.result)
     ) {
+      return;
+    }
+
+    if (isSmartWallet && !SMART_WALLET_CHAIN_IDS.includes(to?.id ?? 0)) {
+      alert(`Smart Wallets not supported on ${to?.name}`);
       return;
     }
 

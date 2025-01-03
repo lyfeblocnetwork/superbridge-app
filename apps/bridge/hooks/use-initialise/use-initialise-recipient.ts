@@ -53,7 +53,7 @@ export const useInitialiseRecipient = () => {
     }
 
     // !isContract.data is not enough here, we need to be explicit
-    if (isContractAccount.data === false && !!account.address) {
+    if (isContractAccount === false && !!account.address) {
       setRecipientAddress(account.address);
       resolveAddress(account.address).then((profile) => {
         if (profile?.name) setRecipientName(profile.name);
@@ -64,9 +64,9 @@ export const useInitialiseRecipient = () => {
     // this is a little overbearing and means everytime you switch
     // between deposit and withdraw the recipient address disappears
     // when using a SC account, but probably better safe than sorry
-    if (isContractAccount.data === true) {
+    if (isContractAccount === true) {
       setRecipientAddress("");
       setRecipientName("");
     }
-  }, [isContractAccount.data, account.address]);
+  }, [isContractAccount, account.address]);
 };

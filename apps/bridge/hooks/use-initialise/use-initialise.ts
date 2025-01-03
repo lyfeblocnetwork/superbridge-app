@@ -33,10 +33,10 @@ export const useInitialise = () => {
   });
 
   useEffect(() => {
-    if (isContractAccount.data === true) {
+    if (isContractAccount === true) {
       setForceViaL1(false);
     }
-  }, [isContractAccount.data]);
+  }, [isContractAccount]);
 
   // reset settings when changing deployment
   useEffect(() => {
