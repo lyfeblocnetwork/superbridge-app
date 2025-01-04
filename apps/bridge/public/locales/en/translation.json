@@ -217,6 +217,7 @@
     "arbCheckbox1WithdrawalDays_other": "I understand it will take ~{{count}} days until my funds are claimable on {{base}}",
     "checkbox2": "I understand once a bridge is initiated it cannot be sped up or cancelled",
     "checkbox3": "I understand network fees are approximate and will change",
+    "checkbox4": "I confirm my wallet supports {{to}}",
 
     "review": "Review",
     "gasCosts": "Gas costs",

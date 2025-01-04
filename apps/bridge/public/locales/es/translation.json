@@ -191,7 +191,40 @@
     "receiveAmountOnChain": "Recibir {{receiveAmount}} {{receiveSymbol}} en {{to}}",
     "receiveAmount": "Recibir {{formatted}}",
     "approve": "Aprobar {{symbol}}",
-    "approveGasToken": "Aprobar token de gas"
+    "approveGasToken": "Aprobar token de gas",
+
+    "checkbox1Deposit": "Entiendo que tomará ~{{mins}} minutos para que mis fondos estén en {{rollup}}",
+    "checkbox1Cctp": "Entiendo que tomará ~{{mins}} minutos para que mis fondos puedan ser reclamados en {{to}}",
+    "checkbox1BridgeSeconds_one": "Entiendo que tomará ~{{count}} segundo para que mis fondos lleguen a {{to}}",
+    "checkbox1BridgeSeconds_other": "Entiendo que tomará ~{{count}} segundos para que mis fondos lleguen a {{to}}",
+    "checkbox1BridgeMinutes_one": "Entiendo que tomará ~{{count}} minuto para que mis fondos lleguen a {{to}}",
+    "checkbox1BridgeMinutes_other": "Entiendo que tomará ~{{count}} minutos para que mis fondos lleguen a {{to}}",
+    "checkbox1BridgeHours_one": "Entiendo que tomará ~{{count}} hora para que mis fondos lleguen a {{to}}",
+    "checkbox1BridgeHours_other": "Entiendo que tomará ~{{count}} horas para que mis fondos lleguen a {{to}}",
+    "checkbox1BridgeDays_one": "Entiendo que tomará ~{{count}} día para que mis fondos lleguen a {{to}}",
+    "checkbox1BridgeDays_other": "Entiendo que tomará ~{{count}} días para que mis fondos lleguen a {{to}}",
+    "opCheckbox1WithdrawalMinutes_one": "Entiendo que tomará ~{{count}} minuto para que mis fondos puedan ser reclamados en {{base}} después de probar mi retiro",
+    "opCheckbox1WithdrawalMinutes_other": "Entiendo que tomará ~{{count}} minutos para que mis fondos puedan ser reclamados en {{base}} después de probar mi retiro",
+    "opCheckbox1WithdrawalHours_one": "Entiendo que tomará ~{{count}} hora para que mis fondos puedan ser reclamados en {{base}} después de probar mi retiro",
+    "opCheckbox1WithdrawalHours_other": "Entiendo que tomará ~{{count}} horas para que mis fondos puedan ser reclamados en {{base}} después de probar mi retiro",
+    "opCheckbox1WithdrawalDays_one": "Entiendo que tomará ~{{count}} día para que mis fondos puedan ser reclamados en {{base}} después de probar mi retiro",
+    "opCheckbox1WithdrawalDays_other": "Entiendo que tomará ~{{count}} días para que mis fondos puedan ser reclamados en {{base}} después de probar mi retiro",
+    "arbCheckbox1WithdrawalMinutes_one": "Entiendo que tomará ~{{count}} minuto para que mis fondos puedan ser reclamados en {{base}}",
+    "arbCheckbox1WithdrawalMinutes_other": "Entiendo que tomará ~{{count}} minutos para que mis fondos puedan ser reclamados en {{base}}",
+    "arbCheckbox1WithdrawalHours_one": "Entiendo que tomará ~{{count}} hora para que mis fondos puedan ser reclamados en {{base}}",
+    "arbCheckbox1WithdrawalHours_other": "Entiendo que tomará ~{{count}} horas para que mis fondos puedan ser reclamados en {{base}}",
+    "arbCheckbox1WithdrawalDays_one": "Entiendo que tomará ~{{count}} día para que mis fondos puedan ser reclamados en {{base}}",
+    "arbCheckbox1WithdrawalDays_other": "Entiendo que tomará ~{{count}} días para que mis fondos puedan ser reclamados en {{base}}",
+    "checkbox2": "Entiendo que una vez que se inicie el puente, no se puede acelerar ni cancelar",
+    "checkbox3": "Entiendo que las tarifas de red son aproximadas y cambiarán",
+    "checkbox4": "Confirmo que mi billetera es compatible con {{to}}",
+
+    "review": "Revisar",
+    "gasCosts": "Costos de gas",
+    "fees": "Tarifas",
+
+    "acceptTerms": "Aceptar términos",
+    "agreeToTerms": "Por favor, lea y acepte los siguientes términos antes de continuar"
   },
 
   "tos": {

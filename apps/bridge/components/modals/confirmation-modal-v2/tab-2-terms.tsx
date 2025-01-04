@@ -31,6 +31,7 @@ export const ConfirmationModalTermsTab = ({
   const [checkbox1, setCheckbox1] = useState(false);
   const [checkbox2, setCheckbox2] = useState(false);
   const [checkbox3, setCheckbox3] = useState(false);
+  const [checkbox4, setCheckbox4] = useState(false);
 
   const totalBridgeTime = useApproxTotalBridgeTime();
   const to = useToChain();
@@ -43,6 +44,7 @@ export const ConfirmationModalTermsTab = ({
       setCheckbox1(false);
       setCheckbox2(false);
       setCheckbox3(false);
+      setCheckbox4(false);
     }
   }, [open]);
 
@@ -104,7 +106,7 @@ export const ConfirmationModalTermsTab = ({
       </DialogHeader>
 
       <div className="flex flex-col gap-4 px-8 py-2">
-        <div className="flex gap-2 items-start">
+        <div className="flex gap-2 items-center">
           <Checkbox
             id="timeframe"
             checked={checkbox1}
@@ -115,7 +117,7 @@ export const ConfirmationModalTermsTab = ({
             {checkbox1Text}
           </label>
         </div>
-        <div className="flex gap-2  items-start">
+        <div className="flex gap-2  items-center">
           <Checkbox
             id="speed"
             checked={checkbox2}
@@ -126,7 +128,7 @@ export const ConfirmationModalTermsTab = ({
             {t("confirmationModal.checkbox2")}
           </label>
         </div>
-        <div className="flex gap-2 items-start">
+        <div className="flex gap-2 items-center">
           <Checkbox
             id="fees"
             checked={checkbox3}
@@ -135,6 +137,17 @@ export const ConfirmationModalTermsTab = ({
           />
           <label htmlFor="fees" className="text-xs text-foreground ">
             {t("confirmationModal.checkbox3")}
+          </label>
+        </div>
+        <div className="flex gap-2 items-center">
+          <Checkbox
+            id="wallet"
+            checked={checkbox4}
+            onCheckedChange={(c) => setCheckbox4(c as boolean)}
+            className="mt-0.5"
+          />
+          <label htmlFor="fees" className="text-xs text-foreground">
+            {t("confirmationModal.checkbox4", { to: to?.name })}
           </label>
         </div>
       </div>
@@ -151,7 +164,7 @@ export const ConfirmationModalTermsTab = ({
         <Button
           onClick={onNext}
           className="w-full"
-          disabled={!checkbox1 || !checkbox2 || !checkbox3}
+          disabled={!checkbox1 || !checkbox2 || !checkbox3 || !checkbox4}
         >
           {t("buttons.continue")}
         </Button>

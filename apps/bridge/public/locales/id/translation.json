@@ -191,7 +191,40 @@
     "receiveAmountOnChain": "Terima {{receiveAmount}} {{receiveSymbol}} di {{to}}",
     "receiveAmount": "Terima {{formatted}}",
     "approve": "Setujui {{symbol}}",
-    "approveGasToken": "Setujui token gas"
+    "approveGasToken": "Setujui token gas",
+
+    "checkbox1Deposit": "Saya mengerti bahwa dibutuhkan ~{{mins}} menit agar dana saya tiba di {{rollup}}",
+    "checkbox1Cctp": "Saya mengerti bahwa dibutuhkan ~{{mins}} menit hingga dana saya dapat diklaim di {{to}}",
+    "checkbox1BridgeSeconds_one": "Saya mengerti bahwa dibutuhkan ~{{count}} detik agar dana saya tiba di {{to}}",
+    "checkbox1BridgeSeconds_other": "Saya mengerti bahwa dibutuhkan ~{{count}} detik agar dana saya tiba di {{to}}",
+    "checkbox1BridgeMinutes_one": "Saya mengerti bahwa dibutuhkan ~{{count}} menit agar dana saya tiba di {{to}}",
+    "checkbox1BridgeMinutes_other": "Saya mengerti bahwa dibutuhkan ~{{count}} menit agar dana saya tiba di {{to}}",
+    "checkbox1BridgeHours_one": "Saya mengerti bahwa dibutuhkan ~{{count}} jam agar dana saya tiba di {{to}}",
+    "checkbox1BridgeHours_other": "Saya mengerti bahwa dibutuhkan ~{{count}} jam agar dana saya tiba di {{to}}",
+    "checkbox1BridgeDays_one": "Saya mengerti bahwa dibutuhkan ~{{count}} hari agar dana saya tiba di {{to}}",
+    "checkbox1BridgeDays_other": "Saya mengerti bahwa dibutuhkan ~{{count}} hari agar dana saya tiba di {{to}}",
+    "opCheckbox1WithdrawalMinutes_one": "Saya mengerti bahwa dibutuhkan ~{{count}} menit sampai dana saya dapat diklaim di {{base}} setelah saya membuktikan penarikan",
+    "opCheckbox1WithdrawalMinutes_other": "Saya mengerti bahwa dibutuhkan ~{{count}} menit sampai dana saya dapat diklaim di {{base}} setelah saya membuktikan penarikan",
+    "opCheckbox1WithdrawalHours_one": "Saya mengerti bahwa dibutuhkan ~{{count}} jam sampai dana saya dapat diklaim di {{base}} setelah saya membuktikan penarikan",
+    "opCheckbox1WithdrawalHours_other": "Saya mengerti bahwa dibutuhkan ~{{count}} jam sampai dana saya dapat diklaim di {{base}} setelah saya membuktikan penarikan",
+    "opCheckbox1WithdrawalDays_one": "Saya mengerti bahwa dibutuhkan ~{{count}} hari sampai dana saya dapat diklaim di {{base}} setelah saya membuktikan penarikan",
+    "opCheckbox1WithdrawalDays_other": "Saya mengerti bahwa dibutuhkan ~{{count}} hari sampai dana saya dapat diklaim di {{base}} setelah saya membuktikan penarikan",
+    "arbCheckbox1WithdrawalMinutes_one": "Saya mengerti bahwa dibutuhkan ~{{count}} menit sampai dana saya dapat diklaim di {{base}}",
+    "arbCheckbox1WithdrawalMinutes_other": "Saya mengerti bahwa dibutuhkan ~{{count}} menit sampai dana saya dapat diklaim di {{base}}",
+    "arbCheckbox1WithdrawalHours_one": "Saya mengerti bahwa dibutuhkan ~{{count}} jam sampai dana saya dapat diklaim di {{base}}",
+    "arbCheckbox1WithdrawalHours_other": "Saya mengerti bahwa dibutuhkan ~{{count}} jam sampai dana saya dapat diklaim di {{base}}",
+    "arbCheckbox1WithdrawalDays_one": "Saya mengerti bahwa dibutuhkan ~{{count}} hari sampai dana saya dapat diklaim di {{base}}",
+    "arbCheckbox1WithdrawalDays_other": "Saya mengerti bahwa dibutuhkan ~{{count}} hari sampai dana saya dapat diklaim di {{base}}",
+    "checkbox2": "Saya mengerti setelah jembatan dimulai, tidak dapat dipercepat atau dibatalkan",
+    "checkbox3": "Saya mengerti biaya jaringan hanya perkiraan dan dapat berubah",
+    "checkbox4": "Saya mengonfirmasi bahwa dompet saya mendukung {{to}}",
+
+    "review": "Tinjau",
+    "gasCosts": "Biaya gas",
+    "fees": "Biaya",
+
+    "acceptTerms": "Terima syarat",
+    "agreeToTerms": "Harap baca dan setujui syarat di bawah ini sebelum melanjutkan"
   },
 
   "tos": {
