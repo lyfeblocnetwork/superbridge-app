@@ -146,7 +146,7 @@ export const ConfirmationModalTermsTab = ({
             onCheckedChange={(c) => setCheckbox4(c as boolean)}
             className="mt-0.5"
           />
-          <label htmlFor="fees" className="text-xs text-foreground">
+          <label htmlFor="wallet" className="text-xs text-foreground">
             {t("confirmationModal.checkbox4", { to: to?.name })}
           </label>
         </div>
